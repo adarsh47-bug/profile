@@ -1,0 +1,47 @@
+{
+  "education": [
+    {
+      "id": "btech",
+      "degree": "B.Tech",
+      "field": "Information Technology",
+      "institution": "Priyadarshini College of Engineering",
+      "location": "Nagpur, Maharashtra",
+      "startDate": "2022-11-01",
+      "endDate": null,
+      "current": true,
+      "grade": "",
+      "description": "Pursuing Bachelor of Technology in Information Technology with focus on software development and web technologies.",
+      "achievements": [
+        "Co-Lead of TechThinkers Coding Club",
+        "2X Winner of Web Design Jam",
+        "1st Place at Ideathon 2024"
+      ]
+    },
+    {
+      "id": "hsc",
+      "degree": "HSC",
+      "field": "Science",
+      "institution": "People's College",
+      "location": "Yavatmal, Maharashtra",
+      "startDate": "2020-07-01",
+      "endDate": "2022-03-01",
+      "current": false,
+      "grade": "",
+      "description": "Completed Higher Secondary Certificate in Science stream.",
+      "achievements": []
+    },
+    {
+      "id": "ssc",
+      "degree": "SSC",
+      "field": "",
+      "institution": "Sanskar English Medium School",
+      "location": "Yavatmal, Maharashtra",
+      "startDate": null,
+      "endDate": "2020-03-01",
+      "current": false,
+      "grade": "",
+      "description": "Completed Secondary School Certificate.",
+      "achievements": []
+    }
+  ]
+}

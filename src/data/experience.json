@@ -1,0 +1,72 @@
+{
+  "experiences": [
+    {
+      "id": "embedded-creations",
+      "title": "Software Development Intern",
+      "company": "Embedded Creations",
+      "location": "Nagpur, India",
+      "type": "Internship",
+      "startDate": "2024-09-01",
+      "endDate": null,
+      "current": true,
+      "description": "Working on Android and web applications using React Native, PHP, and MySQL for government projects including NMC Sky Sign Department, Akola SEVA Project, and Tribal PWD.",
+      "companyLogo": "/images/companies/embedded-creations.png",
+      "images": [
+        "/images/experience/ec-office.jpg",
+        "/images/experience/ec-team.jpg",
+        "/images/experience/ec-project.jpg"
+      ],
+      "responsibilities": [
+        "Enhanced Android and web applications using React Native, PHP, and MySQL",
+        "Enabled display of 650+ registered hoardings for NMC Sky Sign Department",
+        "Trained officers across 27+ police stations for SEVA app adoption",
+        "Improved web application for Tribal PWD managing 130+ schools"
+      ],
+      "technologies": [
+        "React Native",
+        "PHP",
+        "MySQL",
+        "Android",
+        "Web Development"
+      ],
+      "highlights": [
+        "650+ hoardings managed",
+        "27+ police stations trained",
+        "130+ schools served"
+      ]
+    },
+    {
+      "id": "techthinkers",
+      "title": "Co-Lead",
+      "company": "TechThinkers Coding Club",
+      "location": "Nagpur, India",
+      "type": "Leadership",
+      "startDate": "2024-07-01",
+      "endDate": "2024-11-30",
+      "current": false,
+      "description": "Led coding club activities, conducted workshops, mentored students, and organized hackathons.",
+      "companyLogo": "/images/companies/techthinkers.png",
+      "images": [
+        "/images/experience/tt-workshop.jpg",
+        "/images/experience/tt-hackathon.jpg",
+        "/images/experience/tt-team.jpg"
+      ],
+      "responsibilities": [
+        "Conducted interactive seminars and workshops on web development for 50+ students",
+        "Managed club activities and mentored peers",
+        "Facilitated collaborative projects",
+        "Organized a college-level hackathon with 30+ teams and 150+ students"
+      ],
+      "technologies": [
+        "Web Development",
+        "Leadership",
+        "Event Management"
+      ],
+      "highlights": [
+        "50+ students trained",
+        "30+ hackathon teams",
+        "150+ participants"
+      ]
+    }
+  ]
+}

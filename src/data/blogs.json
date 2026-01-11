@@ -1,0 +1,36 @@
+{
+  "posts": [
+    {
+      "id": "building-scalable-react-apps",
+      "title": "Building Scalable React Applications",
+      "slug": "building-scalable-react-apps",
+      "excerpt": "Learn the best practices for building React applications that can scale with your team and user base.",
+      "content": "",
+      "coverImage": "/images/blog/react-scalable.png",
+      "date": "2024-12-01",
+      "readTime": "8 min read",
+      "tags": [
+        "React",
+        "JavaScript",
+        "Best Practices"
+      ],
+      "published": false
+    },
+    {
+      "id": "my-journey-10k-downloads",
+      "title": "My Journey to 10K App Downloads",
+      "slug": "my-journey-10k-downloads",
+      "excerpt": "How I built the RTMNU Student Development App and achieved 10,000+ downloads on Google Play Store.",
+      "content": "",
+      "coverImage": "/images/blog/10k-downloads.png",
+      "date": "2024-10-15",
+      "readTime": "6 min read",
+      "tags": [
+        "React Native",
+        "Mobile Development",
+        "Career"
+      ],
+      "published": false
+    }
+  ]
+}

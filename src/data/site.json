@@ -1,0 +1,60 @@
+{
+  "siteTitle": "Adarsh Kadam | Software Engineer",
+  "siteDescription": "Personal portfolio of Adarsh Kadam - Full-Stack Developer specializing in React, Node.js, and mobile development.",
+  "siteUrl": "https://adarshcodes.online",
+  "siteKeywords": [
+    "software engineer",
+    "full-stack developer",
+    "react developer",
+    "node.js",
+    "react native",
+    "web development",
+    "nagpur"
+  ],
+  "navigation": [
+    {
+      "name": "Home",
+      "path": "/",
+      "icon": "FaHome"
+    },
+    {
+      "name": "About",
+      "path": "/#about",
+      "icon": "FaUser"
+    },
+    {
+      "name": "Skills",
+      "path": "/#skills",
+      "icon": "FaCode"
+    },
+    {
+      "name": "Projects",
+      "path": "/#projects",
+      "icon": "FaProjectDiagram"
+    },
+    {
+      "name": "Experience",
+      "path": "/#experience",
+      "icon": "FaBriefcase"
+    },
+    {
+      "name": "Achievements",
+      "path": "/#achievements",
+      "icon": "FaTrophy"
+    },
+    {
+      "name": "Contact",
+      "path": "/#contact",
+      "icon": "FaEnvelope"
+    }
+  ],
+  "footer": {
+    "copyright": "© 2024 Adarsh Kadam. All rights reserved.",
+    "tagline": "Built with React & Tailwind CSS"
+  },
+  "theme": {
+    "defaultMode": "dark",
+    "primaryColor": "#3b82f6",
+    "secondaryColor": "#8b5cf6"
+  }
+}

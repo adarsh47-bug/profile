@@ -1,0 +1,256 @@
+{
+  "projects": [
+    {
+      "id": "rtmnu-app",
+      "title": "RTMNU Student Development App",
+      "description": "Mobile app for RTMNU students featuring student development schemes, government initiatives, academic programs, job listings, internships, and events to support student career growth.",
+      "longDescription": "Designed and developed a comprehensive mobile application for RTM Nagpur University students using React Native. The app provides a centralized platform for accessing student development schemes, including government initiatives and academic programs. It features curated job listings, internships, and events to support student career growth.",
+      "techStack": [
+        "React Native",
+        "Expo",
+        "Firebase",
+        "Node.js"
+      ],
+      "category": "Mobile App",
+      "status": "Completed",
+      "featured": true,
+      "image": "/images/projects/rtmnu-app.png",
+      "images": [
+        "/images/projects/rtmnu-app.png",
+        "/images/projects/rtmnu-app-2.png",
+        "/images/projects/rtmnu-app-3.png"
+      ],
+      "links": {
+        "live": "https://play.google.com/store/apps/details?id=com.nagpur_university",
+        "github": "",
+        "demo": ""
+      },
+      "highlights": [
+        "10K+ downloads on Google Play Store",
+        "High impact and adoption rate",
+        "Serves entire RTMNU student community"
+      ],
+      "date": "2024-06-01"
+    },
+    {
+      "id": "alumnet",
+      "title": "Alumnet – Alumni Interaction Platform",
+      "description": "Platform to connect students with alumni using university-based filtering and a streamlined interface. Won 1st place at Ideathon 2024.",
+      "longDescription": "Built a comprehensive platform to bridge the gap between current students and alumni. Features include university-based filtering, direct messaging, and a clean, intuitive interface for seamless networking. The project secured 1st place at Ideathon 2024 during the live project pitching round.",
+      "techStack": [
+        "React.js",
+        "Node.js",
+        "MongoDB",
+        "Express.js"
+      ],
+      "category": "Web App",
+      "status": "Completed",
+      "featured": true,
+      "image": "/images/projects/alumnet.png",
+      "images": [
+        "/images/projects/alumnet.png",
+        "/images/projects/alumnet-2.png",
+        "/images/projects/alumnet-3.png"
+      ],
+      "links": {
+        "live": "",
+        "github": "",
+        "demo": "https://www.youtube.com/watch?v=v3PkRbhP0Kg"
+      },
+      "highlights": [
+        "1st Place at Ideathon 2024",
+        "University-based alumni filtering",
+        "Streamlined networking interface"
+      ],
+      "date": "2024-03-01"
+    },
+    {
+      "id": "hosting-platform",
+      "title": "Static Site Hosting Platform",
+      "description": "A simple and user-friendly platform to host static websites (HTML, CSS, JS) under custom, user-specific URLs with a minimalist 1-2 step workflow.",
+      "longDescription": "Created a platform to simplify static website deployment for students and beginners. Users can upload their HTML, CSS, and JS files and get a custom URL instantly. Built using the MERN stack with a focus on ease of use and scalability.",
+      "techStack": [
+        "React.js",
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "Tailwind CSS"
+      ],
+      "category": "Web App",
+      "status": "Completed",
+      "featured": true,
+      "image": "/images/projects/hosting-platform.png",
+      "images": [
+        "/images/projects/hosting-platform.png",
+        "/images/projects/hosting-platform-2.png"
+      ],
+      "links": {
+        "live": "",
+        "github": "https://github.com/adarsh47-bug/Hosting-platform",
+        "demo": ""
+      },
+      "highlights": [
+        "1-2 step deployment workflow",
+        "User-specific custom URLs",
+        "Beginner-friendly design"
+      ],
+      "date": "2024-01-01"
+    },
+    {
+      "id": "nmc-skysign",
+      "title": "NMC Sky Sign Department App",
+      "description": "Enhanced Android and web applications for the Nagpur Municipal Corporation Sky Sign Department, enabling display of 650+ registered hoardings.",
+      "longDescription": "Worked on enhancing the NMC Sky Sign Department applications using React Native, PHP, and MySQL. The system enables transparent display and management of 650+ registered hoardings across Nagpur, improving oversight and regulatory compliance.",
+      "techStack": [
+        "React Native",
+        "PHP",
+        "MySQL",
+        "Android"
+      ],
+      "category": "Mobile App",
+      "status": "Completed",
+      "featured": false,
+      "image": "/images/projects/nmc-skysign.png",
+      "images": [
+        "/images/projects/nmc-skysign.png"
+      ],
+      "links": {
+        "live": "",
+        "github": "",
+        "demo": ""
+      },
+      "highlights": [
+        "650+ hoardings managed",
+        "Improved transparency",
+        "Government project"
+      ],
+      "date": "2024-09-01"
+    },
+    {
+      "id": "seva-app",
+      "title": "Akola SEVA Project",
+      "description": "Application for Akola Police Department with training provided to officers across 27+ police stations for seamless adoption.",
+      "longDescription": "Contributed to the Akola SEVA Project, developing features and providing training to police officers across 27+ police stations in Akola district. Ensured seamless app adoption and effective utilization of the system.",
+      "techStack": [
+        "React Native",
+        "PHP",
+        "MySQL"
+      ],
+      "category": "Mobile App",
+      "status": "Completed",
+      "featured": false,
+      "image": "/images/projects/seva-app.png",
+      "images": [
+        "/images/projects/seva-app.png"
+      ],
+      "links": {
+        "live": "",
+        "github": "",
+        "demo": ""
+      },
+      "highlights": [
+        "27+ police stations trained",
+        "Government project",
+        "High adoption rate"
+      ],
+      "date": "2024-10-01"
+    },
+    {
+      "id": "tribal-pwd",
+      "title": "Tribal PWD Web Application",
+      "description": "Web application for Tribal PWD to manage workflows across 130+ Tribal Schools in Maharashtra.",
+      "longDescription": "Collaborated with Tribal PWD to improve a web application using PHP and MySQL. The system manages administrative workflows across 130+ Tribal Schools in Maharashtra, streamlining operations and improving efficiency.",
+      "techStack": [
+        "PHP",
+        "MySQL",
+        "HTML",
+        "CSS",
+        "JavaScript"
+      ],
+      "category": "Web App",
+      "status": "Completed",
+      "featured": false,
+      "image": "/images/projects/tribal-pwd.png",
+      "images": [
+        "/images/projects/tribal-pwd.png"
+      ],
+      "links": {
+        "live": "",
+        "github": "",
+        "demo": ""
+      },
+      "highlights": [
+        "130+ schools managed",
+        "Government project",
+        "Workflow automation"
+      ],
+      "date": "2024-11-01"
+    },
+    {
+      "id": "forkify",
+      "title": "Forkify – Recipe Search Engine",
+      "description": "A food recipe search engine that helps users discover recipes based on their preferences.",
+      "longDescription": "A JavaScript-based recipe search application that allows users to search for recipes, view ingredients, and save favorites. Built with modern JavaScript practices and a clean user interface.",
+      "techStack": [
+        "JavaScript",
+        "HTML",
+        "CSS",
+        "API Integration"
+      ],
+      "category": "Web App",
+      "status": "Completed",
+      "featured": false,
+      "image": "/images/projects/forkify.png",
+      "images": [
+        "/images/projects/forkify.png",
+        "/images/projects/forkify-2.png"
+      ],
+      "links": {
+        "live": "",
+        "github": "https://github.com/adarsh47-bug/forkify_Js",
+        "demo": ""
+      },
+      "highlights": [
+        "Recipe search functionality",
+        "API integration",
+        "Modern JavaScript"
+      ],
+      "date": "2023-08-01"
+    },
+    {
+      "id": "mapty",
+      "title": "Mapty – Workout Tracker",
+      "description": "Track and share outdoor exercise routes and statistics for running and cycling activities.",
+      "longDescription": "A web application for tracking outdoor workout routes using geolocation. Users can log running and cycling activities with metrics like distance, duration, cadence, and elevation gain.",
+      "techStack": [
+        "JavaScript",
+        "Leaflet.js",
+        "HTML",
+        "CSS"
+      ],
+      "category": "Web App",
+      "status": "Completed",
+      "featured": false,
+      "image": "/images/projects/mapty.png",
+      "images": [
+        "/images/projects/mapty.png"
+      ],
+      "links": {
+        "live": "",
+        "github": "https://github.com/adarsh47-bug/Mapty",
+        "demo": ""
+      },
+      "highlights": [
+        "Geolocation tracking",
+        "Interactive maps",
+        "Workout statistics"
+      ],
+      "date": "2023-06-01"
+    }
+  ],
+  "categories": [
+    "All",
+    "Web App",
+    "Mobile App"
+  ]
+}

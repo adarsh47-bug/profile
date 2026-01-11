@@ -1,0 +1,60 @@
+{
+  "name": "Adarsh Kadam",
+  "title": "Software Engineer & Full-Stack Developer",
+  "tagline": "Building scalable applications and crafting intuitive user interfaces",
+  "email": "adarshkadam5977@gmail.com",
+  "phone": "+91 72493 33692",
+  "location": "Nagpur, Maharashtra, India",
+  "website": "https://adarshcodes.online",
+  "resumeUrl": "/resume/Adarsh_Kadam.pdf",
+  "avatar": "/images/avatar.jpg",
+  "heroImages": [
+    "/images/hero/coding.jpg",
+    "/images/hero/workspace.jpg",
+    "/images/hero/project.jpg",
+    "/images/hero/tech.jpg"
+  ],
+  "galleryImages": [
+    {
+      "src": "/images/gallery/work-1.jpg",
+      "alt": "Working on projects",
+      "caption": "Deep in code"
+    },
+    {
+      "src": "/images/gallery/event-1.jpg",
+      "alt": "Tech event",
+      "caption": "At a tech meetup"
+    },
+    {
+      "src": "/images/gallery/team-1.jpg",
+      "alt": "Team collaboration",
+      "caption": "Team collaboration"
+    }
+  ],
+  "social": {
+    "github": "https://github.com/adarsh47-bug",
+    "linkedin": "https://linkedin.com/in/adarsh-kadam-3aa5b7248",
+    "twitter": "",
+    "youtube": "https://youtube.com/@adarshkadam3012"
+  },
+  "bio": {
+    "short": "Full-stack developer passionate about building scalable applications and crafting intuitive user interfaces. Skilled in JavaScript, TypeScript, and the MERN stack.",
+    "long": "I'm a Software Development Intern and B.Tech student in Information Technology at Priyadarshini College of Engineering, Nagpur. With hands-on experience in React Native, React.js, Node.js, and cloud technologies, I've contributed to impactful projects including government applications serving 650+ hoardings and 27+ police stations. I'm passionate about creating technology solutions that make a real difference."
+  },
+  "highlights": [
+    "10K+ app downloads on Google Play Store",
+    "2X 1st rank in Web Design Jam Competition",
+    "Trained 27+ police stations on SEVA app adoption",
+    "Co-Lead of TechThinkers Coding Club"
+  ],
+  "currentRole": {
+    "title": "Software Development Intern",
+    "company": "Embedded Creations",
+    "period": "Sep 2024 - Present"
+  },
+  "languages": [
+    "English",
+    "Hindi",
+    "Marathi"
+  ]
+}

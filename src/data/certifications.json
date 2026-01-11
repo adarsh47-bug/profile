@@ -1,0 +1,31 @@
+{
+  "certifications": [
+    {
+      "id": "postman-api",
+      "title": "Postman API Fundamentals Student Expert",
+      "issuer": "Postman",
+      "date": "2024-01-01",
+      "credentialUrl": "",
+      "icon": "SiPostman",
+      "description": "Certified in API fundamentals including API testing, documentation, and best practices."
+    },
+    {
+      "id": "nptel-java",
+      "title": "Programming in Java",
+      "issuer": "NPTEL",
+      "date": "2023-06-01",
+      "credentialUrl": "",
+      "icon": "FaJava",
+      "description": "Completed NPTEL certification course on Java programming fundamentals and advanced concepts."
+    },
+    {
+      "id": "udemy-webdev",
+      "title": "Web Development Bootcamp",
+      "issuer": "Udemy",
+      "date": "2023-03-01",
+      "credentialUrl": "",
+      "icon": "SiUdemy",
+      "description": "Comprehensive web development bootcamp covering HTML, CSS, JavaScript, Node.js, and more."
+    }
+  ]
+}
