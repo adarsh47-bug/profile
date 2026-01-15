@@ -1,0 +1,49 @@
+{
+  "activities": [
+    {
+      "id": "web-dev-seminar",
+      "title": "Web Development Seminar - TechThinkers Coding Club",
+      "description": "Conducted an engaging seminar on modern web development technologies and best practices for fellow students. Shared insights on full-stack development, current industry trends, and practical coding techniques to empower the next generation of developers.",
+      "date": "2024-08-04",
+      "category": "Speaking",
+      "icon": "FaUsers",
+      "link": "https://www.linkedin.com/posts/techthinkerspce_empowering-the-future-of-tech-adarsh-kadam-ugcPost-7227902044794204161-mRoW",
+      "image": "/images/achievements/tech_thinkers_seminar/seminar_1_1.jpg",
+      "images": [
+        "/images/achievements/tech_thinkers_seminar/seminar_1_1.jpg",
+        "/images/achievements/tech_thinkers_seminar/seminar_1_2.jpg",
+        "/images/achievements/tech_thinkers_seminar/seminar_1_3.jpg",
+        "/images/achievements/tech_thinkers_seminar/seminar_1_4.jpg",
+        "/images/achievements/tech_thinkers_seminar/seminar_1_5.jpg",
+        "/images/achievements/tech_thinkers_seminar/seminar_1_6.jpg"
+      ]
+    },
+    {
+      "id": "hackathon-organizer",
+      "title": "Hackathon Organizer - TechThinkers Coding Club",
+      "description": "Organized a successful college-level hackathon with 30+ participating teams and over 150 students as Co-Lead of TechThinkers Coding Club. Managed event logistics, mentor coordination, and created an engaging competitive environment for student developers.",
+      "date": "2024-08-31",
+      "category": "Leadership",
+      "icon": "FaUsers",
+      "link": "",
+      "image": "",
+      "images": []
+    },
+    {
+      "id": "nmc-ai-discussion",
+      "title": "AI Discussion at Nagpur Municipal Corporation",
+      "description": "Participated in a strategic discussion on Artificial Intelligence applications and innovations at the Nagpur Municipal Corporation (NMC) office. Contributed insights on AI integration in civic services and smart city initiatives.",
+      "date": "2024-02-14",
+      "category": "Recognition",
+      "icon": "FaLightbulb",
+      "link": "https://www.linkedin.com/posts/adarsh-kadam-3aa5b7248_aihackathon-artificialintelligence-techinnovation-activity-7296166270289199105-x2t1",
+      "image": "/images/others/npm_ai_discussion_1.jpg",
+      "images": [
+        "/images/others/npm_ai_discussion_1.jpg",
+        "/images/others/npm_ai_discussion_2.jpg",
+        "/images/others/npm_ai_discussion_3.jpg",
+        "/images/others/npm_ai_discussion_4.jpg"
+      ]
+    }
+  ]
+}
