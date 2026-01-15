@@ -15,7 +15,7 @@
         "/images/projects/nmc_project/nmc_project_1.jpg",
         "/images/projects/seva_project/seva_1.jpg",
         "/images/projects/seva_project/seva_2.jpg",
-        "public/images/others/other_activities_1_1.jpg"
+        "/images/others/other_activities_1_1.jpg"
       ],
       "responsibilities": [
         "Enhanced Android and web applications using React Native, PHP, and MySQL",

@@ -320,11 +320,11 @@
       "category": "Web App",
       "status": "Completed",
       "featured": false,
-      "image": "/images/projects/forkify_project/image_1.png",
+      "image": "/images/projects/forkify_project/image_1.jpg",
       "images": [
-        "/images/projects/forkify_project/image_1.png",
-        "/images/projects/forkify_project/image_2.png",
-        "/images/projects/forkify_project/image_3.png"
+        "/images/projects/forkify_project/image_1.jpg",
+        "/images/projects/forkify_project/image_2.jpg",
+        "/images/projects/forkify_project/image_3.jpg"
       ],
       "links": {
         "live": "",
@@ -352,9 +352,9 @@
       "category": "Web App",
       "status": "Completed",
       "featured": false,
-      "image": "/images/projects/mapty_project/image.png",
+      "image": "/images/projects/mapty_project/image.jpg",
       "images": [
-        "/images/projects/mapty_project/image.png"
+        "/images/projects/mapty_project/image.jpg"
       ],
       "links": {
         "live": "",
