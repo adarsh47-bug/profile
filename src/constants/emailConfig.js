@@ -8,27 +8,27 @@
  * 1. Create account at https://www.emailjs.com/
  * 2. Get your Service ID, Template ID, and Public Key from dashboard
  * 3. Copy .env.example to .env
- * 4. Update the VITE_EMAILJS_* variables in .env with your credentials
+ * 4. Update the EMAILJS_* variables in .env with your credentials
  * 
  * Note: Never commit .env file to version control
  * 
  * Environment Variables Required:
- * - VITE_EMAILJS_SERVICE_ID: Your EmailJS service ID
- * - VITE_EMAILJS_TEMPLATE_ID: Your EmailJS template ID
- * - VITE_EMAILJS_PUBLIC_KEY: Your EmailJS public key
+ * - EMAILJS_SERVICE_ID: Your EmailJS service ID
+ * - EMAILJS_TEMPLATE_ID: Your EmailJS template ID
+ * - EMAILJS_PUBLIC_KEY: Your EmailJS public key
  */
 
 // Validate that required environment variables are set
 const validateEnvVars = () => {
   const required = {
-    serviceId: import.meta.env.VITE_EMAILJS_SERVICE_ID,
-    templateId: import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-    publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+    serviceId: import.meta.env.EMAILJS_SERVICE_ID,
+    templateId: import.meta.env.EMAILJS_TEMPLATE_ID,
+    publicKey: import.meta.env.EMAILJS_PUBLIC_KEY,
   };
 
   const missing = Object.entries(required)
     .filter(([_, value]) => !value)
-    .map(([key]) => `VITE_EMAILJS_${key.toUpperCase().replace(/([A-Z])/g, '_$1')}`);
+    .map(([key]) => `EMAILJS_${key.toUpperCase().replace(/([A-Z])/g, '_$1')}`);
 
   if (missing.length > 0) {
     console.warn(
