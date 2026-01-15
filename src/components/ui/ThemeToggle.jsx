@@ -1,8 +1,9 @@
+import { memo } from 'react';
 import { motion } from 'framer-motion';
 import { FaSun, FaMoon } from 'react-icons/fa';
 import { useTheme } from '../../context/ThemeContext';
 
-export default function ThemeToggle({ className = '' }) {
+const ThemeToggle = memo(function ThemeToggle({ className = '' }) {
   const { isDark, toggleTheme } = useTheme();
 
   return (
@@ -33,4 +34,6 @@ export default function ThemeToggle({ className = '' }) {
       </motion.div>
     </motion.button>
   );
-}
+});
+
+export default ThemeToggle;

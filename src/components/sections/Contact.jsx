@@ -1,18 +1,11 @@
 import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import {
-  FaEnvelope, FaPhone, FaMapMarkerAlt, FaGithub, FaLinkedin,
-  FaTwitter, FaYoutube, FaDownload, FaPaperPlane, FaCheckCircle, FaExclamationCircle
+  FaPaperPlane, FaCheckCircle, FaExclamationCircle, FaDownload
 } from 'react-icons/fa';
 import { Section, Button, Card } from '../ui';
 import { profileData } from '../../data';
-
-// EmailJS Configuration - Replace with your own credentials
-const EMAILJS_CONFIG = {
-  serviceId: 'service_ai5b86p',     // Get from EmailJS dashboard
-  templateId: 'template_xzcos4m',   // Get from EmailJS dashboard  
-  publicKey: 'gYqGt_9UhBNaoWu83',     // Get from EmailJS dashboard
-};
+import { getSocialLinks, getContactInfo, EMAILJS_CONFIG } from '../../constants';
 
 export default function Contact() {
   const formRef = useRef(null);
@@ -156,44 +149,18 @@ export default function Contact() {
     }
   };
 
-  const contactInfo = [
-    {
-      icon: FaEnvelope,
-      label: 'Email',
-      value: profileData.email,
-      href: `mailto:${profileData.email}`,
-      color: 'text-red-500',
-    },
-    {
-      icon: FaPhone,
-      label: 'Phone',
-      value: profileData.phone,
-      href: `tel:${profileData.phone.replace(/\s/g, '')}`,
-      color: 'text-green-500',
-    },
-    {
-      icon: FaMapMarkerAlt,
-      label: 'Location',
-      value: profileData.location,
-      href: null,
-      color: 'text-blue-500',
-    },
-  ];
-
-  const socialLinks = [
-    { icon: FaGithub, href: profileData.social.github, label: 'GitHub', color: 'hover:text-slate-900 dark:hover:text-white' },
-    { icon: FaLinkedin, href: profileData.social.linkedin, label: 'LinkedIn', color: 'hover:text-blue-600' },
-    { icon: FaYoutube, href: profileData.social.youtube, label: 'YouTube', color: 'hover:text-red-600' },
-    { icon: FaTwitter, href: profileData.social.twitter, label: 'Twitter', color: 'hover:text-blue-400' },
-  ].filter((s) => s.href);
+  const contactInfo = getContactInfo(profileData);
+  const socialLinks = getSocialLinks(profileData.social);
 
   return (
     <Section
       id="contact"
       title="Get In Touch"
       subtitle="Have a project in mind or want to collaborate? Feel free to reach out!"
+      className="bg-slate-50 dark:bg-slate-800/50"
+
     >
-      <div className="grid lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
+      <div className="grid lg:grid-cols-2 gap-8 md:gap-12 max-w-5xl mx-auto">
         {/* Contact Info */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
@@ -201,36 +168,36 @@ export default function Contact() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <h3 className="text-2xl font-semibold text-slate-900 dark:text-white mb-6">
+          <h3 className="text-xl md:text-2xl font-semibold text-slate-900 dark:text-white mb-4 md:mb-6">
             Let's Connect
           </h3>
-          <p className="text-slate-600 dark:text-slate-400 mb-8">
+          <p className="text-sm md:text-base text-slate-600 dark:text-slate-400 mb-6 md:mb-8">
             I'm always open to discussing new projects, creative ideas, or opportunities
             to be part of your vision. Feel free to reach out through any of the following channels.
           </p>
 
           {/* Contact Details */}
-          <div className="space-y-4 mb-8">
+          <div className="space-y-3 md:space-y-4 mb-6 md:mb-8">
             {contactInfo.map((info) => (
               <motion.div
                 key={info.label}
                 whileHover={{ x: 5 }}
-                className="flex items-center gap-4 p-4 bg-slate-50 dark:bg-slate-800 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors"
+                className="flex items-start md:items-center gap-3 md:gap-4 p-3 md:p-4 bg-slate-50 dark:bg-slate-800 rounded-lg md:rounded-xl hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors"
               >
-                <div className={`p-3 bg-white dark:bg-slate-900 rounded-xl shadow-sm ${info.color}`}>
-                  <info.icon className="w-5 h-5" />
+                <div className={`p-2 md:p-3 bg-white dark:bg-slate-900 rounded-lg md:rounded-xl shadow-sm shrink-0 ${info.color}`}>
+                  <info.icon className="w-4 md:w-5 h-4 md:h-5" />
                 </div>
-                <div>
-                  <p className="text-sm text-slate-500 dark:text-slate-400">{info.label}</p>
+                <div className="min-w-0">
+                  <p className="text-xs md:text-sm text-slate-500 dark:text-slate-400">{info.label}</p>
                   {info.href ? (
                     <a
                       href={info.href}
-                      className="font-medium text-slate-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                      className="block font-medium text-slate-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm md:text-base wrap-break-word"
                     >
                       {info.value}
                     </a>
                   ) : (
-                    <p className="font-medium text-slate-900 dark:text-white">{info.value}</p>
+                    <p className="font-medium text-slate-900 dark:text-white text-sm md:text-base wrap-break-word">{info.value}</p>
                   )}
                 </div>
               </motion.div>
@@ -238,23 +205,23 @@ export default function Contact() {
           </div>
 
           {/* Social Links */}
-          <div className="mb-8">
-            <p className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-4">
+          <div className="mb-6 md:mb-8">
+            <p className="text-xs md:text-sm font-medium text-slate-700 dark:text-slate-300 mb-3 md:mb-4">
               Connect on social media
             </p>
-            <div className="flex gap-3">
+            <div className="flex gap-2 md:gap-3 flex-wrap">
               {socialLinks.map((social) => (
                 <motion.a
                   key={social.label}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`p-3 bg-slate-100 dark:bg-slate-800 rounded-xl text-slate-600 dark:text-slate-400 ${social.color} hover:bg-slate-200 dark:hover:bg-slate-700 transition-all`}
+                  className={`p-2 md:p-3 bg-slate-100 dark:bg-slate-800 rounded-lg md:rounded-xl text-slate-600 dark:text-slate-400 ${social.color} hover:bg-slate-200 dark:hover:bg-slate-700 transition-all`}
                   aria-label={social.label}
                   whileHover={{ scale: 1.1, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <social.icon className="w-5 h-5" />
+                  <social.icon className="w-4 md:w-5 h-4 md:h-5" />
                 </motion.a>
               ))}
             </div>
@@ -266,6 +233,7 @@ export default function Contact() {
             variant="secondary"
             icon={FaDownload}
             external
+            className="w-full md:w-auto text-sm md:text-base"
           >
             Download Resume
           </Button>
@@ -279,7 +247,7 @@ export default function Contact() {
           transition={{ duration: 0.5, delay: 0.2 }}
         >
           <Card padding="lg" className="border-2 border-transparent hover:border-blue-100 dark:hover:border-slate-700 transition-colors">
-            <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-6">
+            <h3 className="text-lg md:text-xl font-semibold text-slate-900 dark:text-white mb-4 md:mb-6">
               Send a Message
             </h3>
 
@@ -289,24 +257,24 @@ export default function Contact() {
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 className={`
-                  flex items-center gap-2 p-4 rounded-lg mb-6
+                  flex items-start md:items-center gap-2 p-3 md:p-4 rounded-lg mb-4 md:mb-6
                   ${status.type === 'success' ? 'bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400' : ''}
                   ${status.type === 'error' ? 'bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-400' : ''}
                   ${status.type === 'info' ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400' : ''}
                 `}
               >
-                {status.type === 'success' && <FaCheckCircle className="w-5 h-5" />}
-                {status.type === 'error' && <FaExclamationCircle className="w-5 h-5" />}
-                <span className="text-sm">{status.message}</span>
+                {status.type === 'success' && <FaCheckCircle className="w-4 md:w-5 h-4 md:h-5 shrink-0" />}
+                {status.type === 'error' && <FaExclamationCircle className="w-4 md:w-5 h-4 md:h-5 shrink-0" />}
+                <span className="text-xs md:text-sm">{status.message}</span>
               </motion.div>
             )}
 
-            <form ref={formRef} onSubmit={handleSubmit} className="space-y-5">
-              <div className="grid sm:grid-cols-2 gap-5">
+            <form ref={formRef} onSubmit={handleSubmit} className="space-y-3 md:space-y-5">
+              <div className="grid sm:grid-cols-2 gap-3 md:gap-5">
                 <div>
                   <label
                     htmlFor="from_name"
-                    className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2"
+                    className="block text-xs md:text-sm font-medium text-slate-700 dark:text-slate-300 mb-1 md:mb-2"
                   >
                     Your Name *
                   </label>
@@ -317,21 +285,21 @@ export default function Contact() {
                     value={formData.from_name}
                     onChange={handleChange}
                     required
-                    className={`w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border ${errors.from_name
-                        ? 'border-red-500 dark:border-red-500'
-                        : 'border-slate-200 dark:border-slate-700'
-                      } rounded-xl text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all`}
+                    className={`w-full px-3 md:px-4 py-2 md:py-3 bg-slate-50 dark:bg-slate-800 border text-sm md:text-base ${errors.from_name
+                      ? 'border-red-500 dark:border-red-500'
+                      : 'border-slate-200 dark:border-slate-700'
+                      } rounded-lg md:rounded-xl text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all`}
                     placeholder="John Doe"
                   />
                   {errors.from_name && (
-                    <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.from_name}</p>
+                    <p className="mt-1 text-xs md:text-sm text-red-600 dark:text-red-400">{errors.from_name}</p>
                   )}
                 </div>
 
                 <div>
                   <label
                     htmlFor="from_email"
-                    className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2"
+                    className="block text-xs md:text-sm font-medium text-slate-700 dark:text-slate-300 mb-1 md:mb-2"
                   >
                     Your Email *
                   </label>
@@ -342,14 +310,14 @@ export default function Contact() {
                     value={formData.from_email}
                     onChange={handleChange}
                     required
-                    className={`w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border ${errors.from_email
-                        ? 'border-red-500 dark:border-red-500'
-                        : 'border-slate-200 dark:border-slate-700'
-                      } rounded-xl text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all`}
+                    className={`w-full px-3 md:px-4 py-2 md:py-3 bg-slate-50 dark:bg-slate-800 border text-sm md:text-base ${errors.from_email
+                      ? 'border-red-500 dark:border-red-500'
+                      : 'border-slate-200 dark:border-slate-700'
+                      } rounded-lg md:rounded-xl text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all`}
                     placeholder="john@example.com"
                   />
                   {errors.from_email && (
-                    <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.from_email}</p>
+                    <p className="mt-1 text-xs md:text-sm text-red-600 dark:text-red-400">{errors.from_email}</p>
                   )}
                 </div>
               </div>
@@ -357,7 +325,7 @@ export default function Contact() {
               <div>
                 <label
                   htmlFor="message"
-                  className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2"
+                  className="block text-xs md:text-sm font-medium text-slate-700 dark:text-slate-300 mb-1 md:mb-2"
                 >
                   Your Message *
                 </label>
@@ -367,15 +335,15 @@ export default function Contact() {
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  rows={6}
-                  className={`w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border ${errors.message
-                      ? 'border-red-500 dark:border-red-500'
-                      : 'border-slate-200 dark:border-slate-700'
-                    } rounded-xl text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none`}
+                  rows={5}
+                  className={`w-full px-3 md:px-4 py-2 md:py-3 bg-slate-50 dark:bg-slate-800 border text-sm md:text-base ${errors.message
+                    ? 'border-red-500 dark:border-red-500'
+                    : 'border-slate-200 dark:border-slate-700'
+                    } rounded-lg md:rounded-xl text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none`}
                   placeholder="Tell me about your project or idea..."
                 />
                 {errors.message && (
-                  <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.message}</p>
+                  <p className="mt-1 text-xs md:text-sm text-red-600 dark:text-red-400">{errors.message}</p>
                 )}
               </div>
 
@@ -383,7 +351,7 @@ export default function Contact() {
                 type="submit"
                 icon={FaPaperPlane}
                 iconPosition="right"
-                className="w-full"
+                className="w-full text-sm md:text-base"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? 'Sending...' : 'Send Message'}

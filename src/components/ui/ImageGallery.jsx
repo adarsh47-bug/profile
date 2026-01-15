@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { useState, memo } from 'react';
 import { motion } from 'framer-motion';
 import { FaExpand, FaImages } from 'react-icons/fa';
 
-export default function ImageGallery({
+const ImageGallery = memo(function ImageGallery({
   images = [],
   onImageClick,
   className = '',
@@ -39,7 +39,7 @@ export default function ImageGallery({
             alt={typeof image === 'string' ? `Image ${index + 1}` : image.alt}
             className="w-full h-full object-cover"
             onError={(e) => {
-              e.target.src = `https://via.placeholder.com/64/3b82f6/ffffff?text=${index + 1}`;
+              e.target.src = `https://placehold.co/64x64?text=${index + 1}`;
             }}
           />
 
@@ -65,10 +65,10 @@ export default function ImageGallery({
       )}
     </div>
   );
-}
+});
 
 // Mini gallery for cards
-export function MiniGallery({ images = [], onClick, className = '' }) {
+export const MiniGallery = memo(function MiniGallery({ images = [], onClick, className = '' }) {
   if (!images || images.length === 0) return null;
 
   return (
@@ -80,4 +80,6 @@ export function MiniGallery({ images = [], onClick, className = '' }) {
       <span>{images.length} photo{images.length > 1 ? 's' : ''}</span>
     </button>
   );
-}
+});
+
+export default ImageGallery;

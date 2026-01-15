@@ -1,49 +1,118 @@
 # Images Folder Structure
 
-Add your images to these folders:
+This document outlines the organized structure of images used throughout the portfolio website.
 
-## `/projects`
-Project screenshots and demos:
-- `rtmnu-app.png`, `rtmnu-app-2.png`, `rtmnu-app-3.png`
-- `alumnet.png`, `alumnet-2.png`, `alumnet-3.png`
-- `hosting-platform.png`, `hosting-platform-2.png`
-- `nmc-skysign.png`
-- `seva-app.png`
-- `tribal-pwd.png`
-- `forkify.png`, `forkify-2.png`
-- `mapty.png`
+## 📁 Directory Structure
 
-## `/experience`
-Company logos and work photos:
-- `embedded-creations-logo.png`
-- `embedded-creations-1.png`, `embedded-creations-2.png`
-- `techthinkers-logo.png`
-- `techthinkers-1.png`, `techthinkers-2.png`
+```
+images/
+├── achievements/          # Achievement certificates and award photos
+├── certifications/        # Professional certifications and badges
+├── companies/            # Company logos and branding
+├── education/            # Educational institution photos and logos
+├── gallery/              # Personal/professional photo gallery
+├── hero/                 # Hero section backgrounds and avatars
+├── projects/             # Project screenshots and demos
+│   ├── rtmnu/           # RTMNU Student Development App
+│   ├── alumnet/         # Alumnet Platform
+│   ├── nmc-skysign/     # NMC Sky Sign Department
+│   ├── seva/            # SEVA Akola Project
+│   ├── srpf/            # SRPF Tribal PWD
+│   ├── spark/           # SPARK Hosting Platform
+│   └── others/          # Other projects
+└── experience/           # Work experience photos and events
+    ├── embedded-creations/
+    └── techthinkers/
+```
 
-## `/achievements`
-Award photos and certificates:
-- `ideathon-2024.png`
-- `web-design-jam-2023.png`
-- `web-design-jam-2024.png`
-- `play-store-milestone.png`
-- `nmc-ai-event.png`
-- `hackathon-organizer.png`
+## 📋 Current File Mapping
 
-## `/hero`
-Background images for hero section:
-- `hero-1.png`, `hero-2.png`, `hero-3.png`, `hero-4.png`
+### Projects
+- **RTMNU App**: `rtmnu_project/mobile_app_1.png` to `mobile_app_6.png`
+- **Alumnet**: `alumnet_project/1.png` to `14.png`
+- **NMC Sky Sign**: `nmc_project/nmc_project_1.jpg` to `nmc_project_4.jpg`
+- **SEVA Akola**: `seva_project/seva_0.png` to `seva_7.jpg`
+- **SRPF**: `srpf_project/srpf_1.jpg`, `srpf_2.jpg`
+- **SPARK**: `spark_project/spark_1.jpeg` to `spark_5.jpg`
 
-## `/gallery`
-Personal/professional gallery photos:
-- `gallery-1.png`, `gallery-2.png`, etc.
+### Achievements
+- **Ideathon 2024**: `ideathon/ideathon_1.jpg` to `ideathon_5.jpg`
+- **Web Jam 2023**: `ycce_tech_fest23/web_jam_1_1.jpg` to `web_jam_1_3.jpg`
+- **Web Jam 2024**: `ycce_tech_fest24/web_jam_2_1.jpg` to `web_jam_2_4.jpg`
+- **T-Icon 2023**: `ycce_tech_fest23/t_icon_1.jpg` to `t_icon_3.jpg`
+- **RTMNU Downloads**: `achievements/Rtmnu_downloads.png`
 
-## Image Guidelines
-- **Recommended format**: PNG or WebP for best quality/size ratio
-- **Project screenshots**: 1200x800px or 16:9 aspect ratio
-- **Logos**: 200x200px, square with transparent background
-- **Hero images**: 400x400px or larger, any aspect ratio
-- **Gallery images**: 800x600px or larger
+### Certifications
+- **Postman**: `achievements/Postman_Student_Expert.png`
+- **Java NPTEL**: `achievements/Programming_in_Java_.jpg`
+- **JavaScript Udemy**: `achievements/Js_udemy.png`
+- **Web Dev Udemy**: `achievements/Web_udemy.png`
 
-## Placeholder Usage
-The website gracefully handles missing images with fallback gradients and icons.
-Simply add your actual images when ready - no code changes needed!
+### Experience
+- **Embedded Creations**: `EC_internship/` (offer letters, certificates)
+- **TechThinkers**: `TechThinkers Coding Club Seminar/seminar_1_1.jpg` to `seminar_1_6.jpg`
+
+### Hero & Avatar
+- `hero/avatar.jpg`, `avatar_2.png`, `avatar_3.jpg`
+
+### Gallery/Others
+- NMC AI Discussion: `others/npm_ai_discussion_1.jpg` to `npm_ai_discussion_4.jpg`
+- Other Activities: `others/other_activities_1_1.jpg`, `other_activities_1_2.jpg`
+- HOD Photo: `others/photo_with_it_hod.jpg`
+
+## 🎨 Image Guidelines
+
+### File Naming Convention
+- Use **kebab-case**: `project-name-screenshot-1.jpg`
+- Be descriptive: `rtmnu-app-home-screen.png` instead of `img1.png`
+- Add sequence numbers for series: `-1`, `-2`, `-3`
+
+### Recommended Formats
+- **Screenshots/Photos**: WebP (best compression) or PNG (lossless quality)
+- **Logos**: SVG (scalable) or PNG with transparent background
+- **Thumbnails**: WebP or JPEG (optimized)
+
+### Optimal Dimensions
+- **Project screenshots**: 1920x1080px (16:9 ratio) or 1200x800px
+- **Company logos**: 400x400px square, transparent background
+- **Hero images**: 1920x1080px or larger
+- **Avatar**: 400x400px square
+- **Thumbnails**: 300x200px
+- **Gallery images**: 1200x800px or maintain original aspect ratio
+
+### Optimization Best Practices
+1. **Compress images** before uploading (use tools like TinyPNG, Squoosh)
+2. **Target file sizes**:
+   - Screenshots: < 200KB
+   - Logos: < 50KB
+   - Hero images: < 300KB
+3. **Use responsive images** with multiple sizes for different devices
+4. **Add alt text** for accessibility (handled in components)
+
+## 🔄 Migration Notes
+
+Current structure needs reorganization:
+- Move project-specific folders into `projects/` subdirectory
+- Separate certifications from achievements
+- Create `companies/` folder for logos
+- Standardize naming conventions
+
+## 📝 Usage in Code
+
+Images are referenced relative to `/public/images/`:
+```javascript
+// Correct
+<img src="/images/projects/rtmnu/screenshot-1.png" alt="RTMNU App" />
+
+// Avoid
+<img src="../images/rtmnu_project/mobile_app_1.png" />
+```
+
+## ✅ Checklist for Adding New Images
+
+- [ ] Optimize image file size
+- [ ] Use descriptive, kebab-case filename
+- [ ] Place in appropriate category folder
+- [ ] Update relevant JSON data file
+- [ ] Verify image loads correctly in development
+- [ ] Test responsive behavior on different screen sizes

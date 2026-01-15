@@ -6,27 +6,22 @@
       "skills": [
         {
           "name": "JavaScript",
-          "level": 90,
           "icon": "SiJavascript"
         },
         {
           "name": "TypeScript",
-          "level": 75,
           "icon": "SiTypescript"
         },
         {
           "name": "Java",
-          "level": 70,
           "icon": "FaJava"
         },
         {
           "name": "PHP",
-          "level": 65,
           "icon": "SiPhp"
         },
         {
           "name": "C",
-          "level": 60,
           "icon": "SiC"
         }
       ]
@@ -37,27 +32,22 @@
       "skills": [
         {
           "name": "React.js",
-          "level": 90,
           "icon": "SiReact"
         },
         {
           "name": "HTML5",
-          "level": 95,
           "icon": "SiHtml5"
         },
         {
           "name": "CSS3",
-          "level": 90,
           "icon": "SiCss3"
         },
         {
           "name": "Tailwind CSS",
-          "level": 85,
           "icon": "SiTailwindcss"
         },
         {
           "name": "Bootstrap",
-          "level": 80,
           "icon": "SiBootstrap"
         }
       ]
@@ -68,22 +58,18 @@
       "skills": [
         {
           "name": "Node.js",
-          "level": 85,
           "icon": "SiNodedotjs"
         },
         {
           "name": "Express.js",
-          "level": 80,
           "icon": "SiExpress"
         },
         {
           "name": "Firebase",
-          "level": 75,
           "icon": "SiFirebase"
         },
         {
           "name": "Azure",
-          "level": 60,
           "icon": "SiMicrosoftazure"
         }
       ]
@@ -94,17 +80,14 @@
       "skills": [
         {
           "name": "MongoDB",
-          "level": 80,
           "icon": "SiMongodb"
         },
         {
           "name": "MySQL",
-          "level": 75,
           "icon": "SiMysql"
         },
         {
           "name": "PostgreSQL",
-          "level": 70,
           "icon": "SiPostgresql"
         }
       ]
@@ -115,17 +98,14 @@
       "skills": [
         {
           "name": "React Native",
-          "level": 85,
           "icon": "SiReact"
         },
         {
           "name": "Expo",
-          "level": 80,
           "icon": "SiExpo"
         },
         {
           "name": "PWA",
-          "level": 75,
           "icon": "SiPwa"
         }
       ]
@@ -136,25 +116,63 @@
       "skills": [
         {
           "name": "Git",
-          "level": 85,
           "icon": "SiGit"
         },
         {
           "name": "GitHub",
-          "level": 90,
           "icon": "SiGithub"
         },
         {
           "name": "REST APIs",
-          "level": 85,
           "icon": "FaPlug"
         },
         {
           "name": "Chrome DevTools",
-          "level": 80,
           "icon": "SiGooglechrome"
         }
       ]
+    }
+  ],
+  "topSkills": [
+    {
+      "name": "JavaScript",
+      "icon": "SiJavascript"
+    },
+    {
+      "name": "TypeScript",
+      "icon": "SiTypescript"
+    },
+    {
+      "name": "React.js",
+      "icon": "SiReact"
+    },
+    {
+      "name": "Node.js",
+      "icon": "SiNodedotjs"
+    },
+    {
+      "name": "React Native",
+      "icon": "SiReact"
+    },
+    {
+      "name": "Android",
+      "icon": "SiAndroid"
+    },
+    {
+      "name": "Expo",
+      "icon": "SiExpo"
+    },
+    {
+      "name": "Firebase",
+      "icon": "SiFirebase"
+    },
+    {
+      "name": "MySQL",
+      "icon": "SiMysql"
+    },
+    {
+      "name": "MongoDB",
+      "icon": "SiMongodb"
     }
   ]
 }

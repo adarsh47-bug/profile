@@ -1,11 +1,26 @@
 {
   "certifications": [
     {
+      "id": "seva",
+      "title": "Akola SEVA Project - Service Excellence and Victim Assistance App",
+      "issuer": "Bachchan Singh - Superintendent of Police, Akola",
+      "date": "2025-01-23",
+      "credentialUrl": "",
+      "images": [
+        "/images/achievements/SEVA_certificate.png"
+      ],
+      "icon": "FaHandsHelping",
+      "description": "Recognized for outstanding contribution to the development of the SEVA app aimed at enhancing service excellence and victim assistance."
+    },
+    {
       "id": "postman-api",
       "title": "Postman API Fundamentals Student Expert",
       "issuer": "Postman",
-      "date": "2024-01-01",
-      "credentialUrl": "",
+      "date": "2024-11-11",
+      "credentialUrl": "https://badges.parchment.com/public/assertions/iNYU1YWxSECwAjFqUSog8w",
+      "images": [
+        "/images/achievements/Postman_Student_Expert.png"
+      ],
       "icon": "SiPostman",
       "description": "Certified in API fundamentals including API testing, documentation, and best practices."
     },
@@ -13,8 +28,11 @@
       "id": "nptel-java",
       "title": "Programming in Java",
       "issuer": "NPTEL",
-      "date": "2023-06-01",
-      "credentialUrl": "",
+      "date": "2024-11-27",
+      "credentialUrl": "https://www.linkedin.com/posts/adarsh-kadam-3aa5b7248_javaprogramming-nptel-skillindia-activity-7267493395948802049-tckf",
+      "images": [
+        "/images/achievements/Programming_in_Java_.jpg"
+      ],
       "icon": "FaJava",
       "description": "Completed NPTEL certification course on Java programming fundamentals and advanced concepts."
     },
@@ -22,10 +40,25 @@
       "id": "udemy-webdev",
       "title": "Web Development Bootcamp",
       "issuer": "Udemy",
-      "date": "2023-03-01",
-      "credentialUrl": "",
+      "date": "2023-06-09",
+      "credentialUrl": "https://udemy-certificate.s3.amazonaws.com/image/UC-4f5dfc79-5b29-4718-ae09-5ad8c862c48a.jpg",
+      "images": [
+        "/images/achievements/Web_udemy.png"
+      ],
       "icon": "SiUdemy",
       "description": "Comprehensive web development bootcamp covering HTML, CSS, JavaScript, Node.js, and more."
+    },
+    {
+      "id": "udemy-js",
+      "title": "Complete JavaScript Course",
+      "issuer": "Udemy",
+      "date": "2024-02-29",
+      "credentialUrl": "https://udemy-certificate.s3.amazonaws.com/image/UC-25c86a35-523b-4da4-a6ca-8d116b7a3cae.jpg?v=1709218231000",
+      "images": [
+        "/images/achievements/Js_udemy.png"
+      ],
+      "icon": "SiUdemy",
+      "description": "Comprehensive JavaScript course covering fundamentals, ES6+, asynchronous programming, and more."
     }
   ]
 }

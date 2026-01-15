@@ -6,19 +6,24 @@
       "description": "Mobile app for RTMNU students featuring student development schemes, government initiatives, academic programs, job listings, internships, and events to support student career growth.",
       "longDescription": "Designed and developed a comprehensive mobile application for RTM Nagpur University students using React Native. The app provides a centralized platform for accessing student development schemes, including government initiatives and academic programs. It features curated job listings, internships, and events to support student career growth.",
       "techStack": [
+        "TypeScript",
         "React Native",
         "Expo",
-        "Firebase",
-        "Node.js"
+        "PHP",
+        "MySQL"
       ],
       "category": "Mobile App",
       "status": "Completed",
       "featured": true,
-      "image": "/images/projects/rtmnu-app.png",
+      "image": "/images/projects/rtmnu_project/mobile_app_0.png",
       "images": [
-        "/images/projects/rtmnu-app.png",
-        "/images/projects/rtmnu-app-2.png",
-        "/images/projects/rtmnu-app-3.png"
+        "/images/projects/rtmnu_project/mobile_app_0.png",
+        "/images/projects/rtmnu_project/mobile_app_1.png",
+        "/images/projects/rtmnu_project/mobile_app_2.png",
+        "/images/projects/rtmnu_project/mobile_app_3.png",
+        "/images/projects/rtmnu_project/mobile_app_4.png",
+        "/images/projects/rtmnu_project/mobile_app_5.png",
+        "/images/projects/rtmnu_project/mobile_app_6.png"
       ],
       "links": {
         "live": "https://play.google.com/store/apps/details?id=com.nagpur_university",
@@ -30,7 +35,7 @@
         "High impact and adoption rate",
         "Serves entire RTMNU student community"
       ],
-      "date": "2024-06-01"
+      "date": "2025-06-21"
     },
     {
       "id": "alumnet",
@@ -38,6 +43,7 @@
       "description": "Platform to connect students with alumni using university-based filtering and a streamlined interface. Won 1st place at Ideathon 2024.",
       "longDescription": "Built a comprehensive platform to bridge the gap between current students and alumni. Features include university-based filtering, direct messaging, and a clean, intuitive interface for seamless networking. The project secured 1st place at Ideathon 2024 during the live project pitching round.",
       "techStack": [
+        "JavaScript",
         "React.js",
         "Node.js",
         "MongoDB",
@@ -46,11 +52,21 @@
       "category": "Web App",
       "status": "Completed",
       "featured": true,
-      "image": "/images/projects/alumnet.png",
+      "image": "/images/projects/alumnet_project/1.png",
       "images": [
-        "/images/projects/alumnet.png",
-        "/images/projects/alumnet-2.png",
-        "/images/projects/alumnet-3.png"
+        "/images/projects/alumnet_project/1.png",
+        "/images/achievements/ideathon/ideathon_1.jpg",
+        "/images/projects/alumnet_project/2.png",
+        "/images/achievements/ideathon/ideathon_2.jpg",
+        "/images/projects/alumnet_project/4.png",
+        "/images/projects/alumnet_project/5.png",
+        "/images/projects/alumnet_project/6.png",
+        "/images/projects/alumnet_project/8.png",
+        "/images/projects/alumnet_project/9.png",
+        "/images/projects/alumnet_project/10.png",
+        "/images/achievements/ideathon/ideathon_3.jpg",
+        "/images/achievements/ideathon/ideathon_4.jpg",
+        "/images/achievements/ideathon/ideathon_5.jpg"
       ],
       "links": {
         "live": "",
@@ -62,14 +78,15 @@
         "University-based alumni filtering",
         "Streamlined networking interface"
       ],
-      "date": "2024-03-01"
+      "date": "2024-09-27"
     },
     {
       "id": "hosting-platform",
-      "title": "Static Site Hosting Platform",
+      "title": "Static Site Hosting Platform (Mini Project)",
       "description": "A simple and user-friendly platform to host static websites (HTML, CSS, JS) under custom, user-specific URLs with a minimalist 1-2 step workflow.",
       "longDescription": "Created a platform to simplify static website deployment for students and beginners. Users can upload their HTML, CSS, and JS files and get a custom URL instantly. Built using the MERN stack with a focus on ease of use and scalability.",
       "techStack": [
+        "JavaScript",
         "React.js",
         "Node.js",
         "Express.js",
@@ -79,10 +96,10 @@
       "category": "Web App",
       "status": "Completed",
       "featured": true,
-      "image": "/images/projects/hosting-platform.png",
+      "image": "/images/projects/hosting_project/image_1.png",
       "images": [
-        "/images/projects/hosting-platform.png",
-        "/images/projects/hosting-platform-2.png"
+        "/images/projects/hosting_project/image_1.png",
+        "/images/projects/hosting_project/image_2.png"
       ],
       "links": {
         "live": "",
@@ -94,7 +111,79 @@
         "User-specific custom URLs",
         "Beginner-friendly design"
       ],
-      "date": "2024-01-01"
+      "date": "2025-05-11"
+    },
+    {
+      "id": "srpf",
+      "title": "SRPF (State Reserve Police Force) Attendance App (TBA)",
+      "description": "Mobile app for SRPF personnel to mark attendance, view schedules, and receive notifications, enhancing operational efficiency and communication within the force.",
+      "longDescription": "Developed a mobile application tailored for the State Reserve Police Force (SRPF) to streamline attendance marking, schedule viewing, and notification dissemination. The app aims to enhance operational efficiency and improve communication within the force using React Native, Expo, PHP, and MySQL.",
+      "techStack": [
+        "TypeScript",
+        "React Native",
+        "Expo",
+        "PHP",
+        "MySQL"
+      ],
+      "category": "Mobile App",
+      "status": "Completed",
+      "featured": true,
+      "image": "/images/projects/srpf_project/srpf_0.png",
+      "images": [
+        "/images/projects/srpf_project/srpf_1.jpg",
+        "/images/projects/srpf_project/srpf_0.png",
+        "/images/projects/srpf_project/srpf_2.jpg"
+      ],
+      "links": {
+        "live": "",
+        "github": "",
+        "demo": ""
+      },
+      "highlights": [
+        "Attendance marking system",
+        "Schedule viewing",
+        "Notification system",
+        "Improved operational efficiency"
+      ],
+      "date": "2026-01-01"
+    },
+    {
+      "id": "spark",
+      "title": "S.P.A.R.K – Dental Inspection Camp App",
+      "description": "A school-based dental health assessment platform with role-based access control and real-time data management for inspection camps.",
+      "longDescription": "S.P.A.R.K (School Based Program for Awareness, Research and Knowledge) is a Dental Inspection Camp application designed to streamline oral health screening and record management in schools. The platform supports secure role-based access, real-time data handling, and a dashboard-driven workflow to help teams manage student dental checkups efficiently across Nagpur district.",
+      "techStack": [
+        "TypeScript",
+        "React Native",
+        "Expo",
+        "PHP",
+        "MySQL"
+      ],
+      "category": "Mobile App",
+      "status": "Completed (Inactive)",
+      "featured": false,
+      "image": "/images/projects/spark_project/spark_0.jpeg",
+      "images": [
+        "/images/projects/spark_project/spark_1.jpeg",
+        "/images/projects/spark_project/spark_2.jpg",
+        "/images/projects/spark_project/spark_3.jpg",
+        "/images/projects/spark_project/spark_4.jpg",
+        "/images/projects/spark_project/spark_5.jpg"
+      ],
+      "links": {
+        "live": "",
+        "github": "",
+        "demo": ""
+      },
+      "highlights": [
+        "School-based dental inspection camp workflow",
+        "Role-based access control for secure usage",
+        "Real-time student dental record management",
+        "Dashboard-driven interface for quick navigation",
+        "Live field tested in an offline medical camp with 100+ student participants",
+        "Collaborated with Government Medical College, Nagpur (Dental Department)"
+      ],
+      "date": "2025-09-27"
     },
     {
       "id": "nmc-skysign",
@@ -102,6 +191,7 @@
       "description": "Enhanced Android and web applications for the Nagpur Municipal Corporation Sky Sign Department, enabling display of 650+ registered hoardings.",
       "longDescription": "Worked on enhancing the NMC Sky Sign Department applications using React Native, PHP, and MySQL. The system enables transparent display and management of 650+ registered hoardings across Nagpur, improving oversight and regulatory compliance.",
       "techStack": [
+        "TypeScript",
         "React Native",
         "PHP",
         "MySQL",
@@ -110,21 +200,27 @@
       "category": "Mobile App",
       "status": "Completed",
       "featured": false,
-      "image": "/images/projects/nmc-skysign.png",
+      "image": "/images/projects/nmc_project/nmc_project_1.jpg",
       "images": [
-        "/images/projects/nmc-skysign.png"
+        "/images/projects/nmc_project/nmc_project_1.jpg",
+        "/images/projects/nmc_project/nmc_project_2.jpg",
+        "/images/projects/nmc_project/nmc_project_3.jpg",
+        "/images/projects/nmc_project/nmc_project_4.jpg"
       ],
       "links": {
         "live": "",
         "github": "",
-        "demo": ""
+        "demo": "",
+        "other": [
+          "https://www.linkedin.com/posts/adarsh-kadam-3aa5b7248_internshipjourney-professionalgrowth-learningexperience-activity-7282492194207211520-DA_K"
+        ]
       },
       "highlights": [
         "650+ hoardings managed",
         "Improved transparency",
         "Government project"
       ],
-      "date": "2024-09-01"
+      "date": "2025-01-07"
     },
     {
       "id": "seva-app",
@@ -132,6 +228,7 @@
       "description": "Application for Akola Police Department with training provided to officers across 27+ police stations for seamless adoption.",
       "longDescription": "Contributed to the Akola SEVA Project, developing features and providing training to police officers across 27+ police stations in Akola district. Ensured seamless app adoption and effective utilization of the system.",
       "techStack": [
+        "TypeScript",
         "React Native",
         "PHP",
         "MySQL"
@@ -139,56 +236,79 @@
       "category": "Mobile App",
       "status": "Completed",
       "featured": false,
-      "image": "/images/projects/seva-app.png",
+      "image": "/images/projects/seva_project/seva_0.png",
       "images": [
-        "/images/projects/seva-app.png"
+        "/images/projects/seva_project/seva_0.png",
+        "/images/projects/seva_project/seva_1.jpg",
+        "/images/projects/seva_project/seva_2.jpg",
+        "/images/projects/seva_project/seva_3.jpg",
+        "/images/projects/seva_project/seva_4.jpg",
+        "/images/projects/seva_project/seva_5.jpg",
+        "/images/projects/seva_project/seva_6.jpg",
+        "/images/projects/seva_project/seva_7.jpg"
       ],
       "links": {
         "live": "",
         "github": "",
-        "demo": ""
+        "demo": "",
+        "other": [
+          "https://www.linkedin.com/posts/adarsh-kadam-3aa5b7248_seva-system-now-officially-in-service-at-activity-7311116484305436672-AVeY"
+        ]
       },
       "highlights": [
         "27+ police stations trained",
         "Government project",
         "High adoption rate"
       ],
-      "date": "2024-10-01"
+      "date": "2025-03-27"
     },
     {
-      "id": "tribal-pwd",
-      "title": "Tribal PWD Web Application",
-      "description": "Web application for Tribal PWD to manage workflows across 130+ Tribal Schools in Maharashtra.",
-      "longDescription": "Collaborated with Tribal PWD to improve a web application using PHP and MySQL. The system manages administrative workflows across 130+ Tribal Schools in Maharashtra, streamlining operations and improving efficiency.",
+      "id": "store-rating-system",
+      "title": "Store Rating System",
+      "description": "A comprehensive full-stack web application for store rating and management system with role-based access control.",
+      "longDescription": "The Store Rating System is a modern web application. It enables users to submit ratings (1-5 stars) for registered stores with a sophisticated role-based authentication system supporting three distinct user types: System Administrators, Normal Users, and Store Owners.",
       "techStack": [
-        "PHP",
-        "MySQL",
-        "HTML",
-        "CSS",
-        "JavaScript"
+        "TypeScript",
+        "React.js",
+        "Tailwind CSS",
+        "Node.js",
+        "Express.js",
+        "MySQL"
       ],
       "category": "Web App",
       "status": "Completed",
       "featured": false,
-      "image": "/images/projects/tribal-pwd.png",
+      "image": "/images/projects/store_project/image_5.png",
       "images": [
-        "/images/projects/tribal-pwd.png"
+        "/images/projects/store_project/image_0.png",
+        "/images/projects/store_project/image_1.png",
+        "/images/projects/store_project/image_2.png",
+        "/images/projects/store_project/image_3.png",
+        "/images/projects/store_project/image_4.png",
+        "/images/projects/store_project/image_5.png",
+        "/images/projects/store_project/image_6.png",
+        "/images/projects/store_project/image_7.png",
+        "/images/projects/store_project/image_8.png"
       ],
       "links": {
         "live": "",
-        "github": "",
+        "github": "https://github.com/adarsh47-bug/Store-Rating-System",
         "demo": ""
       },
       "highlights": [
-        "130+ schools managed",
-        "Government project",
-        "Workflow automation"
+        "Role-Based Authentication",
+        "Store Rating System",
+        "Admin Dashboard",
+        "Advanced Search & Filtering",
+        "Responsive Design",
+        "Real-time Updates",
+        "Security First"
       ],
-      "date": "2024-11-01"
+      "date": "2025-09-09"
     },
     {
       "id": "forkify",
-      "title": "Forkify – Recipe Search Engine",
+      "title": "Forkify – Recipe Search Engine (JavaScript Course Project)",
       "description": "A food recipe search engine that helps users discover recipes based on their preferences.",
       "longDescription": "A JavaScript-based recipe search application that allows users to search for recipes, view ingredients, and save favorites. Built with modern JavaScript practices and a clean user interface.",
       "techStack": [
@@ -200,26 +320,27 @@
       "category": "Web App",
       "status": "Completed",
       "featured": false,
-      "image": "/images/projects/forkify.png",
+      "image": "/images/projects/forkify_project/image_1.png",
       "images": [
-        "/images/projects/forkify.png",
-        "/images/projects/forkify-2.png"
+        "/images/projects/forkify_project/image_1.png",
+        "/images/projects/forkify_project/image_2.png",
+        "/images/projects/forkify_project/image_3.png"
       ],
       "links": {
         "live": "",
         "github": "https://github.com/adarsh47-bug/forkify_Js",
-        "demo": ""
+        "demo": "https://master--forkify-adarshcodes.netlify.app/#65e0c757e4e99300142e0df7"
       },
       "highlights": [
         "Recipe search functionality",
         "API integration",
         "Modern JavaScript"
       ],
-      "date": "2023-08-01"
+      "date": "2024-03-28"
     },
     {
       "id": "mapty",
-      "title": "Mapty – Workout Tracker",
+      "title": "Mapty – Workout Tracker (JavaScript Course Project)",
       "description": "Track and share outdoor exercise routes and statistics for running and cycling activities.",
       "longDescription": "A web application for tracking outdoor workout routes using geolocation. Users can log running and cycling activities with metrics like distance, duration, cadence, and elevation gain.",
       "techStack": [
@@ -231,21 +352,53 @@
       "category": "Web App",
       "status": "Completed",
       "featured": false,
-      "image": "/images/projects/mapty.png",
+      "image": "/images/projects/mapty_project/image.png",
       "images": [
-        "/images/projects/mapty.png"
+        "/images/projects/mapty_project/image.png"
       ],
       "links": {
         "live": "",
         "github": "https://github.com/adarsh47-bug/Mapty",
-        "demo": ""
+        "demo": "https://adarsh47-bug.github.io/Mapty/"
       },
       "highlights": [
         "Geolocation tracking",
         "Interactive maps",
         "Workout statistics"
       ],
-      "date": "2023-06-01"
+      "date": "2024-08-06"
+    },
+    {
+      "id": "tribal-pwd",
+      "title": "Tribal PWD Application",
+      "description": "Application for Tribal PWD to manage workflows across 130+ Tribal Schools in Maharashtra.",
+      "longDescription": "Collaborated with Tribal PWD to improve a web application using PHP and MySQL. The system manages administrative workflows across 130+ Tribal Schools in Maharashtra, streamlining operations and improving efficiency.",
+      "techStack": [
+        "PHP",
+        "MySQL",
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "TypeScript",
+        "React Native",
+        "Expo"
+      ],
+      "category": "Mobile App",
+      "status": "Completed (Discontinued)",
+      "featured": false,
+      "image": "",
+      "images": [],
+      "links": {
+        "live": "",
+        "github": "https://github.com/adarsh47-bug/tribal_pwd",
+        "demo": ""
+      },
+      "highlights": [
+        "130+ schools managed",
+        "Government project",
+        "Workflow automation"
+      ],
+      "date": "2024-12-15"
     }
   ],
   "categories": [

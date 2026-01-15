@@ -4,85 +4,76 @@
       "id": "ideathon-2024",
       "title": "1st Place at Ideathon 2024",
       "description": "Secured first place during the live project pitching round for the Alumnet platform, recognized for innovation and presentation skills.",
-      "date": "2024-03-01",
+      "date": "2024-09-27",
       "category": "Competition",
       "icon": "FaTrophy",
       "link": "",
-      "image": "/images/achievements/ideathon-2024.jpg",
+      "image": "/images/achievements/ideathon/ideathon_1.jpg",
       "images": [
-        "/images/achievements/ideathon-2024.jpg",
-        "/images/achievements/ideathon-2024-team.jpg",
-        "/images/achievements/ideathon-2024-pitch.jpg"
+        "/images/achievements/ideathon/ideathon_1.jpg",
+        "/images/achievements/ideathon/ideathon_2.jpg",
+        "/images/achievements/ideathon/ideathon_3.jpg",
+        "/images/achievements/ideathon/ideathon_4.jpg",
+        "/images/achievements/ideathon/ideathon_5.jpg"
       ]
     },
     {
       "id": "webdesign-2024",
       "title": "1st Rank - Web Design Jam 2024",
       "description": "Won first place in the Web Design Jam competition for the second consecutive year.",
-      "date": "2024-02-01",
+      "date": "2024-08-23",
       "category": "Competition",
       "icon": "FaMedal",
       "link": "",
-      "image": "/images/achievements/webdesign-2024.jpg",
+      "image": "/images/achievements/ycce_tech_fest24/web_jam_2_1.jpg",
       "images": [
-        "/images/achievements/webdesign-2024.jpg",
-        "/images/achievements/webdesign-2024-award.jpg"
+        "/images/achievements/ycce_tech_fest24/web_jam_2_1.jpg",
+        "/images/achievements/ycce_tech_fest24/web_jam_2_2.jpg",
+        "/images/achievements/ycce_tech_fest24/web_jam_2_3.jpg",
+        "/images/achievements/ycce_tech_fest24/web_jam_2_4.jpg"
       ]
     },
     {
       "id": "webdesign-2023",
       "title": "1st Rank - Web Design Jam 2023",
       "description": "Won first place in the Web Design Jam competition, showcasing frontend development and design skills.",
-      "date": "2023-02-01",
+      "date": "2023-10-11",
       "category": "Competition",
       "icon": "FaMedal",
-      "link": "",
-      "image": "/images/achievements/webdesign-2023.jpg",
+      "link": "https://www.linkedin.com/posts/adarsh-kadam-3aa5b7248_webdesign-firstplace-ycce-activity-7118812423230300160-bVMb",
+      "image": "/images/achievements/ycce_tech_fest23/web_jam_1_1.jpg",
       "images": [
-        "/images/achievements/webdesign-2023.jpg"
+        "/images/achievements/ycce_tech_fest23/web_jam_1_1.jpg",
+        "/images/achievements/ycce_tech_fest23/web_jam_1_2.jpg",
+        "/images/achievements/ycce_tech_fest23/web_jam_1_3.jpg"
+      ]
+    },
+    {
+      "id": "ticon-2023-2nd",
+      "title": "2nd Rank | T-Icon 2023",
+      "description": "Secured 2nd place in the thrilling T-ICON competition at Yeshwantrao Chavan College of Engineering (YCCE) in Nagpur",
+      "date": "2023-10-13",
+      "category": "Competition",
+      "icon": "FaMedal",
+      "link": "https://www.linkedin.com/posts/adarsh-kadam-3aa5b7248_ticon-ycce-proudmoment-activity-7122524952913711104-WH-2",
+      "image": "/images/achievements/ycce_tech_fest23/t_icon_1.jpg",
+      "images": [
+        "/images/achievements/ycce_tech_fest23/t_icon_1.jpg",
+        "/images/achievements/ycce_tech_fest23/t_icon_2.jpg",
+        "/images/achievements/ycce_tech_fest23/t_icon_3.jpg"
       ]
     },
     {
       "id": "rtmnu-downloads",
       "title": "10K+ App Downloads",
       "description": "RTMNU Student Development App achieved 10,000+ downloads on Google Play Store, demonstrating high impact and user adoption.",
-      "date": "2024-08-01",
+      "date": "2025-08-29",
       "category": "Milestone",
       "icon": "FaDownload",
       "link": "https://play.google.com/store/apps/details?id=com.nagpur_university",
-      "image": "/images/achievements/rtmnu-10k.jpg",
+      "image": "/images/achievements/Rtmnu_downloads.jpeg",
       "images": [
-        "/images/achievements/rtmnu-10k.jpg",
-        "/images/achievements/rtmnu-playstore.jpg"
-      ]
-    },
-    {
-      "id": "nmc-discussion",
-      "title": "AI Discussion at NMC",
-      "description": "Participated in a discussion on Artificial Intelligence at the Nagpur Municipal Corporation (NMC) office.",
-      "date": "2024-06-01",
-      "category": "Recognition",
-      "icon": "FaLightbulb",
-      "link": "",
-      "image": "/images/achievements/nmc-ai.jpg",
-      "images": [
-        "/images/achievements/nmc-ai.jpg",
-        "/images/achievements/nmc-discussion.jpg"
-      ]
-    },
-    {
-      "id": "hackathon-organizer",
-      "title": "Hackathon Organizer",
-      "description": "Organized a college-level hackathon with 30+ participating teams and over 150 students as Co-Lead of TechThinkers Coding Club.",
-      "date": "2024-09-01",
-      "category": "Leadership",
-      "icon": "FaUsers",
-      "link": "",
-      "image": "/images/achievements/hackathon-org.jpg",
-      "images": [
-        "/images/achievements/hackathon-org.jpg",
-        "/images/achievements/hackathon-teams.jpg",
-        "/images/achievements/hackathon-event.jpg"
+        "/images/achievements/Rtmnu_downloads.jpeg"
       ]
     }
   ]

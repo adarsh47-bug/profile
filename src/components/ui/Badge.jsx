@@ -1,3 +1,5 @@
+import { memo } from 'react';
+
 const variants = {
   default: 'bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-slate-300',
   primary: 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400',
@@ -13,7 +15,7 @@ const sizes = {
   lg: 'px-3 py-1.5 text-base',
 };
 
-export default function Badge({
+const Badge = memo(function Badge({
   children,
   variant = 'default',
   size = 'md',
@@ -34,4 +36,6 @@ export default function Badge({
       {children}
     </span>
   );
-}
+});
+
+export default Badge;

@@ -3,11 +3,13 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
   FaCode, FaDesktop, FaServer, FaDatabase, FaMobile, FaTools,
   FaReact, FaNodeJs, FaJava, FaPhp, FaGitAlt, FaAws, FaDocker,
-  FaHtml5, FaCss3Alt, FaFigma, FaPython
+  FaHtml5, FaCss3Alt, FaFigma, FaPython, FaPlug
 } from 'react-icons/fa';
 import {
   SiJavascript, SiTypescript, SiMongodb, SiMysql, SiPostgresql,
-  SiFirebase, SiTailwindcss, SiExpress, SiPostman, SiExpo
+  SiFirebase, SiTailwindcss, SiExpress, SiPostman, SiExpo,
+  SiBootstrap, SiGit, SiGithub, SiGooglechrome,
+  SiC, SiPwa, SiHtml5, SiCss3, SiPhp, SiReact, SiNodedotjs
 } from 'react-icons/si';
 import { Section, Card, Badge, ImagePreviewSidebar } from '../ui';
 import { skillsData, projectsData } from '../../data';
@@ -17,23 +19,30 @@ const skillIconMap = {
   'JavaScript': SiJavascript,
   'TypeScript': SiTypescript,
   'Java': FaJava,
-  'PHP': FaPhp,
+  'PHP': SiPhp,
   'Python': FaPython,
-  'React.js': FaReact,
-  'React Native': FaReact,
-  'HTML5': FaHtml5,
-  'CSS3': FaCss3Alt,
+  'C': SiC,
+  'React.js': SiReact,
+  'React Native': SiReact,
+  'HTML5': SiHtml5,
+  'CSS3': SiCss3,
   'Tailwind CSS': SiTailwindcss,
-  'Node.js': FaNodeJs,
+  'Bootstrap': SiBootstrap,
+  'Node.js': SiNodedotjs,
   'Express.js': SiExpress,
   'Firebase': SiFirebase,
+  'Azure': FaAws,
   'MongoDB': SiMongodb,
   'MySQL': SiMysql,
   'PostgreSQL': SiPostgresql,
-  'Git': FaGitAlt,
+  'Git': SiGit,
+  'GitHub': SiGithub,
   'Figma': FaFigma,
   'Postman': SiPostman,
   'Expo': SiExpo,
+  'PWA': SiPwa,
+  'REST APIs': FaPlug,
+  'Chrome DevTools': SiGooglechrome,
   'AWS': FaAws,
   'Docker': FaDocker,
 };
@@ -88,6 +97,7 @@ export default function Skills() {
       id="skills"
       title="Skills & Technologies"
       subtitle="Technologies I work with to build amazing products"
+      className="bg-white dark:bg-slate-900"
     >
       {/* Category Tabs */}
       <div className="flex flex-wrap justify-center gap-2 mb-10">
@@ -148,7 +158,7 @@ export default function Skills() {
                   >
                     <div className="flex flex-col items-center text-center gap-3">
                       {/* Skill Icon */}
-                      <div className="p-3 rounded-xl bg-gradient-to-br from-blue-500/10 to-purple-500/10 dark:from-blue-500/20 dark:to-purple-500/20 group-hover:from-blue-500/20 group-hover:to-purple-500/20 transition-colors">
+                      <div className="p-3 rounded-xl bg-linear-to-br from-blue-500/10 to-purple-500/10 dark:from-blue-500/20 dark:to-purple-500/20 group-hover:from-blue-500/20 group-hover:to-purple-500/20 transition-colors">
                         <SkillIcon className="w-8 h-8 text-blue-600 dark:text-blue-400" />
                       </div>
 
@@ -237,13 +247,13 @@ function SkillDetailSidebar({ isOpen, onClose, skill }) {
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            className="fixed right-0 top-0 h-full w-full sm:w-[450px] bg-white dark:bg-slate-900 shadow-2xl z-50 overflow-y-auto"
+            className="fixed right-0 top-0 h-full w-full sm:w-112.5 bg-white dark:bg-slate-900 shadow-2xl z-50 overflow-y-auto"
           >
             {/* Header */}
             <div className="sticky top-0 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-700 p-6 z-10">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-4">
-                  <div className="p-3 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 text-white">
+                  <div className="p-3 rounded-xl bg-linear-to-br from-blue-500 to-purple-600 text-white">
                     <SkillIcon className="w-8 h-8" />
                   </div>
                   <div>

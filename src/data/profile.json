@@ -3,32 +3,42 @@
   "title": "Software Engineer & Full-Stack Developer",
   "tagline": "Building scalable applications and crafting intuitive user interfaces",
   "email": "adarshkadam5977@gmail.com",
-  "phone": "+91 72493 33692",
+  "phone": "",
   "location": "Nagpur, Maharashtra, India",
-  "website": "https://adarshcodes.online",
+  "website": "https://adarshkadam.is-a.dev",
+  "domain": "adarshkadam.is-a.dev",
   "resumeUrl": "/resume/Adarsh_Kadam.pdf",
-  "avatar": "/images/avatar.jpg",
+  "avatar": "/images/hero/avatar.jpg",
   "heroImages": [
-    "/images/hero/coding.jpg",
-    "/images/hero/workspace.jpg",
-    "/images/hero/project.jpg",
-    "/images/hero/tech.jpg"
+    "/images/hero/avatar.jpg",
+    "/images/hero/avatar_2.png",
+    "/images/hero/avatar_3.jpg"
   ],
   "galleryImages": [
     {
-      "src": "/images/gallery/work-1.jpg",
-      "alt": "Working on projects",
-      "caption": "Deep in code"
+      "src": "/images/ideathon/ideathon_1.jpg",
+      "alt": "Ideathon 2024 Winner",
+      "caption": "1st Place at Ideathon 2024"
     },
     {
-      "src": "/images/gallery/event-1.jpg",
-      "alt": "Tech event",
-      "caption": "At a tech meetup"
+      "src": "/images/ycce_tech_fest24/web_jam_2_1.jpg",
+      "alt": "Web Design Jam 2024",
+      "caption": "Web Design Jam Champion"
     },
     {
-      "src": "/images/gallery/team-1.jpg",
-      "alt": "Team collaboration",
-      "caption": "Team collaboration"
+      "src": "/images/TechThinkers Coding Club Seminar/seminar_1_3.jpg",
+      "alt": "TechThinkers Workshop",
+      "caption": "Leading workshops"
+    },
+    {
+      "src": "/images/nmc_project/nmc_project_1.jpg",
+      "alt": "NMC AI Discussion",
+      "caption": "AI Discussion at NMC"
+    },
+    {
+      "src": "/images/ycce_tech_fest23/web_jam_1_1.jpg",
+      "alt": "Web Design Jam 2023",
+      "caption": "First tech competition win"
     }
   ],
   "social": {
@@ -39,7 +49,7 @@
   },
   "bio": {
     "short": "Full-stack developer passionate about building scalable applications and crafting intuitive user interfaces. Skilled in JavaScript, TypeScript, and the MERN stack.",
-    "long": "I'm a Software Development Intern and B.Tech student in Information Technology at Priyadarshini College of Engineering, Nagpur. With hands-on experience in React Native, React.js, Node.js, and cloud technologies, I've contributed to impactful projects including government applications serving 650+ hoardings and 27+ police stations. I'm passionate about creating technology solutions that make a real difference."
+    "long": "I'm a Software Development and B.Tech student in Information Technology at Priyadarshini College of Engineering, Nagpur. With hands-on experience in React Native, React.js, Node.js, and cloud technologies, I've contributed to impactful projects including government applications serving 650+ hoardings and 27+ police stations. I'm passionate about creating technology solutions that make a real difference."
   },
   "highlights": [
     "10K+ app downloads on Google Play Store",
@@ -48,9 +58,9 @@
     "Co-Lead of TechThinkers Coding Club"
   ],
   "currentRole": {
-    "title": "Software Development Intern",
-    "company": "Embedded Creations",
-    "period": "Sep 2024 - Present"
+    "title": "Freelance Software Developer",
+    "company": "Self-Employed",
+    "period": "Sep 2025 - Present"
   },
   "languages": [
     "English",

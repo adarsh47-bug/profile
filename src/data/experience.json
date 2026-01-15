@@ -10,11 +10,12 @@
       "endDate": null,
       "current": true,
       "description": "Working on Android and web applications using React Native, PHP, and MySQL for government projects including NMC Sky Sign Department, Akola SEVA Project, and Tribal PWD.",
-      "companyLogo": "/images/companies/embedded-creations.png",
+      "companyLogo": "/images/projects/nmc_project/nmc_project_1.jpg",
       "images": [
-        "/images/experience/ec-office.jpg",
-        "/images/experience/ec-team.jpg",
-        "/images/experience/ec-project.jpg"
+        "/images/projects/nmc_project/nmc_project_1.jpg",
+        "/images/projects/seva_project/seva_1.jpg",
+        "/images/projects/seva_project/seva_2.jpg",
+        "public/images/others/other_activities_1_1.jpg"
       ],
       "responsibilities": [
         "Enhanced Android and web applications using React Native, PHP, and MySQL",
@@ -23,6 +24,7 @@
         "Improved web application for Tribal PWD managing 130+ schools"
       ],
       "technologies": [
+        "TypeScript",
         "React Native",
         "PHP",
         "MySQL",
@@ -45,11 +47,14 @@
       "endDate": "2024-11-30",
       "current": false,
       "description": "Led coding club activities, conducted workshops, mentored students, and organized hackathons.",
-      "companyLogo": "/images/companies/techthinkers.png",
+      "companyLogo": "/images/achievements/tech_thinkers_seminar/seminar_1_1.jpg",
       "images": [
-        "/images/experience/tt-workshop.jpg",
-        "/images/experience/tt-hackathon.jpg",
-        "/images/experience/tt-team.jpg"
+        "/images/achievements/tech_thinkers_seminar/seminar_1_1.jpg",
+        "/images/achievements/tech_thinkers_seminar/seminar_1_2.jpg",
+        "/images/achievements/tech_thinkers_seminar/seminar_1_3.jpg",
+        "/images/achievements/tech_thinkers_seminar/seminar_1_4.jpg",
+        "/images/achievements/tech_thinkers_seminar/seminar_1_5.jpg",
+        "/images/achievements/tech_thinkers_seminar/seminar_1_6.jpg"
       ],
       "responsibilities": [
         "Conducted interactive seminars and workshops on web development for 50+ students",

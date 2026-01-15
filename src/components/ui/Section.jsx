@@ -1,6 +1,7 @@
+import { memo } from 'react';
 import { motion } from 'framer-motion';
 
-export default function Section({
+const Section = memo(function Section({
   id,
   children,
   className = '',
@@ -8,11 +9,18 @@ export default function Section({
   title,
   subtitle,
   centered = true,
+  ariaLabel,
+  headingLevel = 'h2',
 }) {
+  // Use semantic heading level
+  const HeadingComponent = headingLevel;
+
   return (
     <section
       id={id}
       className={`py-16 md:py-24 ${className}`}
+      aria-label={ariaLabel}
+      aria-labelledby={title ? `${id}-heading` : undefined}
     >
       <div className={`max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 ${containerClass}`}>
         {(title || subtitle) && (
@@ -24,9 +32,9 @@ export default function Section({
             transition={{ duration: 0.5 }}
           >
             {title && (
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
+              <HeadingComponent id={`${id}-heading`} className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
                 {title}
-              </h2>
+              </HeadingComponent>
             )}
             {subtitle && (
               <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
@@ -39,4 +47,6 @@ export default function Section({
       </div>
     </section>
   );
-}
+});
+
+export default Section;

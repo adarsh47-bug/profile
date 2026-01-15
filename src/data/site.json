@@ -15,45 +15,66 @@
     {
       "name": "Home",
       "path": "/",
-      "icon": "FaHome"
+      "id": "home",
+      "icon": "FaHome",
+      "ariaLabel": "Navigate to home section"
     },
     {
       "name": "About",
       "path": "/#about",
-      "icon": "FaUser"
-    },
-    {
-      "name": "Skills",
-      "path": "/#skills",
-      "icon": "FaCode"
-    },
-    {
-      "name": "Projects",
-      "path": "/#projects",
-      "icon": "FaProjectDiagram"
+      "id": "about",
+      "icon": "FaUser",
+      "ariaLabel": "Navigate to about section"
     },
     {
       "name": "Experience",
       "path": "/#experience",
-      "icon": "FaBriefcase"
+      "id": "experience",
+      "icon": "FaBriefcase",
+      "ariaLabel": "Navigate to experience section"
+    },
+    {
+      "name": "Education",
+      "path": "/#education",
+      "id": "education",
+      "icon": "FaGraduationCap",
+      "ariaLabel": "Navigate to education section"
+    },
+    {
+      "name": "Projects",
+      "path": "/#projects",
+      "id": "projects",
+      "icon": "FaProjectDiagram",
+      "ariaLabel": "Navigate to projects section"
     },
     {
       "name": "Achievements",
       "path": "/#achievements",
-      "icon": "FaTrophy"
+      "id": "achievements",
+      "icon": "FaTrophy",
+      "ariaLabel": "Navigate to achievements section"
+    },
+    {
+      "name": "Skills",
+      "path": "/#skills",
+      "id": "skills",
+      "icon": "FaCode",
+      "ariaLabel": "Navigate to skills section"
     },
     {
       "name": "Contact",
       "path": "/#contact",
-      "icon": "FaEnvelope"
+      "id": "contact",
+      "icon": "FaEnvelope",
+      "ariaLabel": "Navigate to contact section"
     }
   ],
   "footer": {
-    "copyright": "© 2024 Adarsh Kadam. All rights reserved.",
+    "copyright": "Adarsh Kadam. All rights reserved.",
     "tagline": "Built with React & Tailwind CSS"
   },
   "theme": {
-    "defaultMode": "dark",
+    "defaultMode": "light",
     "primaryColor": "#3b82f6",
     "secondaryColor": "#8b5cf6"
   }

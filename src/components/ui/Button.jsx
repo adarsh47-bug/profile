@@ -1,4 +1,6 @@
+import { memo } from 'react';
 import { motion } from 'framer-motion';
+import { FOCUS_STYLES } from '../../constants';
 
 const variants = {
   primary: 'bg-blue-600 hover:bg-blue-700 text-white',
@@ -8,12 +10,12 @@ const variants = {
 };
 
 const sizes = {
-  sm: 'px-3 py-1.5 text-sm',
-  md: 'px-5 py-2.5 text-base',
-  lg: 'px-7 py-3 text-lg',
+  sm: 'px-3 py-1.5 text-sm min-h-[44px] min-w-[44px]', // WCAG touch target
+  md: 'px-5 py-2.5 text-base min-h-[44px]', // WCAG touch target
+  lg: 'px-7 py-3 text-lg min-h-[48px]', // WCAG touch target
 };
 
-export default function Button({
+const Button = memo(function Button({
   children,
   variant = 'primary',
   size = 'md',
@@ -24,14 +26,14 @@ export default function Button({
   icon: Icon,
   iconPosition = 'left',
   onClick,
+  ariaLabel,
   ...props
 }) {
   const baseClasses = `
     inline-flex items-center justify-center gap-2
     font-medium rounded-lg
     transition-all duration-200
-    focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
-    dark:focus:ring-offset-slate-900
+    ${FOCUS_STYLES.outline}
     disabled:opacity-50 disabled:cursor-not-allowed
   `;
 
@@ -39,9 +41,9 @@ export default function Button({
 
   const content = (
     <>
-      {Icon && iconPosition === 'left' && <Icon className="w-5 h-5" />}
+      {Icon && iconPosition === 'left' && <Icon className="w-5 h-5" aria-hidden="true" />}
       {children}
-      {Icon && iconPosition === 'right' && <Icon className="w-5 h-5" />}
+      {Icon && iconPosition === 'right' && <Icon className="w-5 h-5" aria-hidden="true" />}
     </>
   );
 
@@ -52,6 +54,7 @@ export default function Button({
         target={external ? '_blank' : undefined}
         rel={external ? 'noopener noreferrer' : undefined}
         className={classes}
+        aria-label={ariaLabel}
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
         {...props}
@@ -66,6 +69,8 @@ export default function Button({
       className={classes}
       disabled={disabled}
       onClick={onClick}
+      aria-label={ariaLabel}
+      type="button"
       whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
       {...props}
@@ -73,4 +78,6 @@ export default function Button({
       {content}
     </motion.button>
   );
-}
+});
+
+export default Button;

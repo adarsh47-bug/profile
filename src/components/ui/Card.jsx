@@ -1,6 +1,7 @@
+import { memo } from 'react';
 import { motion } from 'framer-motion';
 
-export default function Card({
+const Card = memo(function Card({
   children,
   className = '',
   hover = true,
@@ -33,44 +34,46 @@ export default function Card({
       {children}
     </motion.div>
   );
-}
+});
 
-export function CardHeader({ children, className = '' }) {
+export default Card;
+
+export const CardHeader = memo(function CardHeader({ children, className = '' }) {
   return (
     <div className={`mb-4 ${className}`}>
       {children}
     </div>
   );
-}
+});
 
-export function CardTitle({ children, className = '' }) {
+export const CardTitle = memo(function CardTitle({ children, className = '' }) {
   return (
     <h3 className={`text-xl font-semibold text-slate-900 dark:text-white ${className}`}>
       {children}
     </h3>
   );
-}
+});
 
-export function CardDescription({ children, className = '' }) {
+export const CardDescription = memo(function CardDescription({ children, className = '' }) {
   return (
     <p className={`text-slate-600 dark:text-slate-400 mt-1 ${className}`}>
       {children}
     </p>
   );
-}
+});
 
-export function CardContent({ children, className = '' }) {
+export const CardContent = memo(function CardContent({ children, className = '' }) {
   return (
     <div className={className}>
       {children}
     </div>
   );
-}
+});
 
-export function CardFooter({ children, className = '' }) {
+export const CardFooter = memo(function CardFooter({ children, className = '' }) {
   return (
     <div className={`mt-4 pt-4 border-t border-slate-200 dark:border-slate-700 ${className}`}>
       {children}
     </div>
   );
-}
+});

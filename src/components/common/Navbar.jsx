@@ -1,12 +1,26 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { ThemeToggle } from '../ui';
-import { siteData, profileData } from '../../data';
+import { siteData } from '../../data';
+import Logo from './Logo';
+import { useActiveSection, useSmoothScroll } from '../../hooks';
+import {
+  SCROLL_CONFIG,
+  ACTIVE_INDICATOR_CONFIG,
+  MOBILE_MENU_CONFIG,
+} from '../../constants';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  // Use custom hooks for scroll detection and smooth scrolling
+  const activeSection = useActiveSection(SCROLL_CONFIG.offsetNavbar);
+  const smoothScroll = useSmoothScroll(SCROLL_CONFIG.offsetNavbar);
+
+  // Memoize navigation items to avoid unnecessary re-renders
+  const navItems = useMemo(() => siteData.navigation, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,16 +31,12 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleNavClick = (e, path) => {
-    if (path.startsWith('/#')) {
-      e.preventDefault();
-      const id = path.replace('/#', '');
-      const element = document.getElementById(id);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
-      setIsMobileMenuOpen(false);
-    }
+  const handleNavClick = (e, path, id) => {
+    e.preventDefault();
+    // Trigger smooth scroll immediately
+    smoothScroll(id);
+    // Close mobile menu
+    setIsMobileMenuOpen(false);
   };
 
   return (
@@ -46,27 +56,48 @@ export default function Navbar() {
       <nav className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <motion.a
-            href="/"
-            className="text-xl font-bold text-slate-900 dark:text-white"
-            whileHover={{ scale: 1.02 }}
-          >
-            {profileData.name.split(' ')[0]}
-            <span className="text-blue-600">.</span>
-          </motion.a>
+          <Logo size="sm" />
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-1">
-            {siteData.navigation.map((item) => (
-              <a
-                key={item.name}
-                href={item.path}
-                onClick={(e) => handleNavClick(e, item.path)}
-                className="px-4 py-2 text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800"
-              >
-                {item.name}
-              </a>
-            ))}
+          <div className="hidden lg:flex items-center gap-1">
+            {navItems.map((item) => {
+              const isActive = activeSection === item.id || (activeSection === '' && item.id === 'home');
+              return (
+                <div
+                  key={item.name}
+                  className="relative"
+                >
+                  <motion.a
+                    href={item.path}
+                    onClick={(e) => handleNavClick(e, item.path, item.id)}
+                    className={`
+                      block px-4 py-2 text-sm font-medium rounded-lg transition-colors duration-200
+                      ${isActive
+                        ? 'text-blue-600 dark:text-blue-400'
+                        : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                      }
+                    `}
+                    whileHover={{ y: -2 }}
+                    transition={{ duration: 0.2 }}
+                    aria-label={item.ariaLabel}
+                    aria-current={isActive ? 'page' : undefined}
+                  >
+                    {item.name}
+                  </motion.a>
+                  {/* Desktop active indicator: animated bottom border */}
+                  {isActive && (
+                    <motion.div
+                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-600 to-blue-500"
+                      layoutId="desktopIndicator"
+                      initial={{ scaleX: 0 }}
+                      animate={{ scaleX: 1 }}
+                      exit={{ scaleX: 0 }}
+                      transition={{ duration: 0.3, ease: 'easeOut' }}
+                    />
+                  )}
+                </div>
+              );
+            })}
           </div>
 
           {/* Right side */}
@@ -76,7 +107,7 @@ export default function Navbar() {
             {/* Mobile menu button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800"
+              className="lg:hidden p-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800"
               aria-label="Toggle menu"
             >
               {isMobileMenuOpen ? (
@@ -96,19 +127,47 @@ export default function Navbar() {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.2 }}
-              className="md:hidden overflow-hidden bg-white/95 dark:bg-slate-900/95 backdrop-blur-md rounded-b-xl"
+              className="lg:hidden overflow-hidden bg-white/95 dark:bg-slate-900/95 backdrop-blur-md rounded-b-xl"
             >
               <div className="py-4 space-y-1 border-t border-slate-200 dark:border-slate-700">
-                {siteData.navigation.map((item) => (
-                  <a
-                    key={item.name}
-                    href={item.path}
-                    onClick={(e) => handleNavClick(e, item.path)}
-                    className="block px-4 py-3 text-base font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors"
-                  >
-                    {item.name}
-                  </a>
-                ))}
+                {navItems.map((item) => {
+                  const isActive = activeSection === item.id || (activeSection === '' && item.id === 'home');
+                  return (
+                    <div
+                      key={item.name}
+                      className="relative px-4"
+                    >
+                      <motion.a
+                        href={item.path}
+                        onClick={(e) => handleNavClick(e, item.path, item.id)}
+                        className={`
+                          block py-3 text-base font-medium rounded-lg transition-colors duration-200
+                          ${isActive
+                            ? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-500/10'
+                            : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'
+                          }
+                        `}
+                        whileHover={{ x: 4 }}
+                        transition={{ duration: 0.2 }}
+                        aria-label={item.ariaLabel}
+                        aria-current={isActive ? 'page' : undefined}
+                      >
+                        {item.name}
+                      </motion.a>
+                      {/* Mobile active indicator: left border */}
+                      {isActive && (
+                        <motion.div
+                          className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-gradient-to-b from-blue-600 to-blue-500 rounded-r-full"
+                          layoutId="mobileIndicator"
+                          initial={{ scaleY: 0 }}
+                          animate={{ scaleY: 1 }}
+                          exit={{ scaleY: 0 }}
+                          transition={{ duration: 0.3, ease: 'easeOut' }}
+                        />
+                      )}
+                    </div>
+                  );
+                })}
               </div>
             </motion.div>
           )}

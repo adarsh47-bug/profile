@@ -1,18 +1,41 @@
 {
   "name": "profile",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
+  "description": "Modern portfolio website built with React, Tailwind CSS, and Framer Motion",
+  "author": {
+    "name": "Adarsh Kadam",
+    "email": "adarshkadam5977@gmail.com",
+    "url": "https://adarshkadam.is-a.dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adarsh47-bug/portfolio.git"
+  },
+  "keywords": [
+    "portfolio",
+    "react",
+    "vite",
+    "tailwindcss",
+    "framer-motion",
+    "responsive",
+    "dark-mode"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "lint:fix": "eslint . --fix",
+    "preview": "vite preview",
+    "clean": "rm -rf dist node_modules",
+    "type-check": "echo 'No TypeScript configuration'"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
     "@tailwindcss/vite": "^4.1.18",
     "framer-motion": "^12.25.0",
+    "prop-types": "^15.8.1",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-icons": "^5.5.0",

@@ -6,7 +6,7 @@
       "field": "Information Technology",
       "institution": "Priyadarshini College of Engineering",
       "location": "Nagpur, Maharashtra",
-      "startDate": "2022-11-01",
+      "startDate": "2022-11-22",
       "endDate": null,
       "current": true,
       "grade": "",
@@ -15,6 +15,9 @@
         "Co-Lead of TechThinkers Coding Club",
         "2X Winner of Web Design Jam",
         "1st Place at Ideathon 2024"
+      ],
+      "images": [
+        "/images/education/B_Tech.jpeg"
       ]
     },
     {
@@ -28,7 +31,8 @@
       "current": false,
       "grade": "",
       "description": "Completed Higher Secondary Certificate in Science stream.",
-      "achievements": []
+      "achievements": [],
+      "images": []
     },
     {
       "id": "ssc",
@@ -41,7 +45,8 @@
       "current": false,
       "grade": "",
       "description": "Completed Secondary School Certificate.",
-      "achievements": []
+      "achievements": [],
+      "images": []
     }
   ]
 }

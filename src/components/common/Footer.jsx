@@ -1,15 +1,11 @@
-import { FaGithub, FaLinkedin, FaTwitter, FaYoutube, FaHeart } from 'react-icons/fa';
+import { FaHeart } from 'react-icons/fa';
 import { profileData, siteData } from '../../data';
-
-const socialIcons = {
-  github: FaGithub,
-  linkedin: FaLinkedin,
-  twitter: FaTwitter,
-  youtube: FaYoutube,
-};
+import { getSocialLinks } from '../../constants';
+import Logo from './Logo';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const socialLinks = getSocialLinks(profileData.social);
 
   return (
     <footer className="bg-slate-50 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800">
@@ -17,12 +13,9 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Brand */}
           <div>
-            <a href="/" className="text-2xl font-bold text-slate-900 dark:text-white">
-              {profileData.name.split(' ')[0]}
-              <span className="text-blue-600">.</span>
-            </a>
+            <Logo size="md" />
             <p className="mt-3 text-slate-600 dark:text-slate-400">
-              {profileData.bio.short}
+              {profileData.tagline}
             </p>
           </div>
 
@@ -51,24 +44,18 @@ export default function Footer() {
               Connect
             </h3>
             <div className="flex gap-4 mb-4">
-              {Object.entries(profileData.social).map(([platform, url]) => {
-                if (!url) return null;
-                const Icon = socialIcons[platform];
-                if (!Icon) return null;
-
-                return (
-                  <a
-                    key={platform}
-                    href={url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-2 rounded-lg bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-slate-300 dark:hover:bg-slate-700 transition-all"
-                    aria-label={platform}
-                  >
-                    <Icon className="w-5 h-5" />
-                  </a>
-                );
-              })}
+              {socialLinks.map((social) => (
+                <a
+                  key={social.platform}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`p-2 rounded-lg bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400 ${social.color} hover:bg-slate-300 dark:hover:bg-slate-700 transition-all`}
+                  aria-label={social.label}
+                >
+                  <social.icon className="w-5 h-5" />
+                </a>
+              ))}
             </div>
             <p className="text-slate-600 dark:text-slate-400">
               {profileData.email}

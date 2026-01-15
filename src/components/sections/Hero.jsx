@@ -1,9 +1,12 @@
 import { motion } from 'framer-motion';
-import { FaGithub, FaLinkedin, FaYoutube, FaDownload, FaArrowRight } from 'react-icons/fa';
+import { FaDownload, FaArrowRight } from 'react-icons/fa';
 import { Button } from '../ui';
 import { profileData } from '../../data';
+import { getSocialLinks } from '../../constants';
 
 export default function Hero() {
+  const socialLinks = getSocialLinks(profileData.social);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -25,9 +28,9 @@ export default function Hero() {
   };
 
   return (
-    <section className="min-h-[calc(100vh-5rem)] flex items-center relative overflow-hidden">
+    <section id="home" className="min-h-[calc(100vh-5rem)] flex items-center relative overflow-hidden">
       {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-slate-900 dark:via-slate-900 dark:to-slate-800" />
+      <div className="absolute inset-0 bg-linear-to-br from-blue-50 via-white to-purple-50 dark:from-slate-900 dark:via-slate-900 dark:to-slate-800" />
 
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
@@ -83,7 +86,7 @@ export default function Hero() {
           {/* Title with gradient */}
           <motion.h2
             variants={itemVariants}
-            className="text-2xl sm:text-3xl md:text-4xl font-semibold bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 bg-clip-text text-transparent mb-6"
+            className="text-2xl sm:text-3xl md:text-4xl font-semibold bg-linear-to-r from-blue-600 via-purple-600 to-blue-600 bg-clip-text text-transparent mb-6"
           >
             {profileData.title}
           </motion.h2>
@@ -139,45 +142,20 @@ export default function Hero() {
             variants={itemVariants}
             className="flex gap-3 mt-8"
           >
-            {profileData.social.github && (
+            {socialLinks.map((social) => (
               <motion.a
-                href={profileData.social.github}
+                key={social.platform}
+                href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 rounded-xl bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white border border-slate-200 dark:border-slate-700 shadow-sm transition-colors"
-                aria-label="GitHub"
+                className={`p-3 rounded-xl bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm text-slate-600 dark:text-slate-400 ${social.color} border border-slate-200 dark:border-slate-700 shadow-sm transition-colors`}
+                aria-label={social.label}
                 whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <FaGithub className="w-5 h-5" />
+                <social.icon className="w-5 h-5" />
               </motion.a>
-            )}
-            {profileData.social.linkedin && (
-              <motion.a
-                href={profileData.social.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-3 rounded-xl bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 border border-slate-200 dark:border-slate-700 shadow-sm transition-colors"
-                aria-label="LinkedIn"
-                whileHover={{ scale: 1.1, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <FaLinkedin className="w-5 h-5" />
-              </motion.a>
-            )}
-            {profileData.social.youtube && (
-              <motion.a
-                href={profileData.social.youtube}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-3 rounded-xl bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm text-slate-600 dark:text-slate-400 hover:text-red-600 dark:hover:text-red-500 border border-slate-200 dark:border-slate-700 shadow-sm transition-colors"
-                aria-label="YouTube"
-                whileHover={{ scale: 1.1, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <FaYoutube className="w-5 h-5" />
-              </motion.a>
-            )}
+            ))}
           </motion.div>
         </motion.div>
       </div>
