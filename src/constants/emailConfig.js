@@ -21,14 +21,14 @@
 // Validate that required environment variables are set
 const validateEnvVars = () => {
   const required = {
-    serviceId: import.meta.env.EMAILJS_SERVICE_ID,
-    templateId: import.meta.env.EMAILJS_TEMPLATE_ID,
-    publicKey: import.meta.env.EMAILJS_PUBLIC_KEY,
+    serviceId: import.meta.env.VITE_EMAILJS_SERVICE_ID,
+    templateId: import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+    publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
   };
 
   const missing = Object.entries(required)
     .filter(([_, value]) => !value)
-    .map(([key]) => `EMAILJS_${key.toUpperCase().replace(/([A-Z])/g, '_$1')}`);
+    .map(([key]) => `VITE_EMAILJS_${key.replace(/([a-z])([A-Z])/g, '$1_$2').toUpperCase()}`);
 
   if (missing.length > 0) {
     console.warn(
