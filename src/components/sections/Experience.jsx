@@ -38,11 +38,11 @@ export default function Experience() {
         subtitle="My professional journey and work experience"
         className="bg-white dark:bg-slate-900"
       >
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Timeline */}
           <div className="relative">
             {/* Timeline line */}
-            <div className="absolute left-8 md:left-12 top-0 bottom-0 w-0.5 bg-slate-200 dark:bg-slate-700" />
+            <div className="absolute left-4 md:left-12 top-0 bottom-0 w-0.5 bg-slate-200 dark:bg-slate-700" />
 
             {experienceData.experiences.slice(0, 2).map((exp, index) => (
               <motion.div
@@ -51,15 +51,15 @@ export default function Experience() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: '-50px' }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="relative flex gap-6 md:gap-8 mb-10"
+                className="relative flex gap-4 md:gap-8 mb-10"
               >
                 {/* Timeline dot */}
                 <div className="relative shrink-0">
-                  <div className="absolute left-8 md:left-12 top-6 transform -translate-x-1/2 w-5 h-5 bg-blue-600 rounded-full border-4 border-white dark:border-slate-900 z-10" />
+                  <div className="absolute left-4 md:left-12 top-6 transform -translate-x-1/2 w-5 h-5 bg-blue-600 rounded-full border-4 border-white dark:border-slate-900 z-10" />
                 </div>
 
                 {/* Content */}
-                <div className="flex-1 ml-8 md:ml-12">
+                <div className="flex-1 ml-4 md:ml-12 min-w-0">
                   <ExperienceCard
                     experience={exp}
                     onClick={handleExpClick}

@@ -13,6 +13,7 @@ import {
 } from 'react-icons/si';
 import { Section, Card, Badge, ImagePreviewSidebar } from '../ui';
 import { skillsData, projectsData } from '../../data';
+import { VscAzure } from 'react-icons/vsc';
 
 // Icon mapping for skills
 const skillIconMap = {
@@ -31,7 +32,7 @@ const skillIconMap = {
   'Node.js': SiNodedotjs,
   'Express.js': SiExpress,
   'Firebase': SiFirebase,
-  'Azure': FaAws,
+  'Azure': VscAzure,
   'MongoDB': SiMongodb,
   'MySQL': SiMysql,
   'PostgreSQL': SiPostgresql,

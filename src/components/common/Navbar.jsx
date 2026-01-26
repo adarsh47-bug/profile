@@ -33,10 +33,12 @@ export default function Navbar() {
 
   const handleNavClick = (e, path, id) => {
     e.preventDefault();
-    // Trigger smooth scroll immediately
-    smoothScroll(id);
-    // Close mobile menu
+    // Close mobile menu first to prevent interference
     setIsMobileMenuOpen(false);
+    // Use setTimeout to allow menu animation to complete before scrolling
+    setTimeout(() => {
+      smoothScroll(id);
+    }, 150);
   };
 
   return (
@@ -87,7 +89,7 @@ export default function Navbar() {
                   {/* Desktop active indicator: animated bottom border */}
                   {isActive && (
                     <motion.div
-                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-600 to-blue-500"
+                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-linear-to-r from-blue-600 to-blue-500"
                       layoutId="desktopIndicator"
                       initial={{ scaleX: 0 }}
                       animate={{ scaleX: 1 }}
@@ -157,7 +159,7 @@ export default function Navbar() {
                       {/* Mobile active indicator: left border */}
                       {isActive && (
                         <motion.div
-                          className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-gradient-to-b from-blue-600 to-blue-500 rounded-r-full"
+                          className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-linear-to-b from-blue-600 to-blue-500 rounded-r-full"
                           layoutId="mobileIndicator"
                           initial={{ scaleY: 0 }}
                           animate={{ scaleY: 1 }}

@@ -37,7 +37,7 @@ const Logo = memo(function Logo({ className = '', animated = true, size = 'md' }
       className={`font-bold text-slate-900 dark:text-white inline-flex items-center flex-wrap ${sizeClasses[size]} ${className}`}
       {...motionProps}
     >
-      <span className="truncate max-w-[150px] sm:max-w-none">{firstPart}</span>
+      <span className="truncate max-w-37.5 sm:max-w-none">{firstPart}</span>
       <span className="text-blue-600">.</span>
       <span className="hidden sm:inline">{middleParts}</span>
       <span className="text-blue-600 hidden sm:inline">.</span>
