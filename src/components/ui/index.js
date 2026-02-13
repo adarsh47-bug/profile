@@ -4,6 +4,7 @@ export { default as Badge } from './Badge';
 export { default as Section } from './Section';
 export { default as ThemeToggle } from './ThemeToggle';
 export { default as ScrollToTopButton } from './ScrollToTopButton';
+export { default as ImageRenderer } from './ImageRenderer';
 export { default as ImagePreviewSidebar } from './ImagePreviewSidebar';
 export { default as ImageGallery, MiniGallery } from './ImageGallery';
 export { default as LazyImage, ResponsiveImage, LazyImageGrid } from './LazyImage';

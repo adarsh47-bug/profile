@@ -133,7 +133,7 @@ function CurrentRoleCard() {
       icon={<FaBriefcase className="h-5 w-5 text-purple-600 dark:text-purple-400" />}
       iconBgColor="bg-purple-100 dark:bg-purple-900/30"
       label="Current Role"
-      value={`${profileData.currentRole.title} at ${profileData.currentRole.company}`}
+      value={`${profileData.currentRole.title} ${profileData.currentRole.company ? 'at' : ''} ${profileData.currentRole.company}`}
     />
   );
 }

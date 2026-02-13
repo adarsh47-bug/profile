@@ -4,6 +4,7 @@ import Card from './Card';
 import Badge from './Badge';
 import Button from './Button';
 import ImageGallery from './ImageGallery';
+import ImageRenderer from './ImageRenderer';
 
 /**
  * ProjectCard - A reusable, modular component for displaying project information
@@ -54,14 +55,14 @@ export default function ProjectCard({
         aria-label={`View details for ${project.title}`}
       >
         {fallbackImage ? (
-          <img
+          <ImageRenderer
             src={fallbackImage}
             alt={project.title}
-            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-            loading="lazy"
-            onError={(e) => {
-              e.target.src = `https://placehold.co/400x300/1e40af/ffffff?text=${encodeURIComponent(project.title)}`;
-            }}
+            aspectRatio="16/9"
+            className="w-full h-full group-hover:scale-110 transition-transform duration-300"
+            objectFit="cover"
+            animated={true}
+            useLazyLoad={true}
           />
         ) : (
           <div className="w-full h-full bg-linear-to-br from-blue-500 to-purple-600 flex items-center justify-center">
