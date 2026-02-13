@@ -38,6 +38,44 @@
       "date": "2025-06-21"
     },
     {
+      "id": "mini-lms",
+      "title": "Mini LMS – React Native Expo Mobile Application",
+      "description": "A production-ready React Native Expo mobile application demonstrating advanced mobile development practices, native features integration, and comprehensive security implementation.",
+      "longDescription": "A production-ready React Native Expo mobile application demonstrating advanced mobile development practices, native features integration, and comprehensive security implementation. Built for the React Native Developer Assignment - showcasing expertise in authentication, WebView integration, state management, native features, and real-world mobile app challenges.",
+      "techStack": [
+        "TypeScript",
+        "React Native",
+        "Expo",
+        "FreeAPI"
+      ],
+      "category": "Mobile App",
+      "status": "Completed",
+      "featured": true,
+      "image": "https://raw.githubusercontent.com/adarsh47-bug/Mini-LMS/refs/heads/master/assets/images/notification-icon.png",
+      "images": [
+        "https://raw.githubusercontent.com/adarsh47-bug/Mini-LMS/refs/heads/master/documentation/screenshots/1_intro.jpeg",
+        "https://raw.githubusercontent.com/adarsh47-bug/Mini-LMS/refs/heads/master/documentation/screenshots/2_register.jpeg",
+        "https://raw.githubusercontent.com/adarsh47-bug/Mini-LMS/refs/heads/master/documentation/screenshots/3_login.jpeg",
+        "https://raw.githubusercontent.com/adarsh47-bug/Mini-LMS/refs/heads/master/documentation/screenshots/4_home.jpeg",
+        "https://raw.githubusercontent.com/adarsh47-bug/Mini-LMS/refs/heads/master/documentation/screenshots/5_courses.jpeg",
+        "https://raw.githubusercontent.com/adarsh47-bug/Mini-LMS/refs/heads/master/documentation/screenshots/6_bookmarks.jpeg",
+        "https://raw.githubusercontent.com/adarsh47-bug/Mini-LMS/refs/heads/master/documentation/screenshots/7_profile.jpeg",
+        "https://raw.githubusercontent.com/adarsh47-bug/Mini-LMS/refs/heads/master/documentation/screenshots/8_course_preview.jpeg",
+        "https://raw.githubusercontent.com/adarsh47-bug/Mini-LMS/refs/heads/master/documentation/screenshots/9_course_details.jpeg"
+      ],
+      "links": {
+        "live": "",
+        "github": "https://github.com/adarsh47-bug/Mini-LMS",
+        "demo": "https://youtu.be/7WbA9WtP0-A"
+      },
+      "highlights": [
+        "Advanced React Native development",
+        "Native features integration",
+        "Comprehensive security implementation"
+      ],
+      "date": "2026-02-12"
+    },
+    {
       "id": "alumnet",
       "title": "Alumnet – Alumni Interaction Platform",
       "description": "Platform to connect students with alumni using university-based filtering and a streamlined interface. Won 1st place at Ideathon 2024.",
@@ -399,11 +437,39 @@
         "Workflow automation"
       ],
       "date": "2024-12-15"
+    },
+    {
+      "id": "car-racing-blender",
+      "title": "Car Racing Animation in Blender",
+      "description": "A 3D car racing animation created using Blender.",
+      "longDescription": "Created a realistic car racing animation using Blender, focusing on physics, lighting, and camera angles to enhance the visual experience.",
+      "techStack": [
+        "Blender"
+      ],
+      "category": "Animation",
+      "status": "Completed",
+      "featured": false,
+      "image": "https://i.ytimg.com/vi/skZbZVJ3pU4/maxresdefault.jpg",
+      "images": [
+        "https://i.ytimg.com/vi/skZbZVJ3pU4/maxresdefault.jpg"
+      ],
+      "links": {
+        "live": "https://www.youtube.com/watch?v=skZbZVJ3pU4",
+        "github": "",
+        "demo": ""
+      },
+      "highlights": [
+        "Realistic car racing animation",
+        "Physics simulation",
+        "Lighting and camera angles"
+      ],
+      "date": "2024-12-15"
     }
   ],
   "categories": [
     "All",
     "Web App",
-    "Mobile App"
+    "Mobile App",
+    "Animation"
   ]
 }

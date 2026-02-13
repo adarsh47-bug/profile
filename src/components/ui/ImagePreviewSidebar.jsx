@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaTimes, FaExternalLinkAlt, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { useState, useEffect, memo } from 'react';
+import ImageRenderer from './ImageRenderer';
 
 const ImagePreviewSidebar = memo(function ImagePreviewSidebar({
   isOpen,
@@ -72,18 +73,23 @@ const ImagePreviewSidebar = memo(function ImagePreviewSidebar({
             <div className="relative bg-slate-100 dark:bg-slate-800 aspect-video flex items-center justify-center overflow-hidden">
               {images.length > 0 ? (
                 <>
-                  <motion.img
+                  <motion.div
                     key={currentImageIndex}
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.3 }}
-                    src={images[currentImageIndex]}
-                    alt={data.title}
-                    className="max-w-full max-h-full object-contain"
-                    onError={(e) => {
-                      e.target.src = `https://placehold.co/600x400?text=${encodeURIComponent(data.title || 'Image')}`;
-                    }}
-                  />
+                    className="w-full h-full flex items-center justify-center"
+                  >
+                    <ImageRenderer
+                      src={images[currentImageIndex]}
+                      alt={data.title}
+                      aspectRatio="16/9"
+                      objectFit="contain"
+                      className="max-h-full max-w-full"
+                      animated={true}
+                      useLazyLoad={false}
+                    />
+                  </motion.div>
 
                   {/* Navigation Arrows */}
                   {hasMultipleImages && (
@@ -129,13 +135,13 @@ const ImagePreviewSidebar = memo(function ImagePreviewSidebar({
                       : 'border-transparent opacity-60 hover:opacity-100'
                       }`}
                   >
-                    <img
+                    <ImageRenderer
                       src={img}
                       alt={`Thumbnail ${index + 1}`}
-                      className="w-full h-full object-cover"
-                      onError={(e) => {
-                        e.target.src = `https://placehold.co/64x64?text=${index + 1}`;
-                      }}
+                      aspectRatio="1/1"
+                      objectFit="cover"
+                      animated={false}
+                      useLazyLoad={true}
                     />
                   </button>
                 ))}
@@ -355,11 +361,17 @@ const ImagePreviewSidebar = memo(function ImagePreviewSidebar({
                 <div className="pt-4 border-t border-slate-200 dark:border-slate-700">
                   <div className="flex items-center gap-3">
                     {data.companyLogo && (
-                      <img
-                        src={data.companyLogo}
-                        alt={data.company || data.issuer}
-                        className="w-12 h-12 rounded-lg object-cover"
-                      />
+                      <div className="w-12 h-12 shrink-0">
+                        <ImageRenderer
+                          src={data.companyLogo}
+                          alt={data.company || data.issuer}
+                          aspectRatio="1/1"
+                          objectFit="cover"
+                          className="rounded-lg"
+                          animated={false}
+                          useLazyLoad={true}
+                        />
+                      </div>
                     )}
                     <div>
                       <p className="font-medium text-slate-900 dark:text-white">

@@ -1,6 +1,7 @@
 import { useState, memo } from 'react';
 import { motion } from 'framer-motion';
 import { FaExpand, FaImages } from 'react-icons/fa';
+import ImageRenderer from './ImageRenderer';
 
 const ImageGallery = memo(function ImageGallery({
   images = [],
@@ -34,13 +35,13 @@ const ImageGallery = memo(function ImageGallery({
           whileHover={{ scale: 1.1, zIndex: 10 }}
           style={{ marginLeft: index > 0 ? '-8px' : 0 }}
         >
-          <img
+          <ImageRenderer
             src={typeof image === 'string' ? image : image.src}
             alt={typeof image === 'string' ? `Image ${index + 1}` : image.alt}
-            className="w-full h-full object-cover"
-            onError={(e) => {
-              e.target.src = `https://placehold.co/64x64?text=${index + 1}`;
-            }}
+            aspectRatio="1/1"
+            objectFit="cover"
+            animated={false}
+            useLazyLoad={true}
           />
 
           {/* Hover overlay */}

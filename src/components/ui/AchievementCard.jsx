@@ -3,6 +3,7 @@ import { FaTrophy, FaCalendar, FaExternalLinkAlt } from 'react-icons/fa';
 import Card from './Card';
 import Badge from './Badge';
 import ImageGallery from './ImageGallery';
+import ImageRenderer from './ImageRenderer';
 import { formatDateShort } from '../../utils/dateUtils';
 import { achievementIconMap, getIconComponent } from '../../utils/iconMap';
 
@@ -59,19 +60,17 @@ export default function AchievementCard({
         {/* Achievement Image or Icon */}
         {hasSingleImage ? (
           <div className="relative w-12 h-12 rounded-lg overflow-hidden shrink-0 border border-slate-200 dark:border-slate-600">
-            <img
+            <ImageRenderer
               src={achievement.image}
               alt={achievement.title}
-              className="w-full h-full object-cover"
-              loading="lazy"
-              onError={(e) => {
-                e.target.style.display = 'none';
-                const iconContainer = e.target.parentElement;
-                iconContainer.classList.add('bg-gradient-to-br', 'from-yellow-400', 'to-orange-500', 'flex', 'items-center', 'justify-center');
-                const iconElement = document.createElement('div');
-                iconElement.className = 'text-white text-2xl';
-                iconElement.innerHTML = '🏆';
-                iconContainer.appendChild(iconElement);
+              aspectRatio="1/1"
+              objectFit="cover"
+              animated={false}
+              useLazyLoad={true}
+              fallbackOptions={{
+                bgColor: 'fbbf24',
+                textColor: 'ffffff',
+                text: '🏆'
               }}
             />
             {hasImages && achievement.images.length > 1 && (

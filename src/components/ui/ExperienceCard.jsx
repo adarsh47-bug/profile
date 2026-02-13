@@ -3,6 +3,7 @@ import { FaBriefcase, FaMapMarkerAlt, FaCalendar, FaClock } from 'react-icons/fa
 import Card from './Card';
 import Badge from './Badge';
 import MiniGallery from './ImageGallery';
+import ImageRenderer from './ImageRenderer';
 
 /**
  * Utility function to format date strings
@@ -72,11 +73,16 @@ export default function ExperienceCard({
     <div className="flex items-start gap-4 mb-4">
       {experience.companyLogo && (
         <div className="shrink-0">
-          <img
+          <ImageRenderer
             src={experience.companyLogo}
             alt={experience.company}
-            className="w-16 h-16 rounded-lg object-cover border border-slate-200 dark:border-slate-600"
-            onError={(e) => e.target.style.display = 'none'}
+            aspectRatio="1/1"
+            width={64}
+            height={64}
+            className="rounded-lg border border-slate-200 dark:border-slate-600"
+            objectFit="cover"
+            animated={false}
+            useLazyLoad={true}
           />
         </div>
       )}
