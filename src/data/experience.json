@@ -2,15 +2,15 @@
   "experiences": [
     {
       "id": "embedded-creations",
-      "title": "Software Development Intern",
-      "company": "Embedded Creations",
+      "title": "Software Developer",
+      "company": "Embedded Creation and Difi Digital Fashion Park PVT. LTD.",
       "location": "Nagpur, India",
-      "type": "Internship",
+      "type": "Internship and contract",
       "startDate": "2024-09-01",
-      "endDate": null,
-      "current": true,
-      "description": "Working on Android and web applications using React Native, PHP, and MySQL for government projects including NMC Sky Sign Department, Akola SEVA Project, and Tribal PWD.",
-      "companyLogo": "/images/projects/nmc_project/nmc_project_1.jpg",
+      "endDate": "2025-12-25",
+      "time": "1 year 4 months",
+      "description": "Contributed to the development of web and mobile applications for government departments, enhancing public service delivery and digital transformation.",
+      "companyLogo": "/images/experience/ec_company_logo.png",
       "images": [
         "/images/projects/nmc_project/nmc_project_1.jpg",
         "/images/projects/seva_project/seva_1.jpg",
@@ -18,23 +18,30 @@
         "/images/others/other_activities_1_1.jpg"
       ],
       "responsibilities": [
-        "Enhanced Android and web applications using React Native, PHP, and MySQL",
-        "Enabled display of 650+ registered hoardings for NMC Sky Sign Department",
-        "Trained officers across 27+ police stations for SEVA app adoption",
-        "Improved web application for Tribal PWD managing 130+ schools"
+        "Developed NMC Sky Sign Department app for Nagpur Municipal Corporation and Enabled display of 650+ registered hoardings for NMC Sky Sign Department",
+        "Developed a revised and updated version of SEVA Android Mobile App, trained officers across 27+ police stations for adoption in Akola district",
+        "Improved web application for Tribal PWD managing 130+ schools",
+        "Developed attendance system for SRPF, Nagpur",
+        "Developed dental inspection camp app for GMC, Nagpur",
+        "Developed RTMNU student development app"
       ],
       "technologies": [
+        "JavaScript",
         "TypeScript",
-        "React Native",
         "PHP",
+        "React",
+        "React Native",
         "MySQL",
         "Android",
         "Web Development"
       ],
       "highlights": [
-        "650+ hoardings managed",
-        "27+ police stations trained",
-        "130+ schools served"
+        "NMC Sky Sign Department App",
+        "SEVA Android Mobile App",
+        "Tribal PWD web application for school management",
+        "Attendance system for SRPF, Nagpur",
+        "Dental Inspection Camp App for GMC, Nagpur",
+        "RTMNU Student Development App"
       ]
     },
     {
@@ -47,7 +54,7 @@
       "endDate": "2024-11-30",
       "current": false,
       "description": "Led coding club activities, conducted workshops, mentored students, and organized hackathons.",
-      "companyLogo": "/images/achievements/tech_thinkers_seminar/seminar_1_1.jpg",
+      "companyLogo": "/images/experience/tt_grp_logo.png",
       "images": [
         "/images/achievements/tech_thinkers_seminar/seminar_1_1.jpg",
         "/images/achievements/tech_thinkers_seminar/seminar_1_2.jpg",
