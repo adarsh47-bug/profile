@@ -1,287 +1,242 @@
 import { motion } from 'framer-motion';
-import { FaDownload, FaArrowRight } from 'react-icons/fa';
+import { FaDownload, FaArrowRight, FaStar, FaUserFriends, FaMedal, FaGamepad } from 'react-icons/fa';
 import { Button } from '../ui';
 import { profileData } from '../../data';
 import { getSocialLinks } from '../../constants';
+
+// XP bar component
+function XPBar({ value = 78, label = 'Level 12' }) {
+  return (
+    <div>
+      <div className="flex justify-between items-center mb-1">
+        <span className="text-xs font-bold pixel" style={{ color: '#FFD700', fontSize: '0.5rem' }}>{label}</span>
+        <span className="text-xs pixel" style={{ color: '#666', fontSize: '0.5rem' }}>{value}/100 XP</span>
+      </div>
+      <div className="xp-bar-track">
+        <motion.div
+          className="xp-bar-fill"
+          initial={{ width: 0 }}
+          animate={{ width: `${value}%` }}
+          transition={{ duration: 1.2, delay: 0.5, ease: 'easeOut' }}
+        />
+      </div>
+    </div>
+  );
+}
+
+// Star rating display
+function StarRating({ rating = 5, max = 5 }) {
+  return (
+    <div className="star-rating">
+      {Array.from({ length: max }).map((_, i) => (
+        <FaStar key={i} style={{ opacity: i < rating ? 1 : 0.25 }} />
+      ))}
+    </div>
+  );
+}
 
 export default function Hero() {
   const socialLinks = getSocialLinks(profileData.social);
 
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.3,
-      },
-    },
+    visible: { opacity: 1, transition: { staggerChildren: 0.12, delayChildren: 0.2 } },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 40 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] },
-    },
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
   };
+
+  const stats = [
+    { icon: FaStar,        value: '10K+',  label: 'Downloads', color: '#FFD700' },
+    { icon: FaUserFriends, value: '650+',  label: 'Managed',   color: '#22A7E0' },
+    { icon: FaMedal,       value: '2×',    label: 'Web Jam 1st',color: '#E8192C' },
+    { icon: FaGamepad,     value: '27+',   label: 'Trained',   color: '#00CC00' },
+  ];
 
   return (
     <section
       id="home"
-      className="min-h-[calc(100vh-5rem)] flex items-center relative overflow-hidden z-10"
+      className="min-h-[calc(100vh-5rem)] flex items-center justify-center relative z-10 py-12 px-4"
     >
-      {/* Extra hero-scoped orbs for depth */}
       <motion.div
-        className="absolute pointer-events-none"
-        style={{
-          width: 600,
-          height: 600,
-          borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(0,245,255,0.07) 0%, transparent 70%)',
-          top: -200,
-          right: -200,
-          filter: 'blur(60px)',
-        }}
-        animate={{ scale: [1, 1.1, 1], opacity: [0.6, 1, 0.6] }}
-        transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
-      />
-      <motion.div
-        className="absolute pointer-events-none"
-        style={{
-          width: 400,
-          height: 400,
-          borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(168,85,247,0.1) 0%, transparent 70%)',
-          bottom: -100,
-          left: -100,
-          filter: 'blur(60px)',
-        }}
-        animate={{ scale: [1.1, 1, 1.1], opacity: [0.5, 0.9, 0.5] }}
-        transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut' }}
-      />
-
-      {/* Floating grid lines (hero-level perspective) */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          backgroundImage: `
-            linear-gradient(rgba(0,245,255,0.03) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(0,245,255,0.03) 1px, transparent 1px)
-          `,
-          backgroundSize: '40px 40px',
-          maskImage: 'radial-gradient(ellipse 70% 80% at 30% 50%, black 40%, transparent 100%)',
-        }}
-      />
-
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="max-w-3xl"
-        >
-          {/* Status pill */}
-          <motion.div variants={itemVariants} className="mb-6">
-            <span
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-medium"
-              style={{
-                fontFamily: "'JetBrains Mono', monospace",
-                background: 'rgba(0,245,255,0.07)',
-                border: '1px solid rgba(0,245,255,0.2)',
-                color: '#00f5ff',
-                letterSpacing: '0.08em',
-              }}
-            >
-              <span
-                style={{
-                  width: 6,
-                  height: 6,
-                  borderRadius: '50%',
-                  background: '#00f5ff',
-                  boxShadow: '0 0 8px #00f5ff',
-                  display: 'inline-block',
-                  animation: 'pulse 2s infinite',
-                }}
-              />
-              AVAILABLE FOR WORK
-            </span>
-          </motion.div>
-
-          {/* Greeting */}
-          <motion.p
-            variants={itemVariants}
-            className="font-medium mb-3 text-base"
-            style={{
-              color: '#a855f7',
-              fontFamily: "'JetBrains Mono', monospace",
-              letterSpacing: '0.05em',
-            }}
-          >
-            // Hello, I&apos;m
-          </motion.p>
-
-          {/* Name */}
-          <motion.h1
-            variants={itemVariants}
-            className="text-5xl sm:text-6xl md:text-7xl font-bold mb-4 leading-tight"
-            style={{
-              fontFamily: "'Space Grotesk', sans-serif",
-              background: 'linear-gradient(135deg, #f0f4ff 0%, #00f5ff 50%, #a855f7 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-              filter: 'drop-shadow(0 0 30px rgba(0,245,255,0.15))',
-            }}
-          >
-            {profileData.name}
-          </motion.h1>
-
-          {/* Title */}
-          <motion.h2
-            variants={itemVariants}
-            className="text-xl sm:text-2xl md:text-3xl font-semibold mb-6"
-            style={{
-              fontFamily: "'Space Grotesk', sans-serif",
-              background: 'linear-gradient(90deg, #00f5ff, #a855f7, #e879f9)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-            }}
-          >
-            {profileData.title}
-          </motion.h2>
-
-          {/* Tagline */}
-          <motion.p
-            variants={itemVariants}
-            className="text-lg md:text-xl mb-8 max-w-2xl leading-relaxed"
-            style={{ color: 'var(--color-text-secondary)', fontFamily: "'Space Grotesk', sans-serif" }}
-          >
-            {profileData.tagline}
-          </motion.p>
-
-          {/* Highlight pills */}
-          <motion.div
-            variants={itemVariants}
-            className="flex flex-wrap gap-3 mb-8"
-          >
-            {profileData.highlights.slice(0, 3).map((highlight, index) => (
-              <motion.span
-                key={index}
-                className="px-4 py-2 rounded-full text-sm font-medium"
-                style={{
-                  background: 'rgba(0,245,255,0.06)',
-                  border: '1px solid rgba(0,245,255,0.18)',
-                  color: 'var(--color-text-secondary)',
-                  fontFamily: "'Space Grotesk', sans-serif",
-                  backdropFilter: 'blur(8px)',
-                }}
-                whileHover={{
-                  scale: 1.05,
-                  y: -2,
-                  borderColor: 'rgba(0,245,255,0.5)',
-                  color: '#00f5ff',
-                  boxShadow: '0 0 15px rgba(0,245,255,0.15)',
-                }}
-              >
-                ⬡ {highlight}
-              </motion.span>
-            ))}
-          </motion.div>
-
-          {/* CTA Buttons */}
-          <motion.div
-            variants={itemVariants}
-            className="flex flex-wrap gap-4"
-          >
-            <Button href="#projects" icon={FaArrowRight} iconPosition="right">
-              View Projects
-            </Button>
-            <Button
-              href={profileData.resumeUrl}
-              variant="secondary"
-              icon={FaDownload}
-              external
-            >
-              Download Resume
-            </Button>
-          </motion.div>
-
-          {/* Social Links */}
-          <motion.div
-            variants={itemVariants}
-            className="flex gap-3 mt-8"
-          >
-            {socialLinks.map((social) => (
-              <motion.a
-                key={social.platform}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-3 rounded-xl transition-all duration-200"
-                style={{
-                  background: 'rgba(0,245,255,0.05)',
-                  border: '1px solid rgba(0,245,255,0.15)',
-                  color: 'var(--color-text-secondary)',
-                  backdropFilter: 'blur(8px)',
-                }}
-                aria-label={social.label}
-                whileHover={{
-                  scale: 1.1,
-                  y: -3,
-                  borderColor: 'rgba(0,245,255,0.5)',
-                  boxShadow: '0 0 20px rgba(0,245,255,0.25)',
-                  color: '#00f5ff',
-                }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <social.icon className="w-5 h-5" />
-              </motion.a>
-            ))}
-          </motion.div>
-        </motion.div>
-      </div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        animate={{ y: [0, 8, 0] }}
-        transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        className="w-full max-w-2xl"
       >
-        <div
-          style={{
-            width: 24,
-            height: 40,
-            borderRadius: 12,
-            border: '1px solid rgba(0,245,255,0.3)',
-            display: 'flex',
-            alignItems: 'flex-start',
-            justifyContent: 'center',
-            padding: '6px 0',
-          }}
+        {/* ── PLAYER PROFILE CARD ── */}
+        <motion.div
+          variants={itemVariants}
+          className="rb-panel-red rounded-2xl overflow-hidden"
+          style={{ boxShadow: '0 8px 0 #8B0D16, 0 0 40px rgba(232,25,44,0.2)' }}
         >
-          <motion.div
-            style={{
-              width: 4,
-              height: 8,
-              borderRadius: 2,
-              background: 'linear-gradient(180deg, #00f5ff, transparent)',
-              boxShadow: '0 0 6px rgba(0,245,255,0.6)',
-            }}
-            animate={{ y: [0, 12, 0], opacity: [1, 0.2, 1] }}
-            transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-          />
-        </div>
-      </motion.div>
+          {/* Card Header Bar */}
+          <div style={{
+            background: '#E8192C',
+            padding: '10px 20px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+          }}>
+            <span className="pixel" style={{ color: '#fff', fontSize: '0.6rem', letterSpacing: '0.1em' }}>
+              👤 PLAYER PROFILE
+            </span>
+            {/* Online status */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+              <span className="online-dot" />
+              <span className="pixel" style={{ color: '#fff', fontSize: '0.45rem' }}>ONLINE</span>
+            </div>
+          </div>
 
-      <style>{`
-        @keyframes pulse {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0.4; }
-        }
-      `}</style>
+          <div style={{ padding: '1.5rem' }}>
+            {/* Username row */}
+            <motion.div variants={itemVariants} style={{ marginBottom: '1rem' }}>
+              <p className="pixel" style={{ color: '#ABABAB', fontSize: '0.55rem', marginBottom: 4, letterSpacing: '0.08em' }}>
+                // DISPLAY NAME
+              </p>
+              <h1
+                className="fredoka"
+                style={{
+                  fontSize: 'clamp(2.2rem, 6vw, 3.5rem)',
+                  color: '#F2F2F2',
+                  margin: 0,
+                  lineHeight: 1.1,
+                  textShadow: '2px 2px 0 #000',
+                }}
+              >
+                {profileData.name}
+              </h1>
+              <p
+                className="fredoka"
+                style={{ color: '#E8192C', fontSize: '1.2rem', marginTop: 4, textShadow: '1px 1px 0 #000' }}
+              >
+                {profileData.title}
+              </p>
+            </motion.div>
+
+            {/* XP Bar */}
+            <motion.div variants={itemVariants} style={{ marginBottom: '1.25rem' }}>
+              <XPBar value={78} label="Developer Level 12" />
+            </motion.div>
+
+            {/* Bio */}
+            <motion.div variants={itemVariants} style={{ marginBottom: '1.25rem' }}>
+              <div style={{
+                background: '#111',
+                border: '2px solid #2A2A2A',
+                borderRadius: 8,
+                padding: '10px 14px',
+              }}>
+                <p className="nunito" style={{ color: '#ABABAB', fontSize: '0.88rem', margin: 0, lineHeight: 1.6 }}>
+                  {profileData.bio.short}
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Stats Grid */}
+            <motion.div variants={itemVariants} style={{ marginBottom: '1.25rem' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 8 }}>
+                {stats.map((stat) => (
+                  <div
+                    key={stat.label}
+                    style={{
+                      background: '#111',
+                      border: '2px solid #2A2A2A',
+                      borderRadius: 8,
+                      padding: '10px 6px',
+                      textAlign: 'center',
+                      boxShadow: '0 3px 0 rgba(0,0,0,0.6)',
+                    }}
+                  >
+                    <stat.icon style={{ color: stat.color, width: 16, height: 16, margin: '0 auto 4px' }} />
+                    <p className="fredoka" style={{ color: '#F2F2F2', fontSize: '1.1rem', margin: 0, lineHeight: 1 }}>
+                      {stat.value}
+                    </p>
+                    <p className="pixel" style={{ color: '#555', fontSize: '0.38rem', marginTop: 2, lineHeight: 1.4 }}>
+                      {stat.label}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Badges / Highlights */}
+            <motion.div variants={itemVariants} style={{ marginBottom: '1.5rem' }}>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+                {profileData.highlights.map((h, i) => {
+                  const colors = ['rb-badge-gold', 'rb-badge-blue', 'rb-badge-green', 'rb-badge-purple'];
+                  return (
+                    <span key={i} className={`rb-badge ${colors[i % colors.length]}`}>
+                      {h}
+                    </span>
+                  );
+                })}
+              </div>
+            </motion.div>
+
+            {/* CTAs */}
+            <motion.div variants={itemVariants} style={{ display: 'flex', flexWrap: 'wrap', gap: 12, marginBottom: '1.25rem' }}>
+              <Button href="#projects" icon={FaArrowRight} iconPosition="right" size="lg">
+                View Projects
+              </Button>
+              <Button href={profileData.resumeUrl} variant="secondary" icon={FaDownload} external size="lg">
+                Resume
+              </Button>
+            </motion.div>
+
+            {/* Social Links */}
+            <motion.div variants={itemVariants} style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+              {socialLinks.map((social) => (
+                <motion.a
+                  key={social.platform}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2.5 rounded-lg transition-all"
+                  style={{
+                    background: '#1A1A1A',
+                    border: '2px solid #3A3A3A',
+                    color: '#ABABAB',
+                    boxShadow: '0 3px 0 rgba(0,0,0,0.5)',
+                    display: 'flex',
+                  }}
+                  aria-label={social.label}
+                  whileHover={{ borderColor: '#E8192C', color: '#F2F2F2', y: -2, boxShadow: '0 5px 0 rgba(0,0,0,0.5)' }}
+                  whileTap={{ y: 2, boxShadow: '0 1px 0 rgba(0,0,0,0.5)' }}
+                >
+                  <social.icon className="w-4 h-4" />
+                </motion.a>
+              ))}
+            </motion.div>
+          </div>
+
+          {/* Card Footer */}
+          <div style={{
+            background: '#111',
+            borderTop: '2px solid #2A2A2A',
+            padding: '8px 20px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+          }}>
+            <span className="pixel" style={{ color: '#444', fontSize: '0.4rem' }}>
+              🌍 {profileData.location}
+            </span>
+            <StarRating rating={5} />
+          </div>
+        </motion.div>
+
+        {/* Scroll hint */}
+        <motion.div
+          className="text-center mt-6"
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 2, repeat: Infinity }}
+        >
+          <span className="pixel" style={{ color: '#444', fontSize: '0.45rem' }}>▼ SCROLL TO EXPLORE ▼</span>
+        </motion.div>
+      </motion.div>
     </section>
   );
 }

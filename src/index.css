@@ -1,65 +1,68 @@
 @import "tailwindcss";
 
 /* ============================================================
-   WEB3 3D IMMERSIVE DESIGN SYSTEM
-   Deep Space Dark Theme with Neon Cyber Accents
+   🎮 ROBLOX-THEMED DESIGN SYSTEM
+   Dark Game UI Aesthetic
    ============================================================ */
 
-/* Enable dark mode with class strategy */
 @custom-variant dark (&:where(.dark, .dark *));
 
 /* ============================================================
-   CSS Custom Properties – Web3 Palette
+   CSS Custom Properties – Roblox Palette
    ============================================================ */
 :root {
-  /* Neon accent palette */
-  --color-neon-cyan: #00f5ff;
-  --color-neon-cyan-dim: #00c4cc;
-  --color-neon-violet: #7c3aed;
-  --color-neon-violet-bright: #a855f7;
-  --color-neon-magenta: #e879f9;
-  --color-neon-green: #22d3ee;
-  --color-neon-orange: #fb923c;
+  /* Core Roblox Colors */
+  --rb-red:          #E8192C;
+  --rb-red-dark:     #B8131F;
+  --rb-red-glow:     rgba(232, 25, 44, 0.4);
+  --rb-blue:         #0077D4;
+  --rb-blue-light:   #22A7E0;
+  --rb-green:        #00A400;
+  --rb-green-light:  #00CC00;
+  --rb-yellow:       #FFD700;
+  --rb-gold:         #E6A817;
+  --rb-purple:       #7B2FBE;
+  --rb-orange:       #FF6B00;
 
-  /* Legacy aliases (keep for compat) */
-  --color-primary: #00f5ff;
-  --color-primary-dark: #00c4cc;
-  --color-secondary: #a855f7;
-  --color-accent: #e879f9;
+  /* Backgrounds */
+  --rb-bg-base:      #0F0F0F;
+  --rb-bg-panel:     #1A1A1A;
+  --rb-bg-card:      #242424;
+  --rb-bg-hover:     #2E2E2E;
+  --rb-bg-elevated:  #333333;
 
-  /* Light mode → keep as fallback but we push dark Web3 by default */
-  --color-bg-primary: #ffffff;
-  --color-bg-secondary: #f8fafc;
-  --color-bg-tertiary: #f1f5f9;
-  --color-text-primary: #0f172a;
-  --color-text-secondary: #475569;
-  --color-text-muted: #94a3b8;
-  --color-border: #e2e8f0;
+  /* Borders */
+  --rb-border:       #3A3A3A;
+  --rb-border-bright:#555555;
 
-  /* Glow values */
-  --glow-cyan: 0 0 20px rgba(0, 245, 255, 0.4), 0 0 40px rgba(0, 245, 255, 0.15);
-  --glow-violet: 0 0 20px rgba(168, 85, 247, 0.4), 0 0 40px rgba(168, 85, 247, 0.15);
-  --glow-magenta: 0 0 20px rgba(232, 121, 249, 0.4), 0 0 40px rgba(232, 121, 249, 0.15);
+  /* Text */
+  --rb-text:         #F2F2F2;
+  --rb-text-sub:     #ABABAB;
+  --rb-text-muted:   #666666;
 
-  /* Glass */
-  --glass-bg: rgba(255, 255, 255, 0.05);
-  --glass-border: rgba(255, 255, 255, 0.1);
-  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  /* Legacy aliases */
+  --color-primary:        var(--rb-red);
+  --color-primary-dark:   var(--rb-red-dark);
+  --color-secondary:      var(--rb-blue);
+  --color-accent:         var(--rb-yellow);
+  --color-bg-primary:     var(--rb-bg-base);
+  --color-bg-secondary:   var(--rb-bg-panel);
+  --color-bg-tertiary:    var(--rb-bg-card);
+  --color-text-primary:   var(--rb-text);
+  --color-text-secondary: var(--rb-text-sub);
+  --color-text-muted:     var(--rb-text-muted);
+  --color-border:         var(--rb-border);
 }
 
-/* Dark = Web3 space theme (forced on by default via JS/context) */
+/* Dark mode = Roblox is always dark */
 .dark {
-  --color-bg-primary: #030712;
-  --color-bg-secondary: #0a0f1e;
-  --color-bg-tertiary: #0f172a;
-  --color-text-primary: #f0f4ff;
-  --color-text-secondary: #94a3b8;
-  --color-text-muted: #475569;
-  --color-border: rgba(255, 255, 255, 0.08);
-
-  --glass-bg: rgba(10, 15, 30, 0.6);
-  --glass-border: rgba(0, 245, 255, 0.12);
-  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 1px rgba(0, 245, 255, 0.1);
+  --color-bg-primary:     var(--rb-bg-base);
+  --color-bg-secondary:   var(--rb-bg-panel);
+  --color-bg-tertiary:    var(--rb-bg-card);
+  --color-text-primary:   var(--rb-text);
+  --color-text-secondary: var(--rb-text-sub);
+  --color-text-muted:     var(--rb-text-muted);
+  --color-border:         var(--rb-border);
 }
 
 /* ============================================================
@@ -74,352 +77,482 @@ html {
 }
 
 body {
-  font-family: 'Space Grotesk', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  background-color: var(--color-bg-primary);
-  color: var(--color-text-primary);
-  transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: var(--rb-bg-base);
+  color: var(--rb-text);
   line-height: 1.6;
   margin: 0;
   overflow-x: hidden;
 }
 
 /* ============================================================
-   Animated Grid Background
+   Roblox Brick / Baseplate Background
    ============================================================ */
-.web3-grid-bg {
+.roblox-bg {
   position: fixed;
   inset: 0;
   z-index: 0;
   pointer-events: none;
+
+  /* Dark brick pattern using repeating gradients */
+  background-color: #0D0D0D;
   background-image:
-    linear-gradient(rgba(0, 245, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 245, 255, 0.04) 1px, transparent 1px);
-  background-size: 60px 60px;
-  mask-image: radial-gradient(ellipse 80% 60% at 50% 20%, black 40%, transparent 100%);
-  animation: gridPulse 8s ease-in-out infinite;
+    /* Horizontal mortar lines */
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 29px,
+      rgba(255,255,255,0.03) 29px,
+      rgba(255,255,255,0.03) 30px
+    ),
+    /* Vertical mortar lines (offset every other row) */
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 59px,
+      rgba(255,255,255,0.03) 59px,
+      rgba(255,255,255,0.03) 60px
+    );
+  background-size: 60px 30px;
 }
 
-@keyframes gridPulse {
-  0%, 100% { opacity: 0.6; }
-  50% { opacity: 1; }
-}
-
-/* ============================================================
-   Floating Orb Blobs
-   ============================================================ */
-.web3-orb {
-  position: fixed;
-  border-radius: 50%;
-  filter: blur(80px);
-  pointer-events: none;
-  z-index: 0;
-  animation: orbFloat 12s ease-in-out infinite;
-}
-
-.web3-orb-1 {
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(0, 245, 255, 0.12) 0%, transparent 70%);
-  top: -150px;
-  right: -150px;
-  animation-duration: 14s;
-}
-
-.web3-orb-2 {
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, transparent 70%);
-  bottom: 10%;
-  left: -100px;
-  animation-duration: 18s;
-  animation-delay: -6s;
-}
-
-.web3-orb-3 {
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(circle, rgba(232, 121, 249, 0.1) 0%, transparent 70%);
-  top: 40%;
-  right: 20%;
-  animation-duration: 10s;
-  animation-delay: -3s;
-}
-
-@keyframes orbFloat {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(30px, -40px) scale(1.05); }
-  66% { transform: translate(-20px, 20px) scale(0.95); }
-}
-
-/* ============================================================
-   Glassmorphism Card
-   ============================================================ */
-.glass-card {
-  background: var(--glass-bg);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid var(--glass-border);
-  box-shadow: var(--glass-shadow);
-}
-
-.glass-card:hover {
-  border-color: rgba(0, 245, 255, 0.25);
-  box-shadow: var(--glass-shadow), 0 0 30px rgba(0, 245, 255, 0.08);
-}
-
-/* ============================================================
-   Neon Glow Utilities
-   ============================================================ */
-.neon-glow-cyan {
-  box-shadow: var(--glow-cyan);
-}
-
-.neon-glow-violet {
-  box-shadow: var(--glow-violet);
-}
-
-.neon-text-cyan {
-  color: var(--color-neon-cyan);
-  text-shadow: 0 0 10px rgba(0, 245, 255, 0.5), 0 0 30px rgba(0, 245, 255, 0.2);
-}
-
-.neon-text-violet {
-  color: var(--color-neon-violet-bright);
-  text-shadow: 0 0 10px rgba(168, 85, 247, 0.5), 0 0 30px rgba(168, 85, 247, 0.2);
-}
-
-/* ============================================================
-   Text Gradient – Web3 Edition
-   ============================================================ */
-.text-gradient {
-  background: linear-gradient(135deg, var(--color-neon-cyan), var(--color-neon-violet-bright), var(--color-neon-magenta));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.text-gradient-cyan-violet {
-  background: linear-gradient(135deg, var(--color-neon-cyan) 0%, var(--color-neon-violet-bright) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.text-gradient-violet-magenta {
-  background: linear-gradient(135deg, var(--color-neon-violet-bright) 0%, var(--color-neon-magenta) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* ============================================================
-   Neon Border Gradient
-   ============================================================ */
-.neon-border {
-  border: 1px solid transparent;
-  background-clip: padding-box;
-  position: relative;
-}
-
-.neon-border::before {
+/* Bottom vignette to keep content readable */
+.roblox-bg::after {
   content: '';
   position: absolute;
   inset: 0;
-  border-radius: inherit;
-  padding: 1px;
-  background: linear-gradient(135deg, var(--color-neon-cyan), var(--color-neon-violet-bright));
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
+  background: radial-gradient(ellipse 100% 70% at 50% 100%, rgba(13,13,13,0.95) 0%, transparent 70%),
+              radial-gradient(ellipse 80% 60% at 50% 0%, rgba(13,13,13,0.6) 0%, transparent 60%);
 }
 
 /* ============================================================
-   Shimmer / Scan-line Button Animation
+   Floating Pixel Blocks
    ============================================================ */
-.shimmer-btn {
+.pixel-block {
+  position: fixed;
+  pointer-events: none;
+  z-index: 0;
+  border-radius: 4px;
+  animation: blockFloat linear infinite;
+  opacity: 0.12;
+}
+
+.pixel-block-1 {
+  width: 24px; height: 24px;
+  background: var(--rb-red);
+  top: 15%; left: 8%;
+  animation-duration: 22s;
+  animation-delay: 0s;
+  transform: rotate(15deg);
+}
+.pixel-block-2 {
+  width: 16px; height: 16px;
+  background: var(--rb-blue);
+  top: 35%; right: 10%;
+  animation-duration: 28s;
+  animation-delay: -8s;
+  transform: rotate(-20deg);
+}
+.pixel-block-3 {
+  width: 32px; height: 32px;
+  background: var(--rb-yellow);
+  top: 60%; left: 5%;
+  animation-duration: 20s;
+  animation-delay: -14s;
+  transform: rotate(45deg);
+}
+.pixel-block-4 {
+  width: 20px; height: 20px;
+  background: var(--rb-green);
+  top: 75%; right: 15%;
+  animation-duration: 25s;
+  animation-delay: -5s;
+  transform: rotate(-10deg);
+}
+.pixel-block-5 {
+  width: 14px; height: 14px;
+  background: var(--rb-purple);
+  top: 20%; right: 25%;
+  animation-duration: 30s;
+  animation-delay: -18s;
+  transform: rotate(30deg);
+}
+.pixel-block-6 {
+  width: 28px; height: 28px;
+  background: var(--rb-orange);
+  top: 50%; left: 20%;
+  animation-duration: 24s;
+  animation-delay: -11s;
+  transform: rotate(-35deg);
+}
+
+@keyframes blockFloat {
+  0%   { transform: translateY(0) rotate(0deg); }
+  25%  { transform: translateY(-40px) rotate(90deg); }
+  50%  { transform: translateY(-20px) rotate(180deg); }
+  75%  { transform: translateY(-55px) rotate(270deg); }
+  100% { transform: translateY(0) rotate(360deg); }
+}
+
+/* ============================================================
+   Roblox UI Panel (Card base)
+   ============================================================ */
+.rb-panel {
+  background: var(--rb-bg-panel);
+  border: 2px solid var(--rb-border);
+  border-radius: 10px;
+  box-shadow:
+    0 4px 0 rgba(0,0,0,0.5),
+    inset 0 1px 0 rgba(255,255,255,0.04);
+}
+
+.rb-panel-elevated {
+  background: var(--rb-bg-card);
+  border: 2px solid var(--rb-border-bright);
+  border-radius: 10px;
+  box-shadow:
+    0 6px 0 rgba(0,0,0,0.6),
+    inset 0 1px 0 rgba(255,255,255,0.06);
+}
+
+.rb-panel-red {
+  background: var(--rb-bg-panel);
+  border: 2px solid var(--rb-red);
+  border-radius: 10px;
+  box-shadow:
+    0 4px 0 var(--rb-red-dark),
+    0 0 20px rgba(232,25,44,0.15);
+}
+
+/* ============================================================
+   3D Roblox Button
+   ============================================================ */
+.rb-btn {
+  position: relative;
+  font-family: 'Fredoka One', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.08s ease, box-shadow 0.08s ease;
+  user-select: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.rb-btn-primary {
+  background: var(--rb-red);
+  color: #fff;
+  box-shadow: 0 5px 0 var(--rb-red-dark);
+}
+
+.rb-btn-primary:hover {
+  background: #f02030;
+  box-shadow: 0 5px 0 var(--rb-red-dark);
+  transform: translateY(-1px);
+}
+
+.rb-btn-primary:active {
+  transform: translateY(3px);
+  box-shadow: 0 2px 0 var(--rb-red-dark);
+}
+
+.rb-btn-secondary {
+  background: var(--rb-bg-card);
+  color: var(--rb-text);
+  border: 2px solid var(--rb-border-bright);
+  box-shadow: 0 4px 0 rgba(0,0,0,0.6);
+}
+
+.rb-btn-secondary:hover {
+  background: var(--rb-bg-hover);
+  border-color: var(--rb-text-sub);
+  transform: translateY(-1px);
+}
+
+.rb-btn-secondary:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 rgba(0,0,0,0.6);
+}
+
+.rb-btn-green {
+  background: var(--rb-green);
+  color: #fff;
+  box-shadow: 0 5px 0 #007300;
+}
+
+.rb-btn-green:hover {
+  background: var(--rb-green-light);
+  transform: translateY(-1px);
+}
+
+.rb-btn-green:active {
+  transform: translateY(3px);
+  box-shadow: 0 2px 0 #007300;
+}
+
+/* ============================================================
+   XP / Progress Bar
+   ============================================================ */
+.xp-bar-track {
+  height: 14px;
+  background: var(--rb-bg-card);
+  border: 2px solid var(--rb-border);
+  border-radius: 7px;
+  overflow: hidden;
+  position: relative;
+}
+
+.xp-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--rb-yellow), var(--rb-gold));
+  border-radius: 5px;
+  position: relative;
+  transition: width 1s ease;
+  box-shadow: 0 0 8px rgba(255,215,0,0.5);
+}
+
+.xp-bar-fill::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 12px,
+    rgba(255,255,255,0.1) 12px,
+    rgba(255,255,255,0.1) 14px
+  );
+}
+
+/* ============================================================
+   Star Rating
+   ============================================================ */
+.star-rating {
+  display: flex;
+  gap: 2px;
+  color: var(--rb-yellow);
+  font-size: 0.75rem;
+}
+
+/* ============================================================
+   Online Status Dot
+   ============================================================ */
+.online-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--rb-green-light);
+  box-shadow: 0 0 8px var(--rb-green);
+  animation: onlinePulse 2s ease-in-out infinite;
+  display: inline-block;
+}
+
+@keyframes onlinePulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(0.85); }
+}
+
+/* ============================================================
+   Roblox Item Slot (Inventory)
+   ============================================================ */
+.item-slot {
+  background: var(--rb-bg-card);
+  border: 2px solid var(--rb-border);
+  border-radius: 8px;
+  transition: all 0.15s ease;
+  cursor: pointer;
   position: relative;
   overflow: hidden;
 }
 
-.shimmer-btn::after {
+.item-slot::before {
   content: '';
   position: absolute;
-  top: -50%;
-  left: -75%;
-  width: 50%;
-  height: 200%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.2),
-    transparent
-  );
-  transform: skewX(-20deg);
-  transition: none;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, transparent 50%);
 }
 
-.shimmer-btn:hover::after {
-  animation: shimmerSweep 0.6s ease-out forwards;
-}
-
-@keyframes shimmerSweep {
-  from { left: -75%; }
-  to { left: 125%; }
+.item-slot:hover {
+  border-color: var(--rb-red);
+  background: var(--rb-bg-hover);
+  box-shadow: 0 0 12px rgba(232,25,44,0.2), 0 4px 0 rgba(0,0,0,0.5);
+  transform: translateY(-2px);
 }
 
 /* ============================================================
-   Card Hover – 3D lift
+   Game Card (Projects)
    ============================================================ */
-.card-hover {
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-  transform-style: preserve-3d;
+.game-card {
+  background: var(--rb-bg-panel);
+  border: 2px solid var(--rb-border);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.2s ease;
+  cursor: pointer;
 }
 
-.card-hover:hover {
-  transform: translateY(-6px) scale(1.01);
-  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.4), 0 0 40px rgba(0, 245, 255, 0.1);
+.game-card:hover {
+  border-color: var(--rb-red);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 0 rgba(0,0,0,0.5), 0 0 20px rgba(232,25,44,0.2);
 }
 
-/* ============================================================
-   Section Title Neon Underline
-   ============================================================ */
-.section-title-underline {
+.game-card-thumbnail {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: var(--rb-bg-card);
   position: relative;
-  display: inline-block;
+  overflow: hidden;
 }
 
-.section-title-underline::after {
+.game-card-thumbnail::after {
   content: '';
   position: absolute;
-  bottom: -8px;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, var(--color-neon-cyan), var(--color-neon-violet-bright), transparent);
-  border-radius: 2px;
-  box-shadow: 0 0 10px rgba(0, 245, 255, 0.6);
+  inset: 0;
+  background: linear-gradient(180deg, transparent 60%, rgba(0,0,0,0.6) 100%);
 }
 
 /* ============================================================
-   Neon Scrollbar
+   Roblox Badge (Achievement)
    ============================================================ */
-::-webkit-scrollbar {
-  width: 6px;
+.rb-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+  border: 2px solid;
+  text-transform: uppercase;
 }
 
-::-webkit-scrollbar-track {
-  background: #0a0f1e;
+.rb-badge-red   { background: rgba(232,25,44,0.15);  border-color: rgba(232,25,44,0.4);  color: #ff4d5e; }
+.rb-badge-blue  { background: rgba(0,119,212,0.15);  border-color: rgba(0,119,212,0.4);  color: #3399ff; }
+.rb-badge-green { background: rgba(0,164,0,0.15);    border-color: rgba(0,164,0,0.4);    color: #00cc00; }
+.rb-badge-gold  { background: rgba(255,215,0,0.15);  border-color: rgba(255,215,0,0.4);  color: #ffd700; }
+.rb-badge-grey  { background: rgba(90,90,90,0.3);    border-color: rgba(90,90,90,0.5);   color: #aaaaaa; }
+.rb-badge-purple{ background: rgba(123,47,190,0.15); border-color: rgba(123,47,190,0.4); color: #aa66ff; }
+
+/* ============================================================
+   Section Header – Roblox Style
+   ============================================================ */
+.rb-section-label {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  color: var(--rb-red);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 8px;
 }
 
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, var(--color-neon-cyan), var(--color-neon-violet-bright));
-  border-radius: 3px;
-  box-shadow: 0 0 8px rgba(0, 245, 255, 0.5);
+.rb-section-title {
+  font-family: 'Fredoka One', sans-serif;
+  color: var(--rb-text);
+  letter-spacing: 0.01em;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-neon-cyan);
-  box-shadow: 0 0 12px rgba(0, 245, 255, 0.8);
+.rb-section-divider {
+  height: 4px;
+  width: 60px;
+  background: var(--rb-red);
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba(232,25,44,0.5);
+  margin: 12px 0;
 }
 
 /* ============================================================
-   Selection
+   Roblox Scrollbar
+   ============================================================ */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--rb-bg-panel); }
+::-webkit-scrollbar-thumb {
+  background: var(--rb-red);
+  border-radius: 4px;
+  box-shadow: 0 0 4px rgba(232,25,44,0.4);
+}
+::-webkit-scrollbar-thumb:hover { background: #f02030; }
+
+/* ============================================================
+   Text Utilities
+   ============================================================ */
+.text-roblox-red    { color: var(--rb-red); }
+.text-roblox-yellow { color: var(--rb-yellow); }
+.text-roblox-blue   { color: var(--rb-blue-light); }
+.text-roblox-green  { color: var(--rb-green-light); }
+
+.fredoka { font-family: 'Fredoka One', sans-serif; }
+.pixel   { font-family: 'Press Start 2P', monospace; }
+.nunito  { font-family: 'Nunito', sans-serif; }
+
+/* ============================================================
+   Selection & Focus
    ============================================================ */
 ::selection {
-  background-color: rgba(0, 245, 255, 0.25);
-  color: var(--color-neon-cyan);
+  background: rgba(232,25,44,0.3);
+  color: #fff;
 }
 
-/* ============================================================
-   Focus Styles
-   ============================================================ */
 :focus-visible {
-  outline: 2px solid var(--color-neon-cyan);
+  outline: 2px solid var(--rb-red);
   outline-offset: 3px;
-  box-shadow: 0 0 12px rgba(0, 245, 255, 0.4);
 }
 
 /* ============================================================
-   Link Underline Animation – Neon Edition
+   Card hover utility
    ============================================================ */
-.link-underline {
-  position: relative;
+.card-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.card-hover:hover {
+  transform: translateY(-3px);
 }
 
+/* ============================================================
+   Link underline animation
+   ============================================================ */
+.link-underline { position: relative; }
 .link-underline::after {
   content: '';
   position: absolute;
-  width: 0;
-  height: 1px;
-  bottom: -2px;
-  left: 0;
-  background: linear-gradient(90deg, var(--color-neon-cyan), var(--color-neon-violet-bright));
-  box-shadow: 0 0 6px rgba(0, 245, 255, 0.6);
+  width: 0; height: 2px;
+  bottom: -2px; left: 0;
+  background: var(--rb-red);
   transition: width 0.3s ease;
 }
-
-.link-underline:hover::after {
-  width: 100%;
-}
+.link-underline:hover::after { width: 100%; }
 
 /* ============================================================
-   Cyber Badge / Pill
+   Loading progress bar animation
    ============================================================ */
-.cyber-badge {
-  background: rgba(0, 245, 255, 0.08);
-  border: 1px solid rgba(0, 245, 255, 0.2);
-  color: var(--color-neon-cyan);
-  font-family: 'JetBrains Mono', 'Space Grotesk', monospace;
-  font-size: 0.75rem;
-  letter-spacing: 0.05em;
-  transition: all 0.2s ease;
+@keyframes loadProgress {
+  0%   { width: 5%; }
+  30%  { width: 40%; }
+  60%  { width: 70%; }
+  85%  { width: 90%; }
+  100% { width: 100%; }
 }
 
-.cyber-badge:hover {
-  background: rgba(0, 245, 255, 0.15);
-  border-color: rgba(0, 245, 255, 0.5);
-  box-shadow: 0 0 12px rgba(0, 245, 255, 0.25);
-}
+.load-bar { animation: loadProgress 2s ease-out forwards; }
 
 /* ============================================================
-   Hexagonal Spinner (Loading)
+   Tooltip (Roblox hover card)
    ============================================================ */
-.hex-spinner {
-  width: 48px;
-  height: 48px;
-  border: 2px solid transparent;
-  border-top-color: var(--color-neon-cyan);
-  border-right-color: var(--color-neon-violet-bright);
-  border-radius: 50%;
-  animation: hexSpin 1s linear infinite;
-  box-shadow: 0 0 20px rgba(0, 245, 255, 0.3);
-}
-
-@keyframes hexSpin {
-  to { transform: rotate(360deg); }
-}
-
-/* ============================================================
-   Mono Code Accent
-   ============================================================ */
-.mono {
-  font-family: 'JetBrains Mono', 'Courier New', monospace;
-}
-
-/* ============================================================
-   Scan Lines Overlay (subtle CRT effect)
-   ============================================================ */
-.scan-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  background: repeating-linear-gradient(
-    0deg,
-    transparent,
-    transparent 2px,
-    rgba(0, 0, 0, 0.03) 2px,
-    rgba(0, 0, 0, 0.03) 4px
-  );
+.rb-tooltip {
+  background: var(--rb-bg-elevated);
+  border: 2px solid var(--rb-border-bright);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.8rem;
+  color: var(--rb-text);
+  box-shadow: 0 4px 0 rgba(0,0,0,0.5);
+  white-space: nowrap;
 }

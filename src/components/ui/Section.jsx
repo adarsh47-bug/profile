@@ -8,6 +8,7 @@ const Section = memo(function Section({
   containerClass = '',
   title,
   subtitle,
+  label,            // pixel-font label above title (e.g. "GAME BROWSER")
   centered = true,
   ariaLabel,
   headingLevel = 'h2',
@@ -22,7 +23,7 @@ const Section = memo(function Section({
       aria-labelledby={title ? `${id}-heading` : undefined}
     >
       <div className={`max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 ${containerClass}`}>
-        {(title || subtitle) && (
+        {(title || subtitle || label) && (
           <motion.div
             className={`mb-12 ${centered ? 'text-center' : ''}`}
             initial={{ opacity: 0, y: 20 }}
@@ -30,19 +31,31 @@ const Section = memo(function Section({
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
+            {/* Pixel label */}
+            {label && (
+              <span className="rb-section-label">{label}</span>
+            )}
+
+            {/* Main title */}
             {title && (
               <HeadingComponent
                 id={`${id}-heading`}
-                className="text-3xl md:text-4xl font-bold mb-4 section-title-underline inline-block text-gradient"
-                style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+                className="rb-section-title text-3xl md:text-4xl mb-3"
               >
                 {title}
               </HeadingComponent>
             )}
+
+            {/* Red divider bar */}
+            {title && (
+              <div className={`rb-section-divider ${centered ? 'mx-auto' : ''}`} />
+            )}
+
+            {/* Subtitle */}
             {subtitle && (
               <p
-                className="text-lg max-w-2xl mx-auto mt-6"
-                style={{ color: 'var(--color-text-secondary)' }}
+                className="text-base max-w-2xl mt-4"
+                style={{ color: '#ABABAB', fontFamily: "'Nunito', sans-serif", ...(centered ? { margin: '1rem auto 0' } : {}) }}
               >
                 {subtitle}
               </p>

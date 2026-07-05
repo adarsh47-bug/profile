@@ -1,10 +1,9 @@
 import { motion } from 'framer-motion';
-import { FaMapMarkerAlt, FaBriefcase, FaGraduationCap, FaStar } from 'react-icons/fa';
+import { FaMapMarkerAlt, FaBriefcase, FaGraduationCap, FaStar, FaShieldAlt } from 'react-icons/fa';
 import * as SiIcons from 'react-icons/si';
 import { Section, Badge } from '../ui';
 import { profileData, educationData, skillsData } from '../../data';
 
-// Icon mapping for skill icons
 const iconMap = {
   'SiJavascript': SiIcons.SiJavascript,
   'SiTypescript': SiIcons.SiTypescript,
@@ -17,294 +16,155 @@ const iconMap = {
   'SiAndroid': SiIcons.SiAndroid,
 };
 
-const ANIMATION_CONFIG = {
-  initial: { opacity: 0 },
-  whileInView: { opacity: 1 },
-  viewport: { once: true },
-};
-
 export default function About() {
   const topSkills = skillsData.topSkills;
+  const education = educationData.education[0];
+
+  const infoRows = [
+    { Icon: FaMapMarkerAlt, color: '#22A7E0', label: 'Location', value: profileData.location },
+    { Icon: FaBriefcase,    color: '#E8192C', label: 'Role',     value: profileData.currentRole?.title || 'Developer' },
+    { Icon: FaGraduationCap,color: '#FFD700', label: 'College',  value: education ? `${education.degree} — ${education.institution}` : '' },
+  ];
+
+  const stats = [
+    { value: '10K+', label: 'App Downloads',     color: '#FFD700' },
+    { value: '650+', label: 'Hoardings Managed', color: '#22A7E0' },
+    { value: '27+',  label: 'Stations Trained',  color: '#00CC00' },
+    { value: '130+', label: 'Schools Served',    color: '#E8192C' },
+  ];
 
   return (
     <Section
       id="about"
+      label="PLAYER INFO"
       title="About Me"
-      subtitle="Get to know more about my background and what drives me"
+      subtitle="My background, skills and stats"
     >
-      <div className="grid gap-12">
-        {/* Bio */}
-        <motion.div {...ANIMATION_CONFIG} transition={{ duration: 0.5 }}>
-          <p
-            className="text-lg text-center leading-relaxed"
-            style={{
-              color: 'var(--color-text-secondary)',
-              fontFamily: "'Space Grotesk', sans-serif",
-            }}
-          >
-            {profileData.bio.long}
-          </p>
+      <div className="grid gap-8 md:grid-cols-2">
+
+        {/* Left: Player bio + info */}
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="space-y-5"
+        >
+          {/* Bio panel */}
+          <div className="rb-panel" style={{ padding: '1.25rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
+              <FaShieldAlt style={{ color: '#E8192C', width: 16, height: 16 }} />
+              <span className="fredoka" style={{ color: '#F2F2F2', fontSize: '1.1rem' }}>Player Description</span>
+            </div>
+            <p className="nunito" style={{ color: '#ABABAB', lineHeight: 1.7, margin: 0, fontSize: '0.9rem' }}>
+              {profileData.bio.long}
+            </p>
+          </div>
+
+          {/* Info rows */}
+          <div className="rb-panel" style={{ padding: '1.25rem' }}>
+            <span className="pixel" style={{ color: '#E8192C', fontSize: '0.5rem', display: 'block', marginBottom: 12, letterSpacing: '0.1em' }}>
+              PLAYER DETAILS
+            </span>
+            <div className="space-y-3">
+              {infoRows.map(({ Icon, color, label, value }) => value && (
+                <div key={label} style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
+                  <div style={{
+                    background: `${color}22`,
+                    border: `2px solid ${color}44`,
+                    borderRadius: 6,
+                    padding: '6px',
+                    flexShrink: 0,
+                  }}>
+                    <Icon style={{ color, width: 14, height: 14 }} />
+                  </div>
+                  <div>
+                    <p className="pixel" style={{ color: '#555', fontSize: '0.42rem', marginBottom: 2 }}>{label}</p>
+                    <p className="nunito" style={{ color: '#F2F2F2', fontWeight: 700, margin: 0, fontSize: '0.88rem' }}>{value}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Languages */}
+          <div className="rb-panel" style={{ padding: '1.25rem' }}>
+            <span className="pixel" style={{ color: '#E8192C', fontSize: '0.5rem', display: 'block', marginBottom: 10, letterSpacing: '0.1em' }}>
+              LANGUAGES
+            </span>
+            <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+              {profileData.languages.map(lang => (
+                <span key={lang} className="rb-badge rb-badge-grey nunito">{lang}</span>
+              ))}
+            </div>
+          </div>
         </motion.div>
 
-        {/* Content Grid */}
-        <div className="grid gap-12 md:grid-cols-2">
-          <LeftColumn topSkills={topSkills} />
-          <RightColumn />
-        </div>
+        {/* Right: Equipped skills + stats */}
+        <motion.div
+          initial={{ opacity: 0, x: 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.15 }}
+          className="space-y-5"
+        >
+          {/* Equipped items (top skills) */}
+          <div className="rb-panel" style={{ padding: '1.25rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
+              <FaStar style={{ color: '#FFD700', width: 16, height: 16 }} />
+              <span className="fredoka" style={{ color: '#F2F2F2', fontSize: '1.1rem' }}>Equipped Skills</span>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 8 }}>
+              {topSkills.map(skill => {
+                const Icon = iconMap[skill.icon];
+                return (
+                  <motion.div
+                    key={skill.name}
+                    className="item-slot"
+                    style={{ padding: '12px 8px', textAlign: 'center' }}
+                    whileHover={{ scale: 1.05 }}
+                  >
+                    {Icon && <Icon style={{ width: 24, height: 24, color: '#22A7E0', margin: '0 auto 6px', display: 'block' }} />}
+                    <p className="nunito" style={{ color: '#F2F2F2', fontSize: '0.72rem', fontWeight: 700, margin: 0 }}>
+                      {skill.name}
+                    </p>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Achievement Stats */}
+          <div className="rb-panel" style={{ padding: '1.25rem' }}>
+            <span className="pixel" style={{ color: '#E8192C', fontSize: '0.5rem', display: 'block', marginBottom: 12, letterSpacing: '0.1em' }}>
+              ACHIEVEMENT STATS
+            </span>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 10 }}>
+              {stats.map(stat => (
+                <motion.div
+                  key={stat.label}
+                  style={{
+                    background: '#111',
+                    border: `2px solid ${stat.color}33`,
+                    borderRadius: 8,
+                    padding: '14px 10px',
+                    textAlign: 'center',
+                    boxShadow: '0 3px 0 rgba(0,0,0,0.5)',
+                  }}
+                  whileHover={{ borderColor: stat.color, boxShadow: `0 0 12px ${stat.color}33, 0 3px 0 rgba(0,0,0,0.5)` }}
+                >
+                  <p className="fredoka" style={{ color: stat.color, fontSize: '1.8rem', margin: 0, lineHeight: 1, textShadow: '1px 1px 0 #000' }}>
+                    {stat.value}
+                  </p>
+                  <p className="pixel" style={{ color: '#555', fontSize: '0.42rem', marginTop: 4, lineHeight: 1.6 }}>
+                    {stat.label}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
       </div>
     </Section>
-  );
-}
-
-function LeftColumn({ topSkills }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, x: -30 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5 }}
-    >
-      <TopSkillsCard topSkills={topSkills} />
-      <div className="mt-6 space-y-4">
-        <LocationCard />
-        <CurrentRoleCard />
-        <EducationCard />
-      </div>
-    </motion.div>
-  );
-}
-
-function RightColumn() {
-  return (
-    <motion.div
-      initial={{ opacity: 0, x: 30 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: 0.2 }}
-      className="space-y-6"
-    >
-      <LanguagesCard />
-      <StatsGrid />
-    </motion.div>
-  );
-}
-
-function TopSkillsCard({ topSkills }) {
-  return (
-    <div
-      className="rounded-xl p-6"
-      style={{
-        background: 'rgba(0,245,255,0.04)',
-        border: '1px solid rgba(0,245,255,0.12)',
-        backdropFilter: 'blur(12px)',
-      }}
-    >
-      <h3
-        className="mb-4 flex items-center gap-2 text-lg font-semibold"
-        style={{ fontFamily: "'Space Grotesk', sans-serif", color: '#00f5ff' }}
-      >
-        <FaStar className="h-4 w-4" style={{ color: '#e879f9' }} />
-        Top Skills
-      </h3>
-      <div className="flex flex-wrap gap-2">
-        {topSkills.map(skill => {
-          const Icon = iconMap[skill.icon];
-          return (
-            <Badge key={skill.name} variant="primary" size="md" icon={Icon}>
-              {skill.name}
-            </Badge>
-          );
-        })}
-      </div>
-    </div>
-  );
-}
-
-function LocationCard() {
-  return (
-    <InfoCard
-      icon={<FaMapMarkerAlt className="h-4 w-4" style={{ color: '#00f5ff' }} />}
-      iconColor="rgba(0,245,255,0.15)"
-      label="Location"
-      value={profileData.location}
-    />
-  );
-}
-
-function CurrentRoleCard() {
-  if (!profileData.currentRole) return null;
-  return (
-    <InfoCard
-      icon={<FaBriefcase className="h-4 w-4" style={{ color: '#a855f7' }} />}
-      iconColor="rgba(168,85,247,0.15)"
-      label="Current Role"
-      value={`${profileData.currentRole.title}${profileData.currentRole.company ? ' at ' + profileData.currentRole.company : ''}`}
-    />
-  );
-}
-
-function EducationCard() {
-  const education = educationData.education[0];
-  if (!education) return null;
-
-  return (
-    <div
-      className="flex items-start gap-4 rounded-lg p-4"
-      style={{
-        background: 'rgba(34,211,238,0.04)',
-        border: '1px solid rgba(34,211,238,0.12)',
-        backdropFilter: 'blur(8px)',
-      }}
-    >
-      <div
-        className="rounded-lg p-2.5 flex-shrink-0"
-        style={{ background: 'rgba(34,211,238,0.12)' }}
-      >
-        <FaGraduationCap className="h-4 w-4" style={{ color: '#22d3ee' }} />
-      </div>
-      <div>
-        <p className="text-xs mb-0.5" style={{ color: 'var(--color-text-muted)', fontFamily: "'JetBrains Mono', monospace" }}>
-          Education
-        </p>
-        <p className="font-medium" style={{ color: 'var(--color-text-primary)', fontFamily: "'Space Grotesk', sans-serif" }}>
-          {education.degree} in {education.field}
-        </p>
-        <p className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>
-          {education.institution}
-        </p>
-      </div>
-    </div>
-  );
-}
-
-function InfoCard({ icon, iconColor, label, value }) {
-  return (
-    <div
-      className="flex items-center gap-4 rounded-lg p-4"
-      style={{
-        background: 'rgba(255,255,255,0.02)',
-        border: '1px solid rgba(255,255,255,0.06)',
-        backdropFilter: 'blur(8px)',
-      }}
-    >
-      <div
-        className="rounded-lg p-2.5 flex-shrink-0"
-        style={{ background: iconColor }}
-      >
-        {icon}
-      </div>
-      <div>
-        <p className="text-xs" style={{ color: 'var(--color-text-muted)', fontFamily: "'JetBrains Mono', monospace" }}>
-          {label}
-        </p>
-        <p className="font-medium" style={{ color: 'var(--color-text-primary)', fontFamily: "'Space Grotesk', sans-serif" }}>
-          {value}
-        </p>
-      </div>
-    </div>
-  );
-}
-
-function LanguagesCard() {
-  return (
-    <div
-      className="rounded-xl p-6"
-      style={{
-        background: 'rgba(168,85,247,0.04)',
-        border: '1px solid rgba(168,85,247,0.12)',
-        backdropFilter: 'blur(12px)',
-      }}
-    >
-      <h3
-        className="mb-4 text-lg font-semibold"
-        style={{ fontFamily: "'Space Grotesk', sans-serif", color: '#a855f7' }}
-      >
-        Languages I Speak
-      </h3>
-      <div className="flex flex-wrap gap-2">
-        {profileData.languages.map(lang => (
-          <span
-            key={lang}
-            className="rounded-full px-4 py-2 text-sm font-medium"
-            style={{
-              background: 'rgba(168,85,247,0.08)',
-              border: '1px solid rgba(168,85,247,0.2)',
-              color: '#c084fc',
-              fontFamily: "'Space Grotesk', sans-serif",
-            }}
-          >
-            {lang}
-          </span>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function StatsGrid() {
-  const stats = [
-    {
-      value: '10K+',
-      label: 'App Downloads',
-      color: '#00f5ff',
-      bg: 'rgba(0,245,255,0.06)',
-      border: 'rgba(0,245,255,0.2)',
-    },
-    {
-      value: '650+',
-      label: 'Hoardings Managed',
-      color: '#a855f7',
-      bg: 'rgba(168,85,247,0.06)',
-      border: 'rgba(168,85,247,0.2)',
-    },
-    {
-      value: '27+',
-      label: 'Stations Trained',
-      color: '#22d3ee',
-      bg: 'rgba(34,211,238,0.06)',
-      border: 'rgba(34,211,238,0.2)',
-    },
-    {
-      value: '130+',
-      label: 'Schools Served',
-      color: '#fb923c',
-      bg: 'rgba(251,146,60,0.06)',
-      border: 'rgba(251,146,60,0.2)',
-    },
-  ];
-
-  return (
-    <div className="grid grid-cols-2 gap-4">
-      {stats.map(stat => (
-        <motion.div
-          key={stat.label}
-          className="rounded-xl p-6 text-center"
-          style={{
-            background: stat.bg,
-            border: `1px solid ${stat.border}`,
-            backdropFilter: 'blur(12px)',
-          }}
-          whileHover={{
-            scale: 1.04,
-            boxShadow: `0 0 25px ${stat.border}`,
-          }}
-          transition={{ duration: 0.2 }}
-        >
-          <p
-            className="text-3xl font-bold mb-1"
-            style={{
-              color: stat.color,
-              fontFamily: "'Space Grotesk', sans-serif",
-              textShadow: `0 0 15px ${stat.color}50`,
-            }}
-          >
-            {stat.value}
-          </p>
-          <p className="text-xs" style={{ color: 'var(--color-text-secondary)', fontFamily: "'JetBrains Mono', monospace" }}>
-            {stat.label}
-          </p>
-        </motion.div>
-      ))}
-    </div>
   );
 }

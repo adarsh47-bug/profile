@@ -1,4 +1,4 @@
-import { FaHeart, FaCode } from 'react-icons/fa';
+import { FaHeart, FaGamepad } from 'react-icons/fa';
 import { profileData, siteData } from '../../data';
 import { getSocialLinks } from '../../constants';
 import Logo from './Logo';
@@ -8,53 +8,41 @@ export default function Footer() {
   const socialLinks = getSocialLinks(profileData.social);
 
   return (
-    <footer
-      className="relative z-10"
-      style={{
-        background: 'rgba(3, 7, 18, 0.8)',
-        backdropFilter: 'blur(20px)',
-        borderTop: '1px solid rgba(0, 245, 255, 0.1)',
-        boxShadow: '0 -4px 24px rgba(0, 0, 0, 0.4)',
-      }}
-    >
-      {/* Neon top glow line */}
-      <div
-        style={{
-          height: 1,
-          background: 'linear-gradient(90deg, transparent, rgba(0,245,255,0.4), rgba(168,85,247,0.4), transparent)',
-          marginBottom: -1,
-        }}
-      />
+    <footer className="relative z-10" style={{
+      background: '#111111',
+      borderTop: '3px solid #E8192C',
+      boxShadow: '0 -4px 0 rgba(0,0,0,0.5)',
+    }}>
+      {/* Red pixel border accent */}
+      <div style={{
+        height: 3,
+        background: 'repeating-linear-gradient(90deg, #E8192C 0px, #E8192C 20px, #B8131F 20px, #B8131F 40px)',
+        marginBottom: 0,
+      }} />
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
 
           {/* Brand */}
           <div>
             <Logo size="md" />
-            <p
-              className="mt-3 text-sm"
-              style={{ color: 'var(--color-text-secondary)', fontFamily: "'Space Grotesk', sans-serif" }}
-            >
+            <p className="mt-3 text-sm" style={{ color: '#666', fontFamily: "'Nunito', sans-serif" }}>
               {profileData.tagline}
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h3
-              className="text-xs font-semibold uppercase tracking-widest mb-4"
-              style={{ color: '#00f5ff', fontFamily: "'JetBrains Mono', monospace", textShadow: '0 0 8px rgba(0,245,255,0.4)' }}
-            >
-              Quick Links
+            <h3 className="text-xs font-bold uppercase tracking-widest mb-4 pixel" style={{ color: '#E8192C' }}>
+              Navigation
             </h3>
             <ul className="space-y-2">
               {siteData.navigation.slice(0, 5).map((item) => (
                 <li key={item.name}>
                   <a
                     href={item.path}
-                    className="text-sm transition-all duration-200 link-underline"
-                    style={{ color: 'var(--color-text-secondary)', fontFamily: "'Space Grotesk', sans-serif" }}
+                    className="text-sm font-bold link-underline transition-colors duration-200"
+                    style={{ color: '#ABABAB', fontFamily: "'Nunito', sans-serif" }}
                   >
                     {item.name}
                   </a>
@@ -63,36 +51,36 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Social & Contact */}
+          {/* Social */}
           <div>
-            <h3
-              className="text-xs font-semibold uppercase tracking-widest mb-4"
-              style={{ color: '#a855f7', fontFamily: "'JetBrains Mono', monospace", textShadow: '0 0 8px rgba(168,85,247,0.4)' }}
-            >
+            <h3 className="text-xs font-bold uppercase tracking-widest mb-4 pixel" style={{ color: '#E8192C' }}>
               Connect
             </h3>
-            <div className="flex gap-3 mb-4">
+            <div className="flex flex-wrap gap-2 mb-4">
               {socialLinks.map((social) => (
                 <a
                   key={social.platform}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 rounded-lg transition-all duration-200"
+                  className="p-2 rounded-lg transition-all duration-150"
                   style={{
-                    background: 'rgba(0,245,255,0.06)',
-                    border: '1px solid rgba(0,245,255,0.15)',
-                    color: 'var(--color-text-secondary)',
+                    background: '#242424',
+                    border: '2px solid #3A3A3A',
+                    color: '#ABABAB',
+                    boxShadow: '0 3px 0 rgba(0,0,0,0.5)',
+                    display: 'inline-flex',
+                    alignItems: 'center',
                   }}
                   onMouseEnter={e => {
-                    e.currentTarget.style.borderColor = 'rgba(0,245,255,0.5)';
-                    e.currentTarget.style.boxShadow = '0 0 12px rgba(0,245,255,0.2)';
-                    e.currentTarget.style.color = '#00f5ff';
+                    e.currentTarget.style.borderColor = '#E8192C';
+                    e.currentTarget.style.color = '#F2F2F2';
+                    e.currentTarget.style.transform = 'translateY(-1px)';
                   }}
                   onMouseLeave={e => {
-                    e.currentTarget.style.borderColor = 'rgba(0,245,255,0.15)';
-                    e.currentTarget.style.boxShadow = 'none';
-                    e.currentTarget.style.color = 'var(--color-text-secondary)';
+                    e.currentTarget.style.borderColor = '#3A3A3A';
+                    e.currentTarget.style.color = '#ABABAB';
+                    e.currentTarget.style.transform = 'translateY(0)';
                   }}
                   aria-label={social.label}
                 >
@@ -100,35 +88,22 @@ export default function Footer() {
                 </a>
               ))}
             </div>
-            <p
-              className="text-sm"
-              style={{ color: 'var(--color-text-secondary)', fontFamily: "'JetBrains Mono', monospace", fontSize: '0.75rem' }}
-            >
+            <p className="text-xs pixel" style={{ color: '#555' }}>
               {profileData.email}
             </p>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div
-          className="mt-8 pt-8"
-          style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}
-        >
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p
-              className="text-xs"
-              style={{ color: 'var(--color-text-muted)', fontFamily: "'JetBrains Mono', monospace" }}
-            >
+        {/* Bottom bar */}
+        <div className="mt-8 pt-6" style={{ borderTop: '2px solid #2A2A2A' }}>
+          <div className="flex flex-col md:flex-row justify-between items-center gap-3">
+            <p className="text-xs pixel" style={{ color: '#444' }}>
               © {currentYear} {profileData.name}. All rights reserved.
             </p>
-            <p
-              className="text-xs flex items-center gap-1.5"
-              style={{ color: 'var(--color-text-muted)', fontFamily: "'Space Grotesk', sans-serif" }}
-            >
-              Built with <FaHeart className="w-3 h-3" style={{ color: '#e879f9' }} />
-              using React &amp;{' '}
-              <FaCode className="w-3 h-3" style={{ color: '#00f5ff' }} />
-              Tailwind CSS
+            <p className="text-xs flex items-center gap-1.5 nunito" style={{ color: '#555', fontWeight: 600 }}>
+              Built with <FaHeart className="w-3 h-3" style={{ color: '#E8192C' }} />
+              &amp; <FaGamepad className="w-3 h-3" style={{ color: '#FFD700' }} />
+              using React &amp; Tailwind CSS
             </p>
           </div>
         </div>

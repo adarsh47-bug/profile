@@ -5,11 +5,7 @@ import { ThemeToggle } from '../ui';
 import { siteData } from '../../data';
 import Logo from './Logo';
 import { useActiveSection, useSmoothScroll } from '../../hooks';
-import {
-  SCROLL_CONFIG,
-  ACTIVE_INDICATOR_CONFIG,
-  MOBILE_MENU_CONFIG,
-} from '../../constants';
+import { SCROLL_CONFIG } from '../../constants';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -17,13 +13,10 @@ export default function Navbar() {
 
   const activeSection = useActiveSection(SCROLL_CONFIG.offsetNavbar);
   const smoothScroll = useSmoothScroll(SCROLL_CONFIG.offsetNavbar);
-
   const navItems = useMemo(() => siteData.navigation, []);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -31,71 +24,54 @@ export default function Navbar() {
   const handleNavClick = (e, path, id) => {
     e.preventDefault();
     setIsMobileMenuOpen(false);
-    setTimeout(() => {
-      smoothScroll(id);
-    }, 150);
+    setTimeout(() => smoothScroll(id), 150);
   };
 
   return (
     <motion.header
       className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
       style={isScrolled ? {
-        background: 'rgba(3, 7, 18, 0.85)',
-        backdropFilter: 'blur(20px)',
-        WebkitBackdropFilter: 'blur(20px)',
-        borderBottom: '1px solid rgba(0, 245, 255, 0.1)',
-        boxShadow: '0 4px 24px rgba(0, 0, 0, 0.4), 0 1px 0 rgba(0, 245, 255, 0.05)',
+        background: '#1A1A1A',
+        borderBottom: '3px solid #E8192C',
+        boxShadow: '0 4px 0 rgba(0,0,0,0.6)',
       } : {
-        background: 'transparent',
+        background: 'rgba(15,15,15,0.85)',
+        backdropFilter: 'blur(10px)',
+        borderBottom: '2px solid #2A2A2A',
       }}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.5, type: 'spring', stiffness: 120 }}
     >
       <nav className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 md:h-20">
-          {/* Logo */}
+        <div className="flex items-center justify-between h-16 md:h-[70px]">
           <Logo size="sm" />
 
-          {/* Desktop Navigation */}
+          {/* Desktop Nav */}
           <div className="hidden lg:flex items-center gap-1">
             {navItems.map((item) => {
               const isActive = activeSection === item.id || (activeSection === '' && item.id === 'home');
               return (
-                <div key={item.name} className="relative">
-                  <motion.a
-                    href={item.path}
-                    onClick={(e) => handleNavClick(e, item.path, item.id)}
-                    className="block px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200"
-                    style={{
-                      fontFamily: "'Space Grotesk', sans-serif",
-                      color: isActive ? '#00f5ff' : 'var(--color-text-secondary)',
-                      textShadow: isActive ? '0 0 12px rgba(0,245,255,0.5)' : 'none',
-                      background: isActive ? 'rgba(0,245,255,0.05)' : 'transparent',
-                    }}
-                    whileHover={{ y: -2 }}
-                    transition={{ duration: 0.2 }}
-                    aria-label={item.ariaLabel}
-                    aria-current={isActive ? 'page' : undefined}
-                  >
-                    {item.name}
-                  </motion.a>
-                  {/* Neon active indicator */}
-                  {isActive && (
-                    <motion.div
-                      className="absolute bottom-0 left-2 right-2 h-0.5 rounded-full"
-                      layoutId="desktopIndicator"
-                      style={{
-                        background: 'linear-gradient(90deg, #00f5ff, #a855f7)',
-                        boxShadow: '0 0 8px rgba(0,245,255,0.8)',
-                      }}
-                      initial={{ scaleX: 0 }}
-                      animate={{ scaleX: 1 }}
-                      exit={{ scaleX: 0 }}
-                      transition={{ duration: 0.3, ease: 'easeOut' }}
-                    />
-                  )}
-                </div>
+                <motion.a
+                  key={item.name}
+                  href={item.path}
+                  onClick={(e) => handleNavClick(e, item.path, item.id)}
+                  className="relative px-4 py-2 rounded-lg font-bold text-sm transition-all duration-150"
+                  style={{
+                    fontFamily: "'Nunito', sans-serif",
+                    fontWeight: 700,
+                    color: isActive ? '#fff' : '#ABABAB',
+                    background: isActive ? '#E8192C' : 'transparent',
+                    boxShadow: isActive ? '0 3px 0 #B8131F' : 'none',
+                  }}
+                  whileHover={!isActive ? { background: '#242424', color: '#F2F2F2', y: -1 } : {}}
+                  whileTap={{ y: isActive ? 2 : 0 }}
+                  transition={{ duration: 0.1 }}
+                  aria-label={item.ariaLabel}
+                  aria-current={isActive ? 'page' : undefined}
+                >
+                  {item.name}
+                </motion.a>
               );
             })}
           </div>
@@ -103,27 +79,26 @@ export default function Navbar() {
           {/* Right side */}
           <div className="flex items-center gap-3">
             <ThemeToggle />
-            {/* Mobile menu button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-2 rounded-lg transition-all duration-200"
+              className="lg:hidden p-2 rounded-lg transition-all"
               style={{
-                color: 'var(--color-text-secondary)',
-                background: 'rgba(0,245,255,0.05)',
-                border: '1px solid rgba(0,245,255,0.15)',
+                background: '#242424',
+                border: '2px solid #3A3A3A',
+                color: '#ABABAB',
+                boxShadow: '0 3px 0 rgba(0,0,0,0.5)',
               }}
               aria-label="Toggle menu"
             >
-              {isMobileMenuOpen ? (
-                <FaTimes className="w-5 h-5" style={{ color: '#00f5ff' }} />
-              ) : (
-                <FaBars className="w-5 h-5" />
-              )}
+              {isMobileMenuOpen
+                ? <FaTimes className="w-5 h-5" style={{ color: '#E8192C' }} />
+                : <FaBars className="w-5 h-5" />
+              }
             </button>
           </div>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile Menu */}
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div
@@ -131,53 +106,35 @@ export default function Navbar() {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.2 }}
-              className="lg:hidden overflow-hidden rounded-b-xl"
+              className="lg:hidden overflow-hidden"
               style={{
-                background: 'rgba(3, 7, 18, 0.95)',
-                backdropFilter: 'blur(20px)',
-                borderLeft: '1px solid rgba(0,245,255,0.1)',
-                borderRight: '1px solid rgba(0,245,255,0.1)',
-                borderBottom: '1px solid rgba(0,245,255,0.1)',
+                background: '#1A1A1A',
+                borderTop: '2px solid #E8192C',
+                borderBottom: '2px solid #3A3A3A',
               }}
             >
-              <div className="py-4 space-y-1" style={{ borderTop: '1px solid rgba(0,245,255,0.08)' }}>
+              <div className="py-3 space-y-1 px-2">
                 {navItems.map((item) => {
                   const isActive = activeSection === item.id || (activeSection === '' && item.id === 'home');
                   return (
-                    <div key={item.name} className="relative px-4">
-                      <motion.a
-                        href={item.path}
-                        onClick={(e) => handleNavClick(e, item.path, item.id)}
-                        className="block py-3 px-3 text-base font-medium rounded-lg transition-all duration-200"
-                        style={{
-                          fontFamily: "'Space Grotesk', sans-serif",
-                          color: isActive ? '#00f5ff' : 'var(--color-text-secondary)',
-                          background: isActive ? 'rgba(0,245,255,0.07)' : 'transparent',
-                          textShadow: isActive ? '0 0 10px rgba(0,245,255,0.4)' : 'none',
-                        }}
-                        whileHover={{ x: 4 }}
-                        transition={{ duration: 0.2 }}
-                        aria-label={item.ariaLabel}
-                        aria-current={isActive ? 'page' : undefined}
-                      >
-                        {item.name}
-                      </motion.a>
-                      {/* Left neon indicator */}
-                      {isActive && (
-                        <motion.div
-                          className="absolute left-0 top-1/2 -translate-y-1/2 w-0.5 h-8 rounded-r-full"
-                          layoutId="mobileIndicator"
-                          style={{
-                            background: 'linear-gradient(180deg, #00f5ff, #a855f7)',
-                            boxShadow: '0 0 8px rgba(0,245,255,0.8)',
-                          }}
-                          initial={{ scaleY: 0 }}
-                          animate={{ scaleY: 1 }}
-                          exit={{ scaleY: 0 }}
-                          transition={{ duration: 0.3, ease: 'easeOut' }}
-                        />
-                      )}
-                    </div>
+                    <motion.a
+                      key={item.name}
+                      href={item.path}
+                      onClick={(e) => handleNavClick(e, item.path, item.id)}
+                      className="flex items-center gap-3 px-4 py-2.5 rounded-lg font-bold text-sm"
+                      style={{
+                        fontFamily: "'Nunito', sans-serif",
+                        fontWeight: 700,
+                        color: isActive ? '#fff' : '#ABABAB',
+                        background: isActive ? '#E8192C' : 'transparent',
+                        boxShadow: isActive ? '0 3px 0 #B8131F' : 'none',
+                      }}
+                      whileHover={!isActive ? { background: '#242424', x: 4 } : {}}
+                      aria-label={item.ariaLabel}
+                      aria-current={isActive ? 'page' : undefined}
+                    >
+                      {item.name}
+                    </motion.a>
                   );
                 })}
               </div>
