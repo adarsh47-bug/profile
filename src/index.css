@@ -1,16 +1,33 @@
 @import "tailwindcss";
 
+/* ============================================================
+   WEB3 3D IMMERSIVE DESIGN SYSTEM
+   Deep Space Dark Theme with Neon Cyber Accents
+   ============================================================ */
+
 /* Enable dark mode with class strategy */
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* Custom CSS Variables for theming */
+/* ============================================================
+   CSS Custom Properties – Web3 Palette
+   ============================================================ */
 :root {
-  --color-primary: #3b82f6;
-  --color-primary-dark: #2563eb;
-  --color-secondary: #8b5cf6;
-  --color-accent: #06b6d4;
+  /* Neon accent palette */
+  --color-neon-cyan: #00f5ff;
+  --color-neon-cyan-dim: #00c4cc;
+  --color-neon-violet: #7c3aed;
+  --color-neon-violet-bright: #a855f7;
+  --color-neon-magenta: #e879f9;
+  --color-neon-green: #22d3ee;
+  --color-neon-orange: #fb923c;
 
-  /* Light mode colors */
+  /* Legacy aliases (keep for compat) */
+  --color-primary: #00f5ff;
+  --color-primary-dark: #00c4cc;
+  --color-secondary: #a855f7;
+  --color-accent: #e879f9;
+
+  /* Light mode → keep as fallback but we push dark Web3 by default */
   --color-bg-primary: #ffffff;
   --color-bg-secondary: #f8fafc;
   --color-bg-tertiary: #f1f5f9;
@@ -18,21 +35,37 @@
   --color-text-secondary: #475569;
   --color-text-muted: #94a3b8;
   --color-border: #e2e8f0;
+
+  /* Glow values */
+  --glow-cyan: 0 0 20px rgba(0, 245, 255, 0.4), 0 0 40px rgba(0, 245, 255, 0.15);
+  --glow-violet: 0 0 20px rgba(168, 85, 247, 0.4), 0 0 40px rgba(168, 85, 247, 0.15);
+  --glow-magenta: 0 0 20px rgba(232, 121, 249, 0.4), 0 0 40px rgba(232, 121, 249, 0.15);
+
+  /* Glass */
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
+/* Dark = Web3 space theme (forced on by default via JS/context) */
 .dark {
-  /* Dark mode colors */
-  --color-bg-primary: #0f172a;
-  --color-bg-secondary: #1e293b;
-  --color-bg-tertiary: #334155;
-  --color-text-primary: #f8fafc;
-  --color-text-secondary: #cbd5e1;
-  --color-text-muted: #64748b;
-  --color-border: #334155;
+  --color-bg-primary: #030712;
+  --color-bg-secondary: #0a0f1e;
+  --color-bg-tertiary: #0f172a;
+  --color-text-primary: #f0f4ff;
+  --color-text-secondary: #94a3b8;
+  --color-text-muted: #475569;
+  --color-border: rgba(255, 255, 255, 0.08);
+
+  --glass-bg: rgba(10, 15, 30, 0.6);
+  --glass-border: rgba(0, 245, 255, 0.12);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 1px rgba(0, 245, 255, 0.1);
 }
 
-/* Base styles */
-* {
+/* ============================================================
+   Base Reset
+   ============================================================ */
+*, *::before, *::after {
   box-sizing: border-box;
 }
 
@@ -41,67 +74,275 @@ html {
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  font-family: 'Space Grotesk', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   background-color: var(--color-bg-primary);
   color: var(--color-text-primary);
   transition: background-color 0.3s ease, color 0.3s ease;
   line-height: 1.6;
   margin: 0;
+  overflow-x: hidden;
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
+/* ============================================================
+   Animated Grid Background
+   ============================================================ */
+.web3-grid-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(0, 245, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 245, 255, 0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 20%, black 40%, transparent 100%);
+  animation: gridPulse 8s ease-in-out infinite;
 }
 
-::-webkit-scrollbar-track {
-  background: var(--color-bg-secondary);
+@keyframes gridPulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
 }
 
-::-webkit-scrollbar-thumb {
-  background: var(--color-text-muted);
-  border-radius: 4px;
+/* ============================================================
+   Floating Orb Blobs
+   ============================================================ */
+.web3-orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+  animation: orbFloat 12s ease-in-out infinite;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-text-secondary);
+.web3-orb-1 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(0, 245, 255, 0.12) 0%, transparent 70%);
+  top: -150px;
+  right: -150px;
+  animation-duration: 14s;
 }
 
-/* Selection styling */
-::selection {
-  background-color: var(--color-primary);
-  color: white;
+.web3-orb-2 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, transparent 70%);
+  bottom: 10%;
+  left: -100px;
+  animation-duration: 18s;
+  animation-delay: -6s;
 }
 
-/* Focus styles for accessibility */
-:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
+.web3-orb-3 {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(232, 121, 249, 0.1) 0%, transparent 70%);
+  top: 40%;
+  right: 20%;
+  animation-duration: 10s;
+  animation-delay: -3s;
 }
 
-/* Typography utilities */
+@keyframes orbFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -40px) scale(1.05); }
+  66% { transform: translate(-20px, 20px) scale(0.95); }
+}
+
+/* ============================================================
+   Glassmorphism Card
+   ============================================================ */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+.glass-card:hover {
+  border-color: rgba(0, 245, 255, 0.25);
+  box-shadow: var(--glass-shadow), 0 0 30px rgba(0, 245, 255, 0.08);
+}
+
+/* ============================================================
+   Neon Glow Utilities
+   ============================================================ */
+.neon-glow-cyan {
+  box-shadow: var(--glow-cyan);
+}
+
+.neon-glow-violet {
+  box-shadow: var(--glow-violet);
+}
+
+.neon-text-cyan {
+  color: var(--color-neon-cyan);
+  text-shadow: 0 0 10px rgba(0, 245, 255, 0.5), 0 0 30px rgba(0, 245, 255, 0.2);
+}
+
+.neon-text-violet {
+  color: var(--color-neon-violet-bright);
+  text-shadow: 0 0 10px rgba(168, 85, 247, 0.5), 0 0 30px rgba(168, 85, 247, 0.2);
+}
+
+/* ============================================================
+   Text Gradient – Web3 Edition
+   ============================================================ */
 .text-gradient {
-  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  background: linear-gradient(135deg, var(--color-neon-cyan), var(--color-neon-violet-bright), var(--color-neon-magenta));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Card hover effect */
+.text-gradient-cyan-violet {
+  background: linear-gradient(135deg, var(--color-neon-cyan) 0%, var(--color-neon-violet-bright) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-violet-magenta {
+  background: linear-gradient(135deg, var(--color-neon-violet-bright) 0%, var(--color-neon-magenta) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ============================================================
+   Neon Border Gradient
+   ============================================================ */
+.neon-border {
+  border: 1px solid transparent;
+  background-clip: padding-box;
+  position: relative;
+}
+
+.neon-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, var(--color-neon-cyan), var(--color-neon-violet-bright));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* ============================================================
+   Shimmer / Scan-line Button Animation
+   ============================================================ */
+.shimmer-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer-btn::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -75%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transform: skewX(-20deg);
+  transition: none;
+}
+
+.shimmer-btn:hover::after {
+  animation: shimmerSweep 0.6s ease-out forwards;
+}
+
+@keyframes shimmerSweep {
+  from { left: -75%; }
+  to { left: 125%; }
+}
+
+/* ============================================================
+   Card Hover – 3D lift
+   ============================================================ */
 .card-hover {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  transform-style: preserve-3d;
 }
 
 .card-hover:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.15);
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.4), 0 0 40px rgba(0, 245, 255, 0.1);
 }
 
-.dark .card-hover:hover {
-  box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.4);
+/* ============================================================
+   Section Title Neon Underline
+   ============================================================ */
+.section-title-underline {
+  position: relative;
+  display: inline-block;
 }
 
-/* Link underline animation */
+.section-title-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-neon-cyan), var(--color-neon-violet-bright), transparent);
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba(0, 245, 255, 0.6);
+}
+
+/* ============================================================
+   Neon Scrollbar
+   ============================================================ */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0f1e;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--color-neon-cyan), var(--color-neon-violet-bright));
+  border-radius: 3px;
+  box-shadow: 0 0 8px rgba(0, 245, 255, 0.5);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-neon-cyan);
+  box-shadow: 0 0 12px rgba(0, 245, 255, 0.8);
+}
+
+/* ============================================================
+   Selection
+   ============================================================ */
+::selection {
+  background-color: rgba(0, 245, 255, 0.25);
+  color: var(--color-neon-cyan);
+}
+
+/* ============================================================
+   Focus Styles
+   ============================================================ */
+:focus-visible {
+  outline: 2px solid var(--color-neon-cyan);
+  outline-offset: 3px;
+  box-shadow: 0 0 12px rgba(0, 245, 255, 0.4);
+}
+
+/* ============================================================
+   Link Underline Animation – Neon Edition
+   ============================================================ */
 .link-underline {
   position: relative;
 }
@@ -110,13 +351,75 @@ body {
   content: '';
   position: absolute;
   width: 0;
-  height: 2px;
+  height: 1px;
   bottom: -2px;
   left: 0;
-  background-color: var(--color-primary);
+  background: linear-gradient(90deg, var(--color-neon-cyan), var(--color-neon-violet-bright));
+  box-shadow: 0 0 6px rgba(0, 245, 255, 0.6);
   transition: width 0.3s ease;
 }
 
 .link-underline:hover::after {
   width: 100%;
+}
+
+/* ============================================================
+   Cyber Badge / Pill
+   ============================================================ */
+.cyber-badge {
+  background: rgba(0, 245, 255, 0.08);
+  border: 1px solid rgba(0, 245, 255, 0.2);
+  color: var(--color-neon-cyan);
+  font-family: 'JetBrains Mono', 'Space Grotesk', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  transition: all 0.2s ease;
+}
+
+.cyber-badge:hover {
+  background: rgba(0, 245, 255, 0.15);
+  border-color: rgba(0, 245, 255, 0.5);
+  box-shadow: 0 0 12px rgba(0, 245, 255, 0.25);
+}
+
+/* ============================================================
+   Hexagonal Spinner (Loading)
+   ============================================================ */
+.hex-spinner {
+  width: 48px;
+  height: 48px;
+  border: 2px solid transparent;
+  border-top-color: var(--color-neon-cyan);
+  border-right-color: var(--color-neon-violet-bright);
+  border-radius: 50%;
+  animation: hexSpin 1s linear infinite;
+  box-shadow: 0 0 20px rgba(0, 245, 255, 0.3);
+}
+
+@keyframes hexSpin {
+  to { transform: rotate(360deg); }
+}
+
+/* ============================================================
+   Mono Code Accent
+   ============================================================ */
+.mono {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+}
+
+/* ============================================================
+   Scan Lines Overlay (subtle CRT effect)
+   ============================================================ */
+.scan-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.03) 2px,
+    rgba(0, 0, 0, 0.03) 4px
+  );
 }

@@ -13,52 +13,67 @@ export default function Hero() {
       opacity: 1,
       transition: {
         staggerChildren: 0.15,
-        delayChildren: 0.2,
+        delayChildren: 0.3,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 40 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: 'easeOut' },
+      transition: { duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] },
     },
   };
 
   return (
-    <section id="home" className="min-h-[calc(100vh-5rem)] flex items-center relative overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-linear-to-br from-blue-50 via-white to-purple-50 dark:from-slate-900 dark:via-slate-900 dark:to-slate-800" />
+    <section
+      id="home"
+      className="min-h-[calc(100vh-5rem)] flex items-center relative overflow-hidden z-10"
+    >
+      {/* Extra hero-scoped orbs for depth */}
+      <motion.div
+        className="absolute pointer-events-none"
+        style={{
+          width: 600,
+          height: 600,
+          borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(0,245,255,0.07) 0%, transparent 70%)',
+          top: -200,
+          right: -200,
+          filter: 'blur(60px)',
+        }}
+        animate={{ scale: [1, 1.1, 1], opacity: [0.6, 1, 0.6] }}
+        transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
+      />
+      <motion.div
+        className="absolute pointer-events-none"
+        style={{
+          width: 400,
+          height: 400,
+          borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(168,85,247,0.1) 0%, transparent 70%)',
+          bottom: -100,
+          left: -100,
+          filter: 'blur(60px)',
+        }}
+        animate={{ scale: [1.1, 1, 1.1], opacity: [0.5, 0.9, 0.5] }}
+        transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut' }}
+      />
 
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <motion.div
-          className="absolute top-20 right-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl"
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.3, 0.5, 0.3]
-          }}
-          transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-        />
-        <motion.div
-          className="absolute bottom-20 left-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"
-          animate={{
-            scale: [1.2, 1, 1.2],
-            opacity: [0.3, 0.5, 0.3]
-          }}
-          transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
-        />
-        <motion.div
-          className="absolute top-1/2 right-1/4 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl"
-          animate={{
-            y: [0, 30, 0],
-            opacity: [0.2, 0.4, 0.2]
-          }}
-          transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-        />
-      </div>
+      {/* Floating grid lines (hero-level perspective) */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage: `
+            linear-gradient(rgba(0,245,255,0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(0,245,255,0.03) 1px, transparent 1px)
+          `,
+          backgroundSize: '40px 40px',
+          maskImage: 'radial-gradient(ellipse 70% 80% at 30% 50%, black 40%, transparent 100%)',
+        }}
+      />
 
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <motion.div
@@ -67,26 +82,73 @@ export default function Hero() {
           animate="visible"
           className="max-w-3xl"
         >
+          {/* Status pill */}
+          <motion.div variants={itemVariants} className="mb-6">
+            <span
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-medium"
+              style={{
+                fontFamily: "'JetBrains Mono', monospace",
+                background: 'rgba(0,245,255,0.07)',
+                border: '1px solid rgba(0,245,255,0.2)',
+                color: '#00f5ff',
+                letterSpacing: '0.08em',
+              }}
+            >
+              <span
+                style={{
+                  width: 6,
+                  height: 6,
+                  borderRadius: '50%',
+                  background: '#00f5ff',
+                  boxShadow: '0 0 8px #00f5ff',
+                  display: 'inline-block',
+                  animation: 'pulse 2s infinite',
+                }}
+              />
+              AVAILABLE FOR WORK
+            </span>
+          </motion.div>
+
           {/* Greeting */}
           <motion.p
             variants={itemVariants}
-            className="text-blue-600 dark:text-blue-400 font-medium mb-4 text-lg"
+            className="font-medium mb-3 text-base"
+            style={{
+              color: '#a855f7',
+              fontFamily: "'JetBrains Mono', monospace",
+              letterSpacing: '0.05em',
+            }}
           >
-            👋 Hello, I'm
+            // Hello, I&apos;m
           </motion.p>
 
           {/* Name */}
           <motion.h1
             variants={itemVariants}
-            className="text-4xl sm:text-5xl md:text-6xl font-bold text-slate-900 dark:text-white mb-4"
+            className="text-5xl sm:text-6xl md:text-7xl font-bold mb-4 leading-tight"
+            style={{
+              fontFamily: "'Space Grotesk', sans-serif",
+              background: 'linear-gradient(135deg, #f0f4ff 0%, #00f5ff 50%, #a855f7 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              filter: 'drop-shadow(0 0 30px rgba(0,245,255,0.15))',
+            }}
           >
             {profileData.name}
           </motion.h1>
 
-          {/* Title with gradient */}
+          {/* Title */}
           <motion.h2
             variants={itemVariants}
-            className="text-2xl sm:text-3xl md:text-4xl font-semibold bg-linear-to-r from-blue-600 via-purple-600 to-blue-600 bg-clip-text text-transparent mb-6"
+            className="text-xl sm:text-2xl md:text-3xl font-semibold mb-6"
+            style={{
+              fontFamily: "'Space Grotesk', sans-serif",
+              background: 'linear-gradient(90deg, #00f5ff, #a855f7, #e879f9)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+            }}
           >
             {profileData.title}
           </motion.h2>
@@ -94,12 +156,13 @@ export default function Hero() {
           {/* Tagline */}
           <motion.p
             variants={itemVariants}
-            className="text-lg md:text-xl text-slate-600 dark:text-slate-400 mb-8 max-w-2xl leading-relaxed"
+            className="text-lg md:text-xl mb-8 max-w-2xl leading-relaxed"
+            style={{ color: 'var(--color-text-secondary)', fontFamily: "'Space Grotesk', sans-serif" }}
           >
             {profileData.tagline}
           </motion.p>
 
-          {/* Highlights */}
+          {/* Highlight pills */}
           <motion.div
             variants={itemVariants}
             className="flex flex-wrap gap-3 mb-8"
@@ -107,10 +170,23 @@ export default function Hero() {
             {profileData.highlights.slice(0, 3).map((highlight, index) => (
               <motion.span
                 key={index}
-                className="px-4 py-2 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm text-slate-700 dark:text-slate-300 rounded-full text-sm font-medium border border-slate-200 dark:border-slate-700 shadow-sm"
-                whileHover={{ scale: 1.05, y: -2 }}
+                className="px-4 py-2 rounded-full text-sm font-medium"
+                style={{
+                  background: 'rgba(0,245,255,0.06)',
+                  border: '1px solid rgba(0,245,255,0.18)',
+                  color: 'var(--color-text-secondary)',
+                  fontFamily: "'Space Grotesk', sans-serif",
+                  backdropFilter: 'blur(8px)',
+                }}
+                whileHover={{
+                  scale: 1.05,
+                  y: -2,
+                  borderColor: 'rgba(0,245,255,0.5)',
+                  color: '#00f5ff',
+                  boxShadow: '0 0 15px rgba(0,245,255,0.15)',
+                }}
               >
-                ✨ {highlight}
+                ⬡ {highlight}
               </motion.span>
             ))}
           </motion.div>
@@ -120,11 +196,7 @@ export default function Hero() {
             variants={itemVariants}
             className="flex flex-wrap gap-4"
           >
-            <Button
-              href="#projects"
-              icon={FaArrowRight}
-              iconPosition="right"
-            >
+            <Button href="#projects" icon={FaArrowRight} iconPosition="right">
               View Projects
             </Button>
             <Button
@@ -148,9 +220,21 @@ export default function Hero() {
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`p-3 rounded-xl bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm text-slate-600 dark:text-slate-400 ${social.color} border border-slate-200 dark:border-slate-700 shadow-sm transition-colors`}
+                className="p-3 rounded-xl transition-all duration-200"
+                style={{
+                  background: 'rgba(0,245,255,0.05)',
+                  border: '1px solid rgba(0,245,255,0.15)',
+                  color: 'var(--color-text-secondary)',
+                  backdropFilter: 'blur(8px)',
+                }}
                 aria-label={social.label}
-                whileHover={{ scale: 1.1, y: -2 }}
+                whileHover={{
+                  scale: 1.1,
+                  y: -3,
+                  borderColor: 'rgba(0,245,255,0.5)',
+                  boxShadow: '0 0 20px rgba(0,245,255,0.25)',
+                  color: '#00f5ff',
+                }}
                 whileTap={{ scale: 0.95 }}
               >
                 <social.icon className="w-5 h-5" />
@@ -159,6 +243,45 @@ export default function Hero() {
           </motion.div>
         </motion.div>
       </div>
+
+      {/* Scroll indicator */}
+      <motion.div
+        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        animate={{ y: [0, 8, 0] }}
+        transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+      >
+        <div
+          style={{
+            width: 24,
+            height: 40,
+            borderRadius: 12,
+            border: '1px solid rgba(0,245,255,0.3)',
+            display: 'flex',
+            alignItems: 'flex-start',
+            justifyContent: 'center',
+            padding: '6px 0',
+          }}
+        >
+          <motion.div
+            style={{
+              width: 4,
+              height: 8,
+              borderRadius: 2,
+              background: 'linear-gradient(180deg, #00f5ff, transparent)',
+              boxShadow: '0 0 6px rgba(0,245,255,0.6)',
+            }}
+            animate={{ y: [0, 12, 0], opacity: [1, 0.2, 1] }}
+            transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+          />
+        </div>
+      </motion.div>
+
+      <style>{`
+        @keyframes pulse {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.4; }
+        }
+      `}</style>
     </section>
   );
 }
