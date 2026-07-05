@@ -1,0 +1,13 @@
+# Robots.txt - Adarsh Kadam Portfolio
+# https://adarshcodes.online
+
+User-agent: *
+Allow: /
+
+# Disallow internal/build artifacts
+Disallow: /dist/
+Disallow: /.git/
+Disallow: /node_modules/
+
+# Sitemap location
+Sitemap: https://adarshcodes.online/sitemap.xml

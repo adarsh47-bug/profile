@@ -22,7 +22,7 @@ export default function SEO({
 
   const siteDescription = description || siteData.siteDescription || profileData.tagline;
   const siteKeywords = keywords || siteData.siteKeywords?.join(', ') || '';
-  const siteImage = image || `${baseUrl}/images/hero/avatar.jpg`;
+  const siteImage = image || `${baseUrl}/og-image.png`;
 
   useEffect(() => {
     // Update document title
@@ -48,6 +48,8 @@ export default function SEO({
     setMetaTag('description', siteDescription);
     setMetaTag('keywords', siteKeywords);
     setMetaTag('author', author);
+    setMetaTag('robots', 'index, follow');
+    setMetaTag('language', 'English');
 
     // Open Graph / Facebook
     setMetaTag('og:type', type, true);
@@ -55,6 +57,10 @@ export default function SEO({
     setMetaTag('og:title', siteTitle, true);
     setMetaTag('og:description', siteDescription, true);
     setMetaTag('og:image', siteImage, true);
+    setMetaTag('og:image:width', '1200', true);
+    setMetaTag('og:image:height', '630', true);
+    setMetaTag('og:image:alt', `${profileData.name} - Software Engineer Portfolio`, true);
+    setMetaTag('og:locale', 'en_US', true);
     setMetaTag('og:site_name', profileData.name, true);
 
     // Twitter
@@ -63,15 +69,11 @@ export default function SEO({
     setMetaTag('twitter:title', siteTitle);
     setMetaTag('twitter:description', siteDescription);
     setMetaTag('twitter:image', siteImage);
+    setMetaTag('twitter:image:alt', `${profileData.name} - Software Engineer Portfolio`);
 
     if (profileData.social?.twitter) {
       setMetaTag('twitter:creator', `@${profileData.social.twitter.split('/').pop()}`);
     }
-
-    // Additional Meta Tags
-    setMetaTag('robots', 'index, follow');
-    setMetaTag('language', 'English');
-    setMetaTag('theme-color', '#3b82f6');
 
     // Update canonical link
     let canonical = document.querySelector('link[rel="canonical"]');
@@ -89,6 +91,7 @@ export default function SEO({
 
 /**
  * Structured Data (JSON-LD) Component for SEO
+ * Injects both Person and WebSite schemas for maximum search engine coverage.
  */
 export function StructuredData({ type = 'Person' }) {
   useEffect(() => {
@@ -101,15 +104,25 @@ export function StructuredData({ type = 'Person' }) {
       "url": siteData.siteUrl,
       "image": `${siteData.siteUrl}/images/hero/avatar.jpg`,
       "email": profileData.email,
-      "telephone": profileData.phone,
+      "telephone": profileData.phone || undefined,
       "address": {
         "@type": "PostalAddress",
-        "addressLocality": profileData.location
+        "addressLocality": "Nagpur",
+        "addressRegion": "Maharashtra",
+        "addressCountry": "IN"
+      },
+      "knowsAbout": [
+        "React", "React Native", "Node.js", "TypeScript", "JavaScript",
+        "MERN Stack", "Firebase", "MongoDB", "Expo", "Full-Stack Development",
+        "Mobile App Development", "Web Development"
+      ],
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "Priyadarshini College of Engineering, Nagpur"
       },
       "sameAs": [
         profileData.social?.github,
         profileData.social?.linkedin,
-        profileData.social?.twitter,
         profileData.social?.youtube
       ].filter(Boolean)
     });
@@ -120,33 +133,48 @@ export function StructuredData({ type = 'Person' }) {
       "name": siteData.siteTitle,
       "description": siteData.siteDescription,
       "url": siteData.siteUrl,
+      "inLanguage": "en-US",
       "author": {
         "@type": "Person",
         "name": profileData.name
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": `${siteData.siteUrl}/projects?q={search_term_string}`,
+        "query-input": "required name=search_term_string"
       }
     });
 
-    const schema = type === 'Person' ? getPersonSchema() : getWebSiteSchema();
-
-    // Check if script already exists
-    let scriptElement = document.querySelector('script[type="application/ld+json"]');
-
-    if (!scriptElement) {
-      scriptElement = document.createElement('script');
-      scriptElement.setAttribute('type', 'application/ld+json');
-      document.head.appendChild(scriptElement);
+    // Inject Person schema
+    const personSchemaId = 'ld-json-person';
+    let personScript = document.getElementById(personSchemaId);
+    if (!personScript) {
+      personScript = document.createElement('script');
+      personScript.setAttribute('type', 'application/ld+json');
+      personScript.setAttribute('id', personSchemaId);
+      document.head.appendChild(personScript);
     }
+    personScript.textContent = JSON.stringify(getPersonSchema());
 
-    scriptElement.textContent = JSON.stringify(schema);
+    // Inject WebSite schema
+    const websiteSchemaId = 'ld-json-website';
+    let websiteScript = document.getElementById(websiteSchemaId);
+    if (!websiteScript) {
+      websiteScript = document.createElement('script');
+      websiteScript.setAttribute('type', 'application/ld+json');
+      websiteScript.setAttribute('id', websiteSchemaId);
+      document.head.appendChild(websiteScript);
+    }
+    websiteScript.textContent = JSON.stringify(getWebSiteSchema());
 
     return () => {
       // Cleanup on unmount
-      if (scriptElement && scriptElement.parentNode) {
-        scriptElement.parentNode.removeChild(scriptElement);
-      }
+      [personSchemaId, websiteSchemaId].forEach(id => {
+        const el = document.getElementById(id);
+        if (el && el.parentNode) el.parentNode.removeChild(el);
+      });
     };
   }, [type]);
 
   return null;
 }
-

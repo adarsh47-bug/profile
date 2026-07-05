@@ -9,15 +9,17 @@ const ThemeToggle = memo(function ThemeToggle({ className = '' }) {
   return (
     <motion.button
       onClick={toggleTheme}
-      className={`
-        p-2 rounded-lg
-        bg-slate-100 dark:bg-slate-800
-        text-slate-700 dark:text-slate-300
-        hover:bg-slate-200 dark:hover:bg-slate-700
-        transition-colors duration-200
-        ${className}
-      `}
-      whileHover={{ scale: 1.05 }}
+      className={`p-2 rounded-lg transition-all duration-200 ${className}`}
+      style={{
+        background: 'rgba(0,245,255,0.06)',
+        border: '1px solid rgba(0,245,255,0.15)',
+        color: isDark ? '#e879f9' : '#64748b',
+      }}
+      whileHover={{
+        scale: 1.05,
+        boxShadow: '0 0 12px rgba(0,245,255,0.2)',
+        borderColor: 'rgba(0,245,255,0.4)',
+      }}
       whileTap={{ scale: 0.95 }}
       aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
     >
@@ -27,9 +29,9 @@ const ThemeToggle = memo(function ThemeToggle({ className = '' }) {
         transition={{ duration: 0.3 }}
       >
         {isDark ? (
-          <FaSun className="w-5 h-5 text-yellow-400" />
+          <FaSun className="w-4 h-4" style={{ color: '#fbbf24' }} />
         ) : (
-          <FaMoon className="w-5 h-5 text-slate-700" />
+          <FaMoon className="w-4 h-4" style={{ color: '#a855f7' }} />
         )}
       </motion.div>
     </motion.button>

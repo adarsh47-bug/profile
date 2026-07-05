@@ -6,6 +6,7 @@ const Card = memo(function Card({
   className = '',
   hover = true,
   padding = 'md',
+  glow = false,
   ...props
 }) {
   const paddingSizes = {
@@ -18,10 +19,9 @@ const Card = memo(function Card({
   return (
     <motion.div
       className={`
-        bg-white dark:bg-slate-800
-        border border-slate-200 dark:border-slate-700
-        rounded-xl shadow-sm
+        glass-card rounded-xl
         ${hover ? 'card-hover' : ''}
+        ${glow ? 'neon-glow-cyan' : ''}
         ${paddingSizes[padding]}
         ${className}
       `}
@@ -48,7 +48,8 @@ export const CardHeader = memo(function CardHeader({ children, className = '' })
 
 export const CardTitle = memo(function CardTitle({ children, className = '' }) {
   return (
-    <h3 className={`text-xl font-semibold text-slate-900 dark:text-white ${className}`}>
+    <h3 className={`text-xl font-semibold text-gradient-cyan-violet ${className}`}
+      style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
       {children}
     </h3>
   );
@@ -56,7 +57,7 @@ export const CardTitle = memo(function CardTitle({ children, className = '' }) {
 
 export const CardDescription = memo(function CardDescription({ children, className = '' }) {
   return (
-    <p className={`text-slate-600 dark:text-slate-400 mt-1 ${className}`}>
+    <p className={`mt-1 ${className}`} style={{ color: 'var(--color-text-secondary)' }}>
       {children}
     </p>
   );
@@ -72,7 +73,10 @@ export const CardContent = memo(function CardContent({ children, className = '' 
 
 export const CardFooter = memo(function CardFooter({ children, className = '' }) {
   return (
-    <div className={`mt-4 pt-4 border-t border-slate-200 dark:border-slate-700 ${className}`}>
+    <div
+      className={`mt-4 pt-4 ${className}`}
+      style={{ borderTop: '1px solid var(--color-border)' }}
+    >
       {children}
     </div>
   );
